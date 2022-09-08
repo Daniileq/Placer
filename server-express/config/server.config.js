@@ -1,10 +1,15 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cookieParser = require('cookie-parser');
+
+const corsOptions = {
+  origin: ['http://localhost:3000'],
+};
 
 const sessionConfig = {
   store: new FileStore(),
@@ -19,6 +24,7 @@ const sessionConfig = {
 };
 
 module.exports = function serverConfig(app) {
+  app.use(cors(corsOptions));
   app.use(morgan('dev'));
   app.use(express.json());
   app.use(cookieParser());
