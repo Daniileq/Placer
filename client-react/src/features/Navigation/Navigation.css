@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+.nav_container {
+  max-width: 1170px;
+  box-sizing: content-box;
+  margin: 0% auto;
+}
+.header_navigathion {
+  margin-top: 52px;
+  display: flex;
+  justify-content: space-between;
+}
+.header_nav_log_placer {
+  font-size: 28px;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+.nav_center {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  margin-top: -30px;
+  cursor: pointer;
+}
+.header_registragion {
+  font-size: 18px;
+  text-decoration: none;
+  color: #ff733b;
+}
+.header_button_reg {
+  background-color: #f4d3a1;
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+}
