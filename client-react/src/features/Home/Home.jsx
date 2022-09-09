@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import SearchPage from '../SearchPage/SearchPage.jsx';
 import './Home.css';
 import {
   loadTest,
@@ -19,6 +20,7 @@ function Home() {
       <h1>Placer</h1>
       <h2>Welcome to the New Place</h2>
       <p>{login}</p>
+      <SearchPage />
     </div>
   );
 }
