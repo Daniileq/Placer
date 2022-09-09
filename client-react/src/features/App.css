@@ -36,3 +36,32 @@ h5 {
   font-size: 24px;
   font-weight: 700;
 }
+
+.font-subheading,
+.font-button,
+.font-body,
+.font-subheadingSmall,
+.font-buttonSmall,
+.font-bodySmall,
+.font-caption,
+.font-captionSmall {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-subheading,
+.font-button,
+.font-body
+ {
+  font-size: 18px;
+}
+
+.font-subheadingSmall,
+.font-buttonSmall,
+.font-bodySmall {
+  font-size: 16px;
+}
+
+.font-caption,
+.font-captionSmall {
+  font-size: 14px;
+}
