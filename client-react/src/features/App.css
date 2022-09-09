@@ -4,3 +4,15 @@
   box-sizing: border-box;
 }
 
+h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 54px;
+  font-weight: 800;
+}
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+}
+
