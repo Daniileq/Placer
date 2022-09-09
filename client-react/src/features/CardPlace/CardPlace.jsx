@@ -4,13 +4,13 @@ import './CardPlace.css';
 const CardPlace = () => (
     <div className='cardPlace'>
         <div className='cardPlaceImage'>
-            <img src="#" alt='best place'/>
+            {/* <img src="#" alt='best place'/> */}
         </div>
         <div className='cardPlaceTags'>
             <div className='cardPlaceTag'>tag #1</div>
             <div className='cardPlaceTag'>tag #2</div>
         </div>
-        <div className="cardPlaceTitle">Place#1</div>
+        <h4 className="cardPlaceTitle">Place#1</h4>
         <p className="cardPlaceText">
             Lorem ipsum dolor sit, amet
             consectetur adipisicing elit. Unde fugit rem iure quas
@@ -20,7 +20,6 @@ const CardPlace = () => (
             {/* {
                     cardText.length ? cardText : cardText// проверка на длину текста из БД
                 } */}
-
         </p>
     </div>
 );
