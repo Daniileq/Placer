@@ -3,7 +3,7 @@ import './Header.css';
 
 function Header() {
   return (
-    <header>
+    <header className='nav_container' >
       <Navigation />
     </header>
   );
