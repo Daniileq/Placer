@@ -49,27 +49,32 @@ authRouter.post('/registration', async (req, res) => {
 
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({
-      displayName,
+      password: hash,
       email,
       login,
+      displayName,
       photo: 'default',
       age: 0,
       sex: 'default',
       city,
       about: '',
-      password: hash,
       isAdmin: false,
     });
 
     req.session.user = {
       id: user.id,
-      displayName: user.displayName,
-      login: user.login,
       email: user.email,
+      login: user.login,
+      displayName: user.displayName,
+      photo: user.photo,
+      age: user.age,
+      sex: user.sex,
+      city: user.city,
+      about: user.about,
       isAdmin: user.isAdmin,
     };
 
-    res.json({ message: 'success' });
+    res.json({ user: req.session.user });
   } catch (error) {
     res.json({ error: error.message });
   }
@@ -91,8 +96,8 @@ authRouter.post('/login', async (req, res) => {
         res.json({ message: 'Неверный email и/или пароль' });
         return;
       }
-    } catch ({ message }) {
-      res.json({ error: message });
+    } catch (error) {
+      res.json({ error: error.message });
       return;
     }
 
@@ -102,25 +107,31 @@ authRouter.post('/login', async (req, res) => {
         res.json({ message: 'Неверный email и/или пароль' });
         return;
       }
-    } catch ({ message }) {
-      res.json({ error: message });
+    } catch (error) {
+      res.json({ error: error.message });
       return;
     }
 
     req.session.user = {
       id: user.id,
-      displayName: user.displayName,
-      login: user.login,
       email: user.email,
+      login: user.login,
+      displayName: user.displayName,
+      photo: user.photo,
+      age: user.age,
+      sex: user.sex,
+      city: user.city,
+      about: user.about,
       isAdmin: user.isAdmin,
     };
-    res.json({ message: 'success', user });
+
+    res.json({ user: req.session.user });
   } else {
     res.json({ message: 'Слишком короткий email и/или пароль.' });
   }
 });
 
-authRouter.get('/logout', (req, res) => {
+authRouter.delete('/logout', (req, res) => {
   req.session.destroy((error) => {
     if (error) {
       res.json({ error: 'Не удалось выйти' });
@@ -136,7 +147,7 @@ authRouter.get('/', (req, res) => {
   if (user) {
     res.json({ isUser: true, user });
   } else {
-    res.json({ isUser: false, user });
+    res.json({ isUser: false });
   }
 });
 

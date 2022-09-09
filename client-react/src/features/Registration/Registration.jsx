@@ -1,39 +1,37 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
 
 function Registration() {
+  const dispatch = useDispatch();
+  const isUser = useSelector((state) => state.user.isUser);
+  const helpMessage = useSelector((state) => state.user.helpMessage);
   const navigate = useNavigate();
 
-  async function regaSubmit(event) {
+  // Удаление helpMessage при размонтировании компонента
+  useEffect(() => () => {
+    dispatch(disableHelpMessage());
+  }, [dispatch]);
+
+  function regSubmit(event) {
     event.preventDefault();
-    const displayName = event.target.displayName.value;
-    const email = event.target.email.value;
-    const login = event.target.login.value;
-    const city = event.target.city.value;
-    const password = event.target.password.value;
-    const repeatPass = event.target.repeatPass.value;
-
-    const response = await fetch('/auth/registration', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        displayName,
-        email,
-        login,
-        city,
-        password,
-        repeatPass,
-      }),
-    });
-
-    const data = await response.json();
-    if (data.message === 'success') {
-      navigate('/');
-    } else {
-      document.querySelector('.helpText').innerText = data.message;
-    }
+    const data = {
+      displayName: event.target.displayName.value,
+      email: event.target.email.value,
+      login: event.target.login.value,
+      city: event.target.city.value,
+      password: event.target.password.value,
+      repeatPass: event.target.repeatPass.value,
+    };
+    dispatch(regUser(data));
   }
+
+  useEffect(() => {
+    if (isUser) {
+      navigate('/');
+    }
+  }, [isUser, navigate]);
 
   return (
     <>
@@ -42,7 +40,7 @@ function Registration() {
         <br />
         <br />
 
-        <form onSubmit={regaSubmit}>
+        <form onSubmit={regSubmit}>
           <input type="text" name="displayName" placeholder="Имя" required />
           <input
             type="email"
@@ -78,7 +76,7 @@ function Registration() {
             placeholder="Повторите пароль"
             required
           />
-          <div className="helpText" />
+          { helpMessage && <div className="helpText">{helpMessage}</div>}
           <button type="submit">Зарегистрироваться</button>
         </form>
       </div>

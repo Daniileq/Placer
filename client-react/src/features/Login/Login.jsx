@@ -1,32 +1,34 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { loginUser, disableHelpMessage } from '../../store/userSlice/userSlice';
+import './Login.css';
 
 function Login() {
+  const dispatch = useDispatch();
+  const isUser = useSelector((state) => state.user.isUser);
+  const helpMessage = useSelector((state) => state.user.helpMessage);
   const navigate = useNavigate();
 
-  async function loginSubmit(event) {
+  // Удаление helpMessage при размонтировании компонента
+  useEffect(() => () => {
+    dispatch(disableHelpMessage());
+  }, [dispatch]);
+
+  function loginSubmit(event) {
     event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-
-    const response = await fetch('/auth/login', {
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.message === 'success') {
-      navigate('/');
-    } else {
-      document.querySelector('.helpText').innerText = data.message;
-    }
+    const data = {
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
+    dispatch(loginUser(data));
   }
+
+  useEffect(() => {
+    if (isUser) {
+      navigate('/');
+    }
+  }, [isUser, navigate]);
 
   return (
     <>
@@ -51,7 +53,7 @@ function Login() {
               title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
               required
             />
-            <div className="helpText" />
+            { helpMessage && <div className="helpText">{helpMessage}</div>}
             <button type="submit">
               Войти
             </button>
