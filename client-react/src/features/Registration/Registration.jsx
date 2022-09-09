@@ -1,4 +1,40 @@
+import { useNavigate } from 'react-router-dom';
+
 function Registration() {
+  const navigate = useNavigate();
+
+  async function regaSubmit(event) {
+    event.preventDefault();
+    const displayName = event.target.displayName.value;
+    const email = event.target.email.value;
+    const login = event.target.login.value;
+    const city = event.target.city.value;
+    const password = event.target.password.value;
+    const repeatPass = event.target.repeatPass.value;
+
+    const response = await fetch('/auth/registration', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        displayName,
+        email,
+        login,
+        city,
+        password,
+        repeatPass,
+      }),
+    });
+
+    const data = await response.json();
+    if (data.message === 'success') {
+      navigate('/');
+    } else {
+      document.querySelector('.helpText').innerText = data.message;
+    }
+  }
+
   return (
     <>
       <div>
