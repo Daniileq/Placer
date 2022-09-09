@@ -1,4 +1,33 @@
+import { useNavigate } from 'react-router-dom';
+
 function Login() {
+  const navigate = useNavigate();
+
+  async function loginSubmit(event) {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    const response = await fetch('/auth/login', {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.message === 'success') {
+      navigate('/');
+    } else {
+      document.querySelector('.helpText').innerText = data.message;
+    }
+  }
+
   return (
     <>
       <div className="App">
