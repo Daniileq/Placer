@@ -120,6 +120,26 @@ authRouter.post('/login', async (req, res) => {
   }
 });
 
+authRouter.get('/logout', (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      res.json({ error: 'Не удалось выйти' });
+      return;
+    }
+    res.clearCookie('user_sid');
+    res.json({ message: 'success' });
+  });
+});
+
+authRouter.get('/', (req, res) => {
+  const { user } = req.session;
+  if (user) {
+    res.json({ isUser: true, user });
+  } else {
+    res.json({ isUser: false, user });
+  }
+});
+
 module.exports = authRouter;
 
 /* eslint-enable consistent-return */
