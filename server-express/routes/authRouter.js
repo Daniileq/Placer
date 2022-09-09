@@ -75,6 +75,51 @@ authRouter.post('/registration', async (req, res) => {
   }
 });
 
+authRouter.post('/login', async (req, res) => {
+  if (
+    req.body.email.length < 1
+    || req.body.password.length < 1
+  ) {
+    return res.json({ message: 'Заполните все поля' });
+  }
+
+  if (req.body.email.length > 4 && req.body.password.length > 7) {
+    let user;
+    try {
+      user = await User.findOne({ where: { email: req.body.email } });
+      if (!user) {
+        res.json({ message: 'Неверный email и/или пароль' });
+        return;
+      }
+    } catch ({ message }) {
+      res.json({ error: message });
+      return;
+    }
+
+    try {
+      const compPass = await bcrypt.compare(req.body.password, user.password);
+      if (!compPass) {
+        res.json({ message: 'Неверный email и/или пароль' });
+        return;
+      }
+    } catch ({ message }) {
+      res.json({ error: message });
+      return;
+    }
+
+    req.session.user = {
+      id: user.id,
+      displayName: user.displayName,
+      login: user.login,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    };
+    res.json({ message: 'success', user });
+  } else {
+    res.json({ message: 'Слишком короткий email и/или пароль.' });
+  }
+});
+
 module.exports = authRouter;
 
 /* eslint-enable consistent-return */
