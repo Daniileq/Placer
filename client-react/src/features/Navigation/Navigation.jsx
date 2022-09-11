@@ -1,11 +1,11 @@
 // eslint-disable-next-line quotes
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line quotes
-import logo from "./img/logo.png";
+import logo from './img/logo.png';
 // eslint-disable-next-line quotes
-import "./Navigation.css";
-import { logoutUser } from "../../store/userSlice/userSlice";
+import './Navigation.css';
+import { logoutUser } from '../../store/userSlice/userSlice';
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -56,7 +56,6 @@ function Navigation() {
           {isUser && (
             <>
               <NavLink className="" to="/myplace">
-              
                 Добавить место
               </NavLink>
               <button
@@ -64,7 +63,7 @@ function Navigation() {
                 className="header_button_reg font_button_small"
               >
                 Выйти
-              </button>{" "}
+              </button>{' '}
             </>
           )}
         </div>
