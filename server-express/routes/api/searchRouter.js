@@ -1,7 +1,7 @@
-const placesRouter = require('express').Router();
+const searchRouter = require('express').Router();
 const { Place, PlaceTag } = require('../../db/models');
 
-placesRouter.get('/', async (req, res) => {
+searchRouter.get('/', async (req, res) => {
   try {
     const { categories, tags } = req.query;
 
@@ -67,4 +67,4 @@ placesRouter.get('/', async (req, res) => {
   }
 });
 
-module.exports = placesRouter;
+module.exports = searchRouter;
