@@ -12,6 +12,7 @@ import Settings from './Settings/Settings.jsx';
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
+import PlacePage from './PlacePage/PlacePage.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +32,8 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/userpage" element={<UserPage />} />
+          <Route path="/profile" element={<UserPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
           <Route path='/settings' element={<Settings/>} />
           <Route path="/myplace" element={<AddCard />} />
         </Route>
