@@ -16,34 +16,32 @@ function Navigation() {
   };
 
   return (
-    <div>
+    <div className="nav_container">
       <div className="header_navigathion">
-        <div className="">
-          <NavLink className="header_nav_log_placer" to="/">
-            <img src={logo} alt="placer" />
-          </NavLink>
-        </div>
+        <NavLink className="header_nav_log_placer" to="/">
+          <img src={logo} alt="placer" />
+        </NavLink>
+        <div className="nav_center">
+            <a href="#" className="font_button">Места</a>
+            <a href="#" className="font_button">Проекты</a>
+            <a href="#" className="font_button">Блог</a>
+          </div>
         <div>
           {!isUser
-          && <>
+            && <>
               <button className="header_button_reg">
-                <NavLink className="header_registragion" to="/login">
+                <NavLink className="header_registragion font_button_small" to="/login">
                   Войти
                 </NavLink>
               </button>
               <button className="header_button_reg">
-                <NavLink className="header_registragion" to="/registration">
+                <NavLink className="header_registragion font_button_small" to="/registration">
                   Регистрация
                 </NavLink>
               </button>
             </>}
-          {isUser && <button onClick={logout} className="header_button_reg">Выйти</button>}
+          {isUser && <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>}
         </div>
-      </div>
-      <div className="nav_center">
-        <div>Места</div>
-        <div>Проекты</div>
-        <div>Блог</div>
       </div>
     </div>
   );
