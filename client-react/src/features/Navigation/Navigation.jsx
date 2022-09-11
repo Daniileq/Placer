@@ -1,10 +1,10 @@
 // eslint-disable-next-line quotes
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line quotes
-import logo from "./img/logo.png";
+import logo from './img/logo.png';
 // eslint-disable-next-line quotes
-import "./Navigation.css";
+import './Navigation.css';
 import { logoutUser } from '../../store/userSlice/userSlice';
 
 function Navigation() {
@@ -27,24 +27,40 @@ function Navigation() {
             <NavLink to="#" className="font_button">Блог</NavLink>
           </div>
         <div>
-          {!isUser
-            && <>
+          {!isUser && (
+            <>
               <button className="header_button_reg">
-                <NavLink className="header_registragion font_button_small" to="/login">
+                <NavLink
+                  className="header_registragion font_button_small"
+                  to="/login"
+                >
                   Войти
                 </NavLink>
               </button>
               <button className="header_button_reg">
-                <NavLink className="header_registragion font_button_small" to="/registration">
+                <NavLink
+                  className="header_registragion font_button_small"
+                  to="/registration"
+                >
                   Регистрация
                 </NavLink>
               </button>
-            </>}
-          {isUser
-            && <>
+            </>
+          )}
+          {isUser && (
+            <>
+              <NavLink className="" to="/myplace">
+                Добавить место
+              </NavLink>
               <NavLink to="/userpage" className="font_button">Страница пользователя</NavLink>
-              <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>
-            </>}
+              <button
+                onClick={logout}
+                className="header_button_reg font_button_small"
+              >
+                Выйти
+              </button>{' '}
+            </>
+          )}
         </div>
       </div>
     </div>

@@ -5,8 +5,10 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
+import AddCard from '../AddCard/AddCard.jsx';
 import UserPage from './UserPage/UserPage.jsx';
 import Settings from './Settings/Settings.jsx';
+
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
@@ -20,11 +22,7 @@ function App() {
   const isUser = useSelector((state) => state.user.isUser);
 
   if (isUser === null) {
-    return (
-      <div>
-        ...loading
-      </div>
-    );
+    return <div>...loading</div>;
   }
 
   return (
@@ -35,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<UserPage />} />
           <Route path='/settings' element={<Settings/>} />
+          <Route path="/myplace" element={<AddCard />} />
         </Route>
       </Routes>
   );
