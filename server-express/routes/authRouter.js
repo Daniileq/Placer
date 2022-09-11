@@ -31,7 +31,9 @@ authRouter.post('/registration', async (req, res) => {
       return res.json({ message: 'Пароли не совпадают' });
     }
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      res.json({ message: 'Почта должна быть указана в формате email@mail.com' });
+      res.json({
+        message: 'Почта должна быть указана в формате email@mail.com',
+      });
       return;
     }
     if (!login || login.length < 3) {
@@ -42,11 +44,13 @@ authRouter.post('/registration', async (req, res) => {
       res.json({ message: 'Логин недействителен' });
       return;
     }
-    // if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
-    // eslint-disable-next-line max-len
-    //   res.json({ message: 'Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы' });
-    //   return;
-    // }
+    if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
+      res.json({
+        message:
+          'Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы',
+      });
+      return;
+    }
 
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({
@@ -72,6 +76,7 @@ authRouter.post('/registration', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
+      places: [],
       isAdmin: user.isAdmin,
     };
 
@@ -82,17 +87,17 @@ authRouter.post('/registration', async (req, res) => {
 });
 
 authRouter.post('/login', async (req, res) => {
-  if (
-    req.body.email.length < 1
-    || req.body.password.length < 1
-  ) {
+  if (req.body.email.length < 1 || req.body.password.length < 1) {
     return res.json({ message: 'Заполните все поля' });
   }
 
   if (req.body.email.length > 4 && req.body.password.length > 7) {
     let user;
     try {
-      user = await User.findOne({ where: { email: req.body.email } });
+      user = await User.findOne({
+        where: { email: req.body.email },
+        includes: User.places,
+      });
       if (!user) {
         res.json({ message: 'Неверный email и/или пароль' });
         return;
@@ -123,6 +128,7 @@ authRouter.post('/login', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
+      places: user.Places,
       isAdmin: user.isAdmin,
     };
 

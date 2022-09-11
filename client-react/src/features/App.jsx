@@ -6,6 +6,9 @@ import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
 import AddCard from '../AddCard/AddCard.jsx';
+import UserPage from './UserPage/UserPage.jsx';
+import Settings from './Settings/Settings.jsx';
+
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
@@ -23,14 +26,16 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/myplace" element={<AddCard />} />
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Layout/>} >
+          <Route index element={<Home/>} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/userpage" element={<UserPage />} />
+          <Route path='/settings' element={<Settings/>} />
+          <Route path="/myplace" element={<AddCard />} />
+        </Route>
+      </Routes>
   );
 }
 
