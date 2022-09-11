@@ -37,31 +37,35 @@ h5 {
   font-weight: 700;
 }
 
-.font-subheading,
-.font-button,
-.font-body,
-.font-subheadingSmall,
-.font-buttonSmall,
-.font-bodySmall,
-.font-caption,
-.font-captionSmall {
+.font_subheading,
+.font_button,
+.font_body,
+.font_subheading_small,
+.font_button_small,
+.font_body_small,
+.font_caption,
+.font_caption_small {
   font-family: 'Montserrat', sans-serif;
 }
 
-.font-subheading,
-.font-button,
-.font-body
+.font_subheading,
+.font_button,
+.font_body
  {
   font-size: 18px;
 }
 
-.font-subheadingSmall,
-.font-buttonSmall,
-.font-bodySmall {
+.font_subheading_small,
+.font_button_small,
+.font_body_small {
   font-size: 16px;
 }
 
-.font-caption,
-.font-captionSmall {
+.font_caption,
+.font_caption_small {
   font-size: 14px;
+}
+
+.container {
+  padding: 0 135px;
 }
