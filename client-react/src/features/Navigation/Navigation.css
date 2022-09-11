@@ -27,7 +27,6 @@ dd {
 }
 .nav_container {
   max-width: 1170px;
-  box-sizing: content-box;
   margin: 0% auto;
 }
 .header_navigathion {

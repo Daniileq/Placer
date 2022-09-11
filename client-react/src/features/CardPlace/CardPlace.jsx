@@ -2,16 +2,16 @@ import React from 'react';
 import './CardPlace.css';
 
 const CardPlace = () => (
-    <div className='cardPlace'>
-        <div className='cardPlaceImage'>
+    <div className='card_place'>
+        <div className='card_place_image'>
             {/* <img src="#" alt='best place'/> */}
         </div>
-        <div className='cardPlaceTags'>
-            <div className='cardPlaceTag'>tag #1</div>
-            <div className='cardPlaceTag'>tag #2</div>
+        <div className='card_place_tags'>
+            <div className='card_place_tag'>tag #1</div>
+            <div className='card_place_tag'>tag #2</div>
         </div>
-        <h4 className="cardPlaceTitle">Place#1</h4>
-        <p className="cardPlaceText">
+        <h4 className="card_place_title">Place#1</h4>
+        <p className="card_place_text">
             Lorem ipsum dolor sit, amet
             consectetur adipisicing elit. Unde fugit rem iure quas
             provident voluptatibus vel hic tenetur assumenda,

@@ -6,7 +6,7 @@ footer {
   background: #241008;
 }
 
-.footerLogo {
+.footer_logo {
   position: absolute;
   width: 149.87px;
   height: 38.82px;
@@ -25,7 +25,7 @@ footer {
   color: #FFFFFF;
 }
 
-.footerNavigation {
+.footer_navigation {
   position: absolute;
   width: 603px;
   height: 30px;
@@ -46,7 +46,7 @@ footer {
   color: #D7D7D7;
 }
 
-.footerLine {
+.footer_line {
   position: absolute;
   width: 1170px;
   height: 1px;
@@ -75,7 +75,7 @@ footer {
   color: #D7D7D7;
 }
 
-.socialMedia {
+.social_media {
   position: absolute;
   width: 217px;
   height: 30px;
