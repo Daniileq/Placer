@@ -16,14 +16,19 @@ function Navigation() {
   };
 
   return (
-    <div>
+    <div className="nav_container">
       <div className="header_navigathion">
-          <NavLink className="header_nav_log_placer" to="/">
-            <img src={logo} alt="placer" />
-          </NavLink>
+        <NavLink className="header_nav_log_placer" to="/">
+          <img src={logo} alt="placer" />
+        </NavLink>
+        <div className="nav_center">
+            <a href="#" className="font_button">Места</a>
+            <a href="#" className="font_button">Проекты</a>
+            <a href="#" className="font_button">Блог</a>
+          </div>
         <div>
           {!isUser
-          && <>
+            && <>
               <button className="header_button_reg">
                 <NavLink className="header_registragion font_button_small" to="/login">
                   Войти
@@ -37,11 +42,6 @@ function Navigation() {
             </>}
           {isUser && <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>}
         </div>
-      </div>
-      <div className="nav_center">
-        <div className="font_button">Места</div>
-        <div className="font_button">Проекты</div>
-        <div className="font_button">Блог</div>
       </div>
     </div>
   );
