@@ -90,6 +90,25 @@ const regUser = createAsyncThunk(
     }),
 );
 
+// изменение данных юзера
+const changeUser = createAsyncThunk(
+  'user/changeUser',
+  (data) => fetch(`/api/changeuser${data.user.id}`, {
+    method: 'put',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.user;
+    }),
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -144,6 +163,13 @@ const userSlice = createSlice({
       .addCase(regUser.fulfilled, (state, action) => {
         state.isUser = true;
         state.data = action.payload;
+      })
+      .addCase(changeUser.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUser.fulfilled, (state, action) => {
+        state.isUser = true;
+        state.data = action.payload;
       });
   },
 });
@@ -156,7 +182,7 @@ export const { disableHelpMessage } = userSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loginUser, logoutUser, regUser,
+  loadUser, loginUser, logoutUser, regUser, changeUser,
 };
 
 /* eslint-enable no-param-reassign */
