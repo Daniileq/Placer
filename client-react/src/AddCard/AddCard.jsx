@@ -1,8 +1,4 @@
-// eslint-disable-next-line quotes
-import { useEffect } from 'react';
-// eslint-disable-next-line quotes
 import { useDispatch } from 'react-redux';
-// eslint-disable-next-line quotes
 import { addPlaces } from './reduserAddCard';
 
 function AddCard() {
@@ -17,7 +13,7 @@ function AddCard() {
     const description = event.target.description.value;
     const category = event.target.category.value;
     const submit = event.target.submit.value;
-    const response = await fetch('/myplace', {
+    const response = await fetch('/api/place', {
       method: 'POST',
       body: JSON.stringify({
         title,
@@ -39,20 +35,14 @@ function AddCard() {
     return dispatch(action);
   };
 
-  useEffect(() => {
-    addPlace();
-  }, [dispatch]);
-
   return (
-    <>
-      <form onSubmit={addPlace} action="myplace" method="post">
+      <form onSubmit={addPlace}>
         <input name="title" />
         <input name="adress" />
         <input name="description" />
         <input name="category" />
         <button type="submit">Добавить </button>
       </form>
-    </>
   );
 }
 
