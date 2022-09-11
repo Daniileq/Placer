@@ -23,7 +23,7 @@ function Navigation() {
         </NavLink>
         <div className="nav_center">
           <NavLink to="/" className="font_button">Места</NavLink>
-          <NavLink to="#" className="font_button">Проекты</NavLink>
+          {isUser && <NavLink to="/profile" className="font_button">Профиль</NavLink>}
           <NavLink to="#" className="font_button">Блог</NavLink>
         </div>
         <div>
@@ -51,9 +51,6 @@ function Navigation() {
             <>
               <NavLink className="" to="/myplace">
                 Добавить место
-              </NavLink>
-              <NavLink to="/profile" className="font_button">
-                Страница пользователя
               </NavLink>
               <button
                 onClick={logout}
