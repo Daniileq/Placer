@@ -35,9 +35,13 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      category: {
-        type: Sequelize.TEXT,
+      categoryId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: 'Categories',
+          key: 'id',
+        },
       },
       isModerated: {
         type: Sequelize.BOOLEAN,
