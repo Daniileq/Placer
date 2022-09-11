@@ -6,15 +6,15 @@ import linkedIn from './img/linkedIn.png';
 function Footer() {
   return (
     <footer>
-        <div className='footer_logo'>PLACER</div>
-        <div className='footer_navigation'>
-          <div className='navigation_links'>На главную</div>
-          <div className='navigation_links'>О проекте</div>
-          <div className='navigation_links'>Контакты</div>
+        <div className='footerLogo'>PLACER</div>
+        <div className='footerNavigation'>
+          <div className='navigationLinks'>На главную</div>
+          <div className='navigationLinks'>О проекте</div>
+          <div className='navigationLinks'>Контакты</div>
         </div>
-        <div className='footer_line'></div>
+        <div className='footerLine'></div>
         <div className='copyright'>© JAYS SPb, 2022 till infinity</div>
-        <div className='social_media'>
+        <div className='socialMedia'>
           <img src={facebook} alt="facebook" />
           <img src={twitter} alt="twitter" />
           <img src={linkedIn} alt="linkedIn" />
