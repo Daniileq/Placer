@@ -1,4 +1,4 @@
-.welcome_pic {
+.welcomePic {
     position: absolute;
     width: 380px;
     height: 380px;
@@ -10,7 +10,7 @@
     z-index: 2;
 }
 
-.welcome_pic_back{
+.welcomePicBack{
     box-sizing: border-box;
     position: absolute;
     width: 380px;
@@ -21,7 +21,7 @@
     border-radius: 10px;
 }
 
-.welcome-button{
+.welcomeButton{
     
     position: absolute;
     width: 165px;
@@ -57,7 +57,7 @@
     background-color: #F4D3A1;
 }
 
-.welcome_container{
+.welcomeContainer{
     position: relative;
     height: 806px; 
     width: 1442px;
