@@ -12,6 +12,7 @@ function SearchPage() {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.search.filters);
   const activeFilters = useSelector((state) => state.search.activeFilters);
+  const loading = useSelector((state) => state.search.loading);
   const places = useSelector((state) => state.search.places);
 
   useEffect(() => {
@@ -53,7 +54,8 @@ function SearchPage() {
               />
             </form>
             <div>
-              {places.map((place) => <CardPlace place={place} key={place.id} />)}
+              {loading && <p>...loading</p>}
+              {!loading && places.map((place) => <CardPlace place={place} key={place.id} />)}
             </div>
           </div>
         </div>
