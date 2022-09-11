@@ -32,31 +32,31 @@ function SearchPage() {
   }, [activeFilters]);
 
   return (
-    <div className='search_container'>
-      <h2 id='search_place_title'>Поиск мест</h2>
+    <div className='content_container'>
+      <div className='search_container'>
+        <h2 id='search_place_title'>Поиск мест</h2>
+          <div className='search_content'>
 
-      <div className='search_content'>
+            <div className='search_left_column'>
+              <Filters />
+            </div>
 
-        <div className='search_left_column'>
-          <Filters />
-        </div>
-
-        <div className='search_right_column'>
-          <form className='place_search_form' method="get">
-            <label htmlFor="place_input">поиск:</label>
-            <input
-              id='place_input'
-              name='place_input'
-              className='place_input'
-              type="text"
-              placeholder='Введите ключевые слова...'
-            />
-          </form>
-          <div>
-            {places.map((place) => <CardPlace place={place} key={place.id} />)}
+            <div className='search_right_column'>
+              <form className='place_search_form' method="get">
+                <label htmlFor="place_input">поиск:</label>
+                 <input
+                  id='place_input'
+                  name='place_input'
+                  className='place_input'
+                  type="text"
+                  placeholder='Введите ключевые слова...'
+                />
+              </form>
+            <div>
+              {places.map((place) => <CardPlace place={place} key={place.id} />)}
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   );
