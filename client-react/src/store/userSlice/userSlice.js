@@ -12,6 +12,7 @@ const initialState = {
     sex: null,
     city: null,
     about: null,
+    places: [],
     isAdmin: null,
   },
   isUser: null,

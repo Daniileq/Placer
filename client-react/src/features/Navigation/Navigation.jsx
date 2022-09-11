@@ -22,9 +22,9 @@ function Navigation() {
           <img src={logo} alt="placer" />
         </NavLink>
         <div className="nav_center">
-            <a href="#" className="font_button">Места</a>
-            <a href="#" className="font_button">Проекты</a>
-            <a href="#" className="font_button">Блог</a>
+            <NavLink to="/" className="font_button">Места</NavLink>
+            <NavLink to="#" className="font_button">Проекты</NavLink>
+            <NavLink to="#" className="font_button">Блог</NavLink>
           </div>
         <div>
           {!isUser
@@ -40,7 +40,11 @@ function Navigation() {
                 </NavLink>
               </button>
             </>}
-          {isUser && <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>}
+          {isUser
+            && <>
+              <NavLink to="/userpage" className="font_button">Страница пользователя</NavLink>
+              <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>
+            </>}
         </div>
       </div>
     </div>
