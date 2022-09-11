@@ -1,38 +1,31 @@
 footer {
-  position: relative;
-  width: 1440px;
-  height: 309px;
-  top: 2442px;
+
+  margin-top: 200px; /* Убрать margin-top */
+  height: 200px;
   background: #241008;
 }
 
-.footer_logo {
-  position: absolute;
-  width: 149.87px;
-  height: 38.82px;
-  left: 661.13px;
-  top: 62px;
+.content_footer_container {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
 
+.footer_logo {
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 800;
   font-size: 28px;
   line-height: 34px;
-
   display: flex;
-  align-items: center;
+  justify-content: center;
 
   color: #FFFFFF;
 }
 
 .footer_navigation {
-  position: absolute;
-  width: 603px;
   height: 30px;
-  left: 29.1%;
-  right: 29.03%;
-  top: 144px;
-  bottom: 135px;
 
   font-family: 'Montserrat';
   font-style: normal;
@@ -47,24 +40,18 @@ footer {
 }
 
 .footer_line {
-  position: absolute;
-  width: 1170px;
   height: 1px;
-  left: 135px;
-  top: 219px;
-  bottom: 89px;
-
   background: #A39189;
 }
 
+.above_footer_line {
+  display: flex;
+  justify-content: space-between;
+}
+
 .copyright {
-  position: absolute;
   width: 426px;
   height: 26px;
-  left: 134.04px;
-  right: 879.96px;
-  top: 250px;
-  bottom: 33px;
 
   font-family: 'Montserrat';
   font-style: normal;
@@ -76,14 +63,9 @@ footer {
 }
 
 .social_media {
-  position: absolute;
-  width: 217px;
   height: 30px;
-  left: 1088px;
-  right: 135px;
-  top: 248px;
-  bottom: 31px;
 
   display: flex;
+  gap: 14px;
   justify-content: space-evenly;
 }

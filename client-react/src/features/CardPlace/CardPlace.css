@@ -1,4 +1,4 @@
-.cardPlace {
+.card_place {
     width: 426px;
     height: 426px;
     background-color: #F4ECE0;
@@ -9,19 +9,27 @@
     align-items: center;
 }
 
-.cardPlaceImage {
-    border-radius: 8px 8px 0px 0px;
-    background-image: url('./cardImg.png');
-    width: 426px;
-    height: 213px;
+.card_place_image {
+  border-radius: 8px 8px 0px 0px;
+  /* background-image: url('./cardImg.png'); */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 426px;
+  height: 213px;
 }
 
-.cardPlaceTags {
+.card_place_image img {
+  width: 100%;
+}
+
+.card_place_tags {
     display: flex;
     gap: 14px;
 }
 
-.cardPlaceTag {
+.card_place_tag {
     color: #FF733B;
     min-height: 28px;
     min-width: 100px;
@@ -32,7 +40,7 @@
     line-height: 28px;
 }
 
-.cardPlace > p {
+.card_place > p {
     margin: 0;
     margin-bottom: 20px;
     padding: 0;

@@ -1,10 +1,15 @@
 const apiRouter = require('express').Router();
+
+const tagsRouter = require('./api/tagsRouter');
+const categoriesRouter = require('./api/categoriesRouter');
+const placesRouter = require('./api/placesRouter');
+
 const { User } = require('../db/models');
 
-apiRouter.route('/')
-  .get((req, res) => {
-    res.json({ success: true });
-  });
+apiRouter.use('/tags', tagsRouter);
+apiRouter.use('/categories', categoriesRouter);
+apiRouter.use('/places', placesRouter);
+// apiRouter.use('/events', eventsRouter);
 
 apiRouter.route('/changeuser:id')
   .put(async (req, res) => {

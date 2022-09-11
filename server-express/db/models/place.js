@@ -3,10 +3,14 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Place extends Model {
     static associate({
-      User, Event, Like, Comment, PlaceToGo, PlaceTag, PlaceImage,
+      User, Category, Event, Like, Comment, PlaceToGo, PlaceTag, PlaceImage,
     }) {
       Place.user = Place.belongsTo(User, {
         foreignKey: 'userId',
+      });
+
+      Place.category = Place.belongsTo(Category, {
+        foreignKey: 'categoryId',
       });
 
       Place.events = Place.hasMany(Event, {
@@ -69,9 +73,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.TEXT,
+    categoryId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Categories',
+        key: 'id',
+      },
     },
     isModerated: {
       type: DataTypes.BOOLEAN,
