@@ -2,13 +2,15 @@ const apiRouter = require('express').Router();
 
 const tagsRouter = require('./api/tagsRouter');
 const categoriesRouter = require('./api/categoriesRouter');
-const placesRouter = require('./api/placesRouter');
+const searchRouter = require('./api/searchRouter');
 
 const { User } = require('../db/models');
+const placeRouter = require('./api/placeRouter');
 
 apiRouter.use('/tags', tagsRouter);
 apiRouter.use('/categories', categoriesRouter);
-apiRouter.use('/places', placesRouter);
+apiRouter.use('/search', searchRouter);
+apiRouter.use('/place', placeRouter);
 // apiRouter.use('/events', eventsRouter);
 
 apiRouter.route('/changeuser:id')
