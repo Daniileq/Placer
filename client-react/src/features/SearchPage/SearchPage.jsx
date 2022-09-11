@@ -6,13 +6,13 @@ import './SearchPage.css';
 
 import {
   loadPlaces,
-} from '../../store/placesSlice/placesSlice';
+} from '../../store/searchSlice/searchSlice';
 
 function SearchPage() {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.search.filters);
   const activeFilters = useSelector((state) => state.search.activeFilters);
-  const places = useSelector((state) => state.places.data);
+  const places = useSelector((state) => state.search.places);
 
   useEffect(() => {
     const tags = activeFilters.tagsId.length
@@ -28,30 +28,30 @@ function SearchPage() {
         .join('+')
       : 'all';
     dispatch(loadPlaces({ categories, tags }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilters]);
 
   return (
     <div className='content_container'>
       <div className='search_container'>
         <h2 id='search_place_title'>Поиск мест</h2>
-          <div className='search_content'>
+        <div className='search_content'>
 
-            <div className='search_left_column'>
-              <Filters />
-            </div>
+          <div className='search_left_column'>
+            <Filters />
+          </div>
 
-            <div className='search_right_column'>
-              <form className='place_search_form' method="get">
-                <label htmlFor="place_input">поиск:</label>
-                 <input
-                  id='place_input'
-                  name='place_input'
-                  className='place_input'
-                  type="text"
-                  placeholder='Введите ключевые слова...'
-                />
-              </form>
+          <div className='search_right_column'>
+            <form className='place_search_form' method="get">
+              <label htmlFor="place_input">поиск:</label>
+              <input
+                id='place_input'
+                name='place_input'
+                className='place_input'
+                type="text"
+                placeholder='Введите ключевые слова...'
+              />
+            </form>
             <div>
               {places.map((place) => <CardPlace place={place} key={place.id} />)}
             </div>

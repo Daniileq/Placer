@@ -11,6 +11,8 @@ const initialState = {
     tagsId: [],
     categoriesId: [],
   },
+  places: [],
+  loading: false,
   error: null,
 };
 
@@ -29,6 +31,18 @@ const loadTags = createAsyncThunk(
 const loadCategories = createAsyncThunk(
   'search/loadCategories',
   () => fetch('/api/categories')
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
+const loadPlaces = createAsyncThunk(
+  'places/loadPlaces',
+  ({ categories, tags }) => fetch(`/api/places?categories=${categories}&tags=${tags}`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -74,6 +88,17 @@ const searchSlice = createSlice({
       })
       .addCase(loadCategories.fulfilled, (state, action) => {
         state.filters.categories = action.payload;
+      })
+      .addCase(loadPlaces.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loadPlaces.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(loadPlaces.fulfilled, (state, action) => {
+        state.loading = false;
+        state.places = action.payload;
       });
   },
 });
@@ -86,7 +111,7 @@ export const { toggleTag, toggleCategory } = searchSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadTags, loadCategories,
+  loadTags, loadCategories, loadPlaces,
 };
 
 /* eslint-enable no-param-reassign */
