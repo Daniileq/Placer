@@ -18,32 +18,30 @@ function Navigation() {
   return (
     <div>
       <div className="header_navigathion">
-        <div className="">
           <NavLink className="header_nav_log_placer" to="/">
             <img src={logo} alt="placer" />
           </NavLink>
-        </div>
         <div>
           {!isUser
           && <>
               <button className="header_button_reg">
-                <NavLink className="header_registragion" to="/login">
+                <NavLink className="header_registragion font_button_small" to="/login">
                   Войти
                 </NavLink>
               </button>
               <button className="header_button_reg">
-                <NavLink className="header_registragion" to="/registration">
+                <NavLink className="header_registragion font_button_small" to="/registration">
                   Регистрация
                 </NavLink>
               </button>
             </>}
-          {isUser && <button onClick={logout} className="header_button_reg">Выйти</button>}
+          {isUser && <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>}
         </div>
       </div>
       <div className="nav_center">
-        <div>Места</div>
-        <div>Проекты</div>
-        <div>Блог</div>
+        <div className="font_button">Места</div>
+        <div className="font_button">Проекты</div>
+        <div className="font_button">Блог</div>
       </div>
     </div>
   );
