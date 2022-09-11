@@ -42,10 +42,11 @@ authRouter.post('/registration', async (req, res) => {
       res.json({ message: 'Логин недействителен' });
       return;
     }
-    if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
-      res.json({ message: 'Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы' });
-      return;
-    }
+    // if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
+    // eslint-disable-next-line max-len
+    //   res.json({ message: 'Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы' });
+    //   return;
+    // }
 
     const hash = await bcrypt.hash(password, 10);
     const user = await User.create({

@@ -1,11 +1,11 @@
 // eslint-disable-next-line quotes
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 // eslint-disable-next-line quotes
 import logo from "./img/logo.png";
 // eslint-disable-next-line quotes
 import "./Navigation.css";
-import { logoutUser } from '../../store/userSlice/userSlice';
+import { logoutUser } from "../../store/userSlice/userSlice";
 
 function Navigation() {
   const dispatch = useDispatch();
@@ -22,25 +22,51 @@ function Navigation() {
           <img src={logo} alt="placer" />
         </NavLink>
         <div className="nav_center">
-            <a href="#" className="font_button">Места</a>
-            <a href="#" className="font_button">Проекты</a>
-            <a href="#" className="font_button">Блог</a>
-          </div>
+          <a href="#" className="font_button">
+            Места
+          </a>
+          <a href="#" className="font_button">
+            Проекты
+          </a>
+          <a href="#" className="font_button">
+            Блог
+          </a>
+        </div>
         <div>
-          {!isUser
-            && <>
+          {!isUser && (
+            <>
               <button className="header_button_reg">
-                <NavLink className="header_registragion font_button_small" to="/login">
+                <NavLink
+                  className="header_registragion font_button_small"
+                  to="/login"
+                >
                   Войти
                 </NavLink>
               </button>
               <button className="header_button_reg">
-                <NavLink className="header_registragion font_button_small" to="/registration">
+                <NavLink
+                  className="header_registragion font_button_small"
+                  to="/registration"
+                >
                   Регистрация
                 </NavLink>
               </button>
-            </>}
-          {isUser && <button onClick={logout} className="header_button_reg font_button_small">Выйти</button>}
+            </>
+          )}
+          {isUser && (
+            <>
+              <NavLink className="" to="/myplace">
+              
+                Добавить место
+              </NavLink>
+              <button
+                onClick={logout}
+                className="header_button_reg font_button_small"
+              >
+                Выйти
+              </button>{" "}
+            </>
+          )}
         </div>
       </div>
     </div>
