@@ -6,6 +6,7 @@ import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
 import UserPage from './UserPage/UserPage.jsx';
+import Settings from './Settings/Settings.jsx';
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userpage" element={<UserPage />} />
+          <Route path='/settings' element={<Settings/>} />
         </Route>
       </Routes>
   );
