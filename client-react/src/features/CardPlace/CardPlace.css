@@ -10,10 +10,18 @@
 }
 
 .card_place_image {
-    border-radius: 8px 8px 0px 0px;
-    background-image: url('./cardImg.png');
-    width: 426px;
-    height: 213px;
+  border-radius: 8px 8px 0px 0px;
+  /* background-image: url('./cardImg.png'); */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 426px;
+  height: 213px;
+}
+
+.card_place_image img {
+  width: 100%;
 }
 
 .card_place_tags {
