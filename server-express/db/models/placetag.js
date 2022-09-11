@@ -3,11 +3,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class PlaceTag extends Model {
     static associate({ Tag, Place }) {
-      PlaceTag.place = PlaceTag.belongsTo(Place, {
+      PlaceTag.Place = PlaceTag.belongsTo(Place, {
         foreignKey: 'placeId',
       });
 
-      PlaceTag.tag = PlaceTag.belongsTo(Tag, {
+      PlaceTag.Tag = PlaceTag.belongsTo(Tag, {
         foreignKey: 'tagId',
       });
     }
