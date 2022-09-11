@@ -5,6 +5,7 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
+import UserPage from './UserPage/UserPage.jsx';
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/userpage" element={<UserPage />} />
         </Route>
       </Routes>
   );
