@@ -36,6 +36,9 @@ function App() {
           <Route path="/place/:id" element={<PlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/myplace" element={<AddCard />} />
+          <Route path="/settings" element={<UserSettingsPage />} />
+          <Route path="/add_place" element={<AddCard />} />
+          {/* <Route path="/favorites" element={<FavoritesPage />} /> */}
         </Route>
       </Routes>
   );

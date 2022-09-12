@@ -24,7 +24,7 @@ function Navigation() {
         <div className="nav_center">
           <NavLink to="/" className="font_button">Места</NavLink>
           {isUser && <NavLink to="/profile" className="font_button">Профиль</NavLink>}
-          <NavLink to="#" className="font_button">Блог</NavLink>
+          <NavLink to="/favorites" className="font_button">Избранное</NavLink>
         </div>
         <div>
           {!isUser && (
@@ -48,17 +48,12 @@ function Navigation() {
             </>
           )}
           {isUser && (
-            <>
-              <NavLink className="" to="/myplace">
-                Добавить место
-              </NavLink>
               <button
                 onClick={logout}
                 className="header_button_reg font_button_small"
               >
                 Выйти
-              </button>{' '}
-            </>
+              </button>
           )}
         </div>
       </div>
