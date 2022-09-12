@@ -1,6 +1,6 @@
 // eslint-disable-next-line quotes
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line quotes
 import logo from './img/logo.png';
 // eslint-disable-next-line quotes
@@ -9,6 +9,7 @@ import { logoutUser } from '../../store/userSlice/userSlice';
 
 function Navigation() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isUser = useSelector((state) => state.user.isUser);
 
   const logout = () => {
@@ -24,44 +25,27 @@ function Navigation() {
         <div className="nav_center">
           <NavLink to="/" className="font_button">Места</NavLink>
           {isUser && <NavLink to="/profile" className="font_button">Профиль</NavLink>}
-          <NavLink to="#" className="font_button">Блог</NavLink>
+          {isUser && <NavLink to="/favorites" className="font_button">Избранное</NavLink>}
+          {isUser && <NavLink to="/places_to_go" className="font_button">Хочу пойти</NavLink>}
         </div>
         <div>
           {!isUser && (
             <>
-              <button className="header_button_reg">
-                <NavLink
-                  className="header_registragion font_button_small"
-                  to="/login"
-                >
+              <button className="header_button_reg" onClick={() => navigate('/login')}>
                   Войти
-                </NavLink>
               </button>
-              <button className="header_button_reg">
-                <NavLink
-                  className="header_registragion font_button_small"
-                  to="/registration"
-                >
+              <button className="header_button_reg" onClick={() => navigate('/registration')}>
                   Регистрация
-                </NavLink>
               </button>
             </>
           )}
           {isUser && (
-            <>
-              <NavLink className="favorite_places" to="/favorites">
-                Любимые места
-              </NavLink>
-              <NavLink className="" to="/myplace">
-                Добавить место
-              </NavLink>
               <button
                 onClick={logout}
                 className="header_button_reg font_button_small"
               >
                 Выйти
-              </button>{' '}
-            </>
+              </button>
           )}
         </div>
       </div>
