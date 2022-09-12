@@ -49,6 +49,9 @@ function Navigation() {
           )}
           {isUser && (
             <>
+              <NavLink className="favorite_places" to="/favorites">
+                Любимые места
+              </NavLink>
               <NavLink className="" to="/myplace">
                 Добавить место
               </NavLink>
