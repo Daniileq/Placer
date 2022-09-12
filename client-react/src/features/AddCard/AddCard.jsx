@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCategories, loadTags } from '../store/searchSlice/searchSlice';
+import { loadCategories, loadTags } from '../../store/searchSlice/searchSlice';
 import { addPlaces } from './reduserAddCard';
 
 function AddCard() {
