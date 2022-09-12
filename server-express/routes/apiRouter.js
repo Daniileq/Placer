@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const tagsRouter = require('./api/tagsRouter');
 const categoriesRouter = require('./api/categoriesRouter');
 const searchRouter = require('./api/searchRouter');
+const likesRouter = require('./api/likesRouter');
 
 const { User } = require('../db/models');
 const placeRouter = require('./api/placeRouter');
@@ -14,6 +15,7 @@ apiRouter.use('/tags', tagsRouter);
 apiRouter.use('/categories', categoriesRouter);
 apiRouter.use('/search', searchRouter);
 apiRouter.use('/place', placeRouter);
+apiRouter.use('/likes', likesRouter);
 // apiRouter.use('/events', eventsRouter);
 
 apiRouter.route('/changeuser:id').put(async (req, res) => {

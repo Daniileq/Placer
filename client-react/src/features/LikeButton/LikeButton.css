@@ -1,14 +1,33 @@
-form[name="likeForm"]>button {
+form[name="like_form"]>button {
     padding-top: 7px;
     height: 36px;
     transition: 0.25s;
 }
 
-form[name="likeForm"]>button:hover {
+form[name="like_form"]>button:hover {
     transform: scale(1.17);
 }
 
-.bi-heart {
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.likes_container {
+    display: flex;
+}
+
+.current_likes {
+    margin-left: 5px;
+    line-height: 36px;
+}
+
+/* .bi-heart {
     height: 24px;
 }
 
@@ -35,4 +54,4 @@ form[name="likeForm"]>button:hover {
 .bi-heart-fill::before:hover {
     transform: scale(1.2);
     background-color: red;
-}
+} */
