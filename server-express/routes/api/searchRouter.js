@@ -28,6 +28,8 @@ searchRouter.get('/', async (req, res) => {
         include: [
           { model: PlaceImage },
           Place.Category,
+          Place.Likes,
+          Place.PlaceToGos,
           {
             model: PlaceTag,
             include: PlaceTag.Tag,
@@ -48,6 +50,8 @@ searchRouter.get('/', async (req, res) => {
         include: [
           { model: PlaceImage },
           Place.Category,
+          Place.Likes,
+          Place.PlaceToGos,
           {
             model: PlaceTag,
             include: PlaceTag.Tag,

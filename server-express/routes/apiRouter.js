@@ -9,6 +9,7 @@ const searchRouter = require('./api/searchRouter');
 
 const { User } = require('../db/models');
 const placeRouter = require('./api/placeRouter');
+const placetogoRouter = require('./api/placetogosRouter');
 
 apiRouter.use('/tags', tagsRouter);
 apiRouter.use('/categories', categoriesRouter);
@@ -16,6 +17,7 @@ apiRouter.use('/search', searchRouter);
 apiRouter.use('/place', placeRouter);
 // apiRouter.use('/events', eventsRouter);
 
+apiRouter.use('/placetogos', placetogoRouter);
 apiRouter.route('/changeuser:id').put(async (req, res) => {
   try {
     const { id } = req.params;
