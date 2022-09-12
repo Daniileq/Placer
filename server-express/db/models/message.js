@@ -3,11 +3,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Message extends Model {
     static associate({ User }) {
-      Message.author = Message.belongsTo(User, {
+      Message.Author = Message.belongsTo(User, {
         foreignKey: 'authorId',
       });
 
-      Message.recipient = Message.belongsTo(User, {
+      Message.Recipient = Message.belongsTo(User, {
         foreignKey: 'recipientId',
       });
     }

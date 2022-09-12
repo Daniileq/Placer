@@ -3,11 +3,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     static associate({ Place, User }) {
-      Comment.place = Comment.belongsTo(Place, {
+      Comment.Place = Comment.belongsTo(Place, {
         foreignKey: 'placeId',
       });
 
-      Comment.user = Comment.belongsTo(User, {
+      Comment.User = Comment.belongsTo(User, {
         foreignKey: 'userId',
       });
     }

@@ -5,35 +5,35 @@ module.exports = (sequelize, DataTypes) => {
     static associate({
       User, Category, Event, Like, Comment, PlaceToGo, PlaceTag, PlaceImage,
     }) {
-      Place.user = Place.belongsTo(User, {
+      Place.User = Place.belongsTo(User, {
         foreignKey: 'userId',
       });
 
-      Place.category = Place.belongsTo(Category, {
+      Place.Category = Place.belongsTo(Category, {
         foreignKey: 'categoryId',
       });
 
-      Place.events = Place.hasMany(Event, {
+      Place.Events = Place.hasMany(Event, {
         foreignKey: 'placeId',
       });
 
-      Place.tags = Place.hasMany(PlaceTag, {
+      Place.Tags = Place.hasMany(PlaceTag, {
         foreignKey: 'placeId',
       });
 
-      Place.images = Place.hasMany(PlaceImage, {
+      Place.PlaceImages = Place.hasMany(PlaceImage, {
         foreignKey: 'placeId',
       });
 
-      Place.likes = Place.hasMany(Like, {
+      Place.Likes = Place.hasMany(Like, {
         foreignKey: 'placeId',
       });
 
-      Place.comments = Place.hasMany(Comment, {
+      Place.Comments = Place.hasMany(Comment, {
         foreignKey: 'placeId',
       });
 
-      Place.toGo = Place.hasMany(PlaceToGo, {
+      Place.PlaceToGos = Place.hasMany(PlaceToGo, {
         foreignKey: 'placeId',
       });
     }
