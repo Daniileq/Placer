@@ -1,0 +1,70 @@
+footer {
+  /* margin-top: 200px; Убрать margin-top */
+  height: 200px;
+  background: #241008;
+}
+
+.content_footer_container {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.footer_logo {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 34px;
+  display: flex;
+  justify-content: center;
+
+  color: #FFFFFF;
+}
+
+.footer_navigation {
+  height: 30px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 30px;
+
+  display: flex;
+  justify-content: space-evenly;
+
+  color: #D7D7D7;
+}
+
+.footer_line {
+  height: 1px;
+  background: #A39189;
+}
+
+.above_footer_line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright {
+  width: 426px;
+  height: 26px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  color: #D7D7D7;
+}
+
+.social_media {
+  height: 30px;
+
+  display: flex;
+  gap: 14px;
+  justify-content: space-evenly;
+}

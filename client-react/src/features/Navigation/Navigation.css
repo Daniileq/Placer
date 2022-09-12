@@ -1,0 +1,35 @@
+.header_navigathion {
+  padding: 20px 0 ;
+  display: flex;
+  justify-content: space-between;
+}
+.header_nav_log_placer {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+.nav_center {
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  cursor: pointer;
+}
+
+.nav_center > a {
+  padding: 10px;
+  color: #6B625E;
+}
+
+.header_registragion {
+  text-decoration: none;
+  color: #ff733b;
+}
+.header_button_reg {
+  background-color: #f4d3a1;
+  color: white;
+  padding: 12px 20px;
+  margin-left: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}

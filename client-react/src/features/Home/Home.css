@@ -1,0 +1,54 @@
+.welcome_container{
+    padding-top: 8vh;
+    height: 806px; 
+    background-color: #F4ECE0; 
+    background-image: url('./Background-circles.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.welcome_content_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.welcome_pic {
+    width: 380px;
+    height: 380px;
+
+    background: #D9D9D9;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+/* .welcome_pic_back{
+    width: 380px;
+    height: 380px;
+    border: 2px solid #00B0AA;
+    border-radius: 10px;
+    float: right;
+} */
+
+.welcome_button{
+    margin-top: 50px;
+    width: 165px;
+    height: 56px;
+    background: #FF733B;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    line-height: 56px;
+}
+
+.greeting{
+    width: 800px;
+    color: #000000;
+}
+
+#new_place{
+    padding: 0 8px;
+    background-color: #F4D3A1;
+}
+
+

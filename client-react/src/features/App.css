@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+h4 {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+h5 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+.font_subheading,
+.font_button,
+.font_body,
+.font_subheading_small,
+.font_button_small,
+.font_body_small,
+.font_caption,
+.font_caption_small {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.font_subheading,
+.font_button,
+.font_body {
+  font-size: 18px;
+}
+
+.font_subheading_small,
+.font_button_small,
+.font_body_small {
+  font-size: 16px;
+}
+
+.font_caption,
+.font_caption_small {
+  font-size: 14px;
+}
+
+.content_container {
+  padding: 0 135px;
+}
+
+.font_subheading,
+.font_subheading_small {
+  font-weight: 600;
+}
+
+.font_button,
+.font_button_small,
+.font_caption {
+  font-weight: 500;
+}
+
+.font_caption_small,
+.font_body_small {
+  font-weight: 400;
+}

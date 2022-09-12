@@ -3,33 +3,37 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Place extends Model {
     static associate({
-      User, Event, Like, Comment, PlaceToGo, PlaceTag, PlaceImage,
+      User, Category, Event, Like, Comment, PlaceToGo, PlaceTag, PlaceImage,
     }) {
-      Place.user = Place.belongsTo(User, {
+      Place.User = Place.belongsTo(User, {
         foreignKey: 'userId',
       });
 
-      Place.events = Place.hasMany(Event, {
+      Place.Category = Place.belongsTo(Category, {
+        foreignKey: 'categoryId',
+      });
+
+      Place.Events = Place.hasMany(Event, {
         foreignKey: 'placeId',
       });
 
-      Place.tags = Place.hasMany(PlaceTag, {
+      Place.Tags = Place.hasMany(PlaceTag, {
         foreignKey: 'placeId',
       });
 
-      Place.images = Place.hasMany(PlaceImage, {
+      Place.PlaceImages = Place.hasMany(PlaceImage, {
         foreignKey: 'placeId',
       });
 
-      Place.likes = Place.hasMany(Like, {
+      Place.Likes = Place.hasMany(Like, {
         foreignKey: 'placeId',
       });
 
-      Place.comments = Place.hasMany(Comment, {
+      Place.Comments = Place.hasMany(Comment, {
         foreignKey: 'placeId',
       });
 
-      Place.toGo = Place.hasMany(PlaceToGo, {
+      Place.PlaceToGos = Place.hasMany(PlaceToGo, {
         foreignKey: 'placeId',
       });
     }
@@ -69,9 +73,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.TEXT,
+    categoryId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Categories',
+        key: 'id',
+      },
     },
     isModerated: {
       type: DataTypes.BOOLEAN,

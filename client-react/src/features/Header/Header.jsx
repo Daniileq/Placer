@@ -4,7 +4,9 @@ import './Header.css';
 function Header() {
   return (
     <header>
-      <Navigation />
+      <div className='content_container'>
+        <Navigation />
+      </div>
     </header>
   );
 }
