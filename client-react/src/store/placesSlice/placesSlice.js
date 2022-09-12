@@ -21,7 +21,7 @@ const initialState = {
 
 const loadPlaces = createAsyncThunk(
   'places/loadPlaces',
-  ({ categories, tags }) => fetch(`/api/places?categories=${categories}&tags=${tags}`)
+  ({ categories, tags }) => fetch(`/api/search?categories=${categories}&tags=${tags}`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {

@@ -1,9 +1,11 @@
-.container {
+.profile_container {
+  background-color: #f4ece0;
+}
+
+.profile_content {
   box-sizing: border-box;
   width: 1170px;
-  height: 842px;
   margin: 0 auto;
-  background-color: #f4ece0;
 }
 
 .profile {
@@ -89,20 +91,19 @@ a {
 .places {
   background-color: white;
   width: 1171px;
-  height: 280px;
   margin-top: 20px;
   border-radius: 8px;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .my_places {
   background-color: white;
-  width: 136px;
-  height: 34px;
+  width: 200px;
   padding-top: 35px;
   margin-left: 54px;
   font-size: 26px;
   text-align: center;
-  line-height: 34px;
 }
 
 .details {
@@ -110,3 +111,4 @@ a {
   margin-left: 68px;
   margin-top: 10px;
 }
+

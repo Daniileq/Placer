@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { User, Place } = require('../db/models');
 
 authRouter.post('/registration', async (req, res) => {
   try {
@@ -96,7 +96,6 @@ authRouter.post('/login', async (req, res) => {
     try {
       user = await User.findOne({
         where: { email: req.body.email },
-        includes: User.places,
       });
       if (!user) {
         res.json({ message: 'Неверный email и/или пароль' });
@@ -118,6 +117,8 @@ authRouter.post('/login', async (req, res) => {
       return;
     }
 
+    const userPlaces = await Place.findAll({ where: { userId: user.id } });
+
     req.session.user = {
       id: user.id,
       email: user.email,
@@ -128,7 +129,7 @@ authRouter.post('/login', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
-      places: user.Places,
+      places: userPlaces,
       isAdmin: user.isAdmin,
     };
 
