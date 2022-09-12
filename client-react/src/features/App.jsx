@@ -8,6 +8,7 @@ import Login from './Login/Login.jsx';
 import AddCard from '../AddCard/AddCard.jsx';
 import UserPage from './UserPage/UserPage.jsx';
 import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
+import FavoritesPage from './FavoritesPage/FavoritesPage.jsx';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/place/:id" element={<PlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/myplace" element={<AddCard />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
       </Routes>
   );
