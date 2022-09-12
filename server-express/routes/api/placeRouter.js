@@ -3,13 +3,42 @@ const { Place } = require('../../db/models');
 
 placeRouter.post('/', async (req, res) => {
   try {
+    const { user } = req.session;
     const {
-      title, adress, description, category,
+      title,
+      adress,
+      longitude,
+      latitude,
+      description,
+      category,
+
+      titleTag,
+      tagId,
     } = req.body;
-    console.log(title, adress, description, category);
+
+    console.log(
+      title,
+      adress,
+      longitude,
+      latitude,
+      description,
+      category,
+      'categoryIdcategoryIdcategoryIdcategoryId',
+
+      titleTag,
+      'titleTagtitleTagtitleTagtitleTagtitleTagtitleTag',
+      tagId
+    );
     const createPlace = await Place.create({
       where: {
-        title, adress, description, category,
+        userId: user.id,
+        title,
+        adress,
+        longitude,
+        latitude,
+        description,
+        category,
+        categoryId,
       },
     });
     res.json({
