@@ -49,7 +49,7 @@ function Navigation() {
           )}
           {isUser && (
             <>
-              <NavLink className="" to="/myplace">
+              <NavLink className="" to="/newplace">
                 Добавить место
               </NavLink>
               <NavLink to="/profile" className="font_button">
