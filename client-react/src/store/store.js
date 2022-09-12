@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSliceReducer from './userSlice/userSlice';
 
-import addReduser from '../AddCard/reduserAddCard';
 import searchSliceReducer from './searchSlice/searchSlice';
+import addPlaceSliceReducer from './addPlaceSlice/addPlaceSlice';
 
 const store = configureStore({
   reducer: {
     user: userSliceReducer,
-    place: addReduser,
+    addPlace: addPlaceSliceReducer,
     search: searchSliceReducer,
   },
 });
