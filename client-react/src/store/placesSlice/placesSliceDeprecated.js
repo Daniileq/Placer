@@ -15,13 +15,13 @@ const initialState = {
       categoryId: null,
       isDeleted: null,
     }, */
-  data: [],
+  favorites: [],
   error: null,
 };
 
-const loadPlaces = createAsyncThunk(
-  'places/loadPlaces',
-  ({ categories, tags }) => fetch(`/api/search?categories=${categories}&tags=${tags}`)
+const loadFavorites = createAsyncThunk(
+  'places/loadFavorites',
+  () => fetch('/api/favorites')
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -41,12 +41,11 @@ const placesSlice = createSlice({
   // },
   extraReducers: (builder) => {
     builder
-      .addCase(loadPlaces.rejected, (state, action) => {
+      .addCase(loadFavorites.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadPlaces.fulfilled, (state, action) => {
-        state.isUser = true;
-        state.data = action.payload;
+      .addCase(loadFavorites.fulfilled, (state, action) => {
+        state.favorites = action.payload;
       });
   },
 });
@@ -59,7 +58,7 @@ export default placesSlice.reducer;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadPlaces,
+  loadFavorites,
 };
 
 /* eslint-enable no-param-reassign */
