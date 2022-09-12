@@ -32,10 +32,10 @@
 .card_place_tag {
     color: #FF733B;
     min-height: 28px;
-    min-width: 100px;
+    padding: 0 10px;
     background-color: #F4D3A1;
     border-radius: 4px;
-    text-transform: uppercase;
+    text-transform: lowercase;
     text-align: center;
     line-height: 28px;
 }

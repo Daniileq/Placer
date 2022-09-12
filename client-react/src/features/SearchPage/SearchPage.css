@@ -47,3 +47,7 @@
 .place_input:focus {
   border: solid 1px #ffb84e;
 }
+
+.search_results_container {
+  min-height: 100vh;
+}
