@@ -1,11 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useEffect } from 'react';
 
-function Map() {
-  const place = {
-    id: 1, userId: 1, title: 'xx', adress: 'xxx', longitude: 59.94, latitude: 30.32, description: 'xxxx', category: 'nsnnsn', isModerated: true, isDeleted: false,
-  };
-
+function Map({ place }) {
   useEffect(() => {
     ymaps.ready(() => {
       const myMap = new ymaps.Map('YMapsID', {
@@ -15,7 +11,7 @@ function Map() {
       });
 
       const myPlacemark = new ymaps.Placemark([place.longitude, place.latitude], {}, {
-        preset: 'islands#redIcon',
+        preset: 'islands#blueIcon',
       });
 
       myMap.geoObjects.add(myPlacemark);
