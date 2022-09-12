@@ -38,7 +38,7 @@ function App() {
           <Route path="/myplace" element={<AddCard />} />
           <Route path="/settings" element={<UserSettingsPage />} />
           <Route path="/add_place" element={<AddCard />} />
-          {/* <Route path="/favorites" element={<Тут будет избранное />} /> */}
+          {/* <Route path="/favorites" element={<FavoritesPage />} /> */}
         </Route>
       </Routes>
   );
