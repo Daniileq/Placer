@@ -1,5 +1,6 @@
 import React from 'react';
 import './CardPlace.css';
+import LikeButton from '../LikeButton/LikeButton.jsx';
 
 function CardPlace({ place }) {
   return (
@@ -27,6 +28,7 @@ function CardPlace({ place }) {
       <p className="card_place_text">
         {place.description.length && place.description}
       </p>
+      <LikeButton place={place} />
     </div>
   );
 }
