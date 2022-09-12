@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
+import './UserSettingsPage.css';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import './Settings.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeUser } from '../../store/userSlice/userSlice';
 
-function Settings() {
+function UserSettingsPage() {
   const [avatar, setAvatar] = useState(null);
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
+  const helpMessage = useSelector((state) => state.user.helpMessage);
 
   function settingsSubmit(event) {
     event.preventDefault();
     const data = {
+      id: user.id,
       displayName: event.target.displayName.value,
       email: event.target.email.value,
       login: event.target.login.value,
@@ -21,8 +25,7 @@ function Settings() {
       password: event.target.password.value,
       repeatPass: event.target.repeatPass.value,
     };
-
-    console.log(data);
+    dispatch(changeUser(data));
   }
 
   return (
@@ -37,8 +40,8 @@ function Settings() {
           <div className='avatar'>
             {
               avatar
-                ? <img className='avatar' src={avatar} alt='avatar' />
-                : <img className='avatar' src='avatar.png' alt='avatar' />
+                ? <img className='user_photo' src={avatar} alt='avatar' />
+                : <img className='user_photo' src='avatar.png' alt='avatar' />
             }
           </div>
 
@@ -68,7 +71,7 @@ function Settings() {
           <br />
           <input type="text" name="login" placeholder="Login" defaultValue={user.login} required />
           <br />
-          <select name="city">
+          <select name="city" defaultValue={user.city}>
             <option>Санкт-Петербург</option>
             <option>Москва</option>
             <option>Казань</option>
@@ -78,39 +81,38 @@ function Settings() {
             <option>Великий Новгород</option>
           </select>
           <br />
-          <select name="sex">
+          <select name="sex" defaultValue={user.sex}>
             <option>Мужской</option>
             <option>Женский</option>
             <option>Небинарный</option>
-            <option></option>
           </select>
           <br />
-          <input type="text" name="age" placeholder="Возраст" defaultValue={user.age} />
+          <input type="number" name="age" placeholder="Возраст" defaultValue={user.age} />
           <br />
           <input type="text" name="about" placeholder="О себе" defaultValue={user.about} />
           <br />
           <input
             type="password"
             name="password"
-            placeholder="Пароль"
+            placeholder="Новый пароль"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
-            required
           />
           <br />
           <input
             type="password"
             name="repeatPass"
             placeholder="Повторите пароль"
-            required
           />
-          {/* { helpMessage && <div className="helpText">{helpMessage}</div>} */}
+          { helpMessage && <div className="helpText">{helpMessage}</div>}
           <br />
           <button type='submit'>Сохранить</button>
         </form>
+        <br />
+        <br />
       </div>
     </>
   );
 }
 
-export default Settings;
+export default UserSettingsPage;

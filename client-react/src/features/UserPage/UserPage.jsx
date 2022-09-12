@@ -10,7 +10,12 @@ function UserPage() {
       <div className='backbtn'><a href='/'>← Back</a></div>
       <div className='profile'>
         <div className='user_info'>
-          <img src={user.photo} alt="фото" className="user_photo"/>
+          {/* <img src={user.photo} alt="фото" className="user_photo"/> */}
+          {
+            user.photo
+              ? <img className='user_photo' src={user.photo} alt='photo' />
+              : <img className='user_photo' src='avatar.png' alt='avatar' />
+          }
           <div className='user_name'>{user.displayName}</div>
           <div className='user_email'>{user.email}</div>
         </div>
