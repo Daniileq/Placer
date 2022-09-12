@@ -6,7 +6,8 @@ import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
 import UserPage from './UserPage/UserPage.jsx';
-import Settings from './Settings/Settings.jsx';
+import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
+// import PlacesToGo from './PlacesToGo/PlacesToGo.jsx';
 
 import './App.css';
 
@@ -34,8 +35,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<UserPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
-          <Route path='/settings' element={<Settings/>} />
           <Route path="/newplace" element={<AddPlacePage />} />
+          <Route path='/settings' element={<UserSettingsPage/>} />
+          {/* <Route path="/places_to_go" element={<PlacesToGo />} /> */}
+          {/* <Route path="/favorites" element={<FavoritesPage />} /> */}
         </Route>
       </Routes>
   );

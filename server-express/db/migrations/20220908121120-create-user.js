@@ -30,7 +30,7 @@ module.exports = {
         allowNull: false,
       },
       age: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       sex: {

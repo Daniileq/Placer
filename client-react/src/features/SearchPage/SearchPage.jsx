@@ -53,7 +53,7 @@ function SearchPage() {
                 placeholder='Введите ключевые слова...'
               />
             </form>
-            <div>
+            <div className='search_results_container'>
               {loading && <p>...loading</p>}
               {!loading && places.map((place) => <CardPlace place={place} key={place.id} />)}
             </div>

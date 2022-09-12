@@ -3,11 +3,11 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class EventToGo extends Model {
     static associate({ Event, User }) {
-      EventToGo.event = EventToGo.belongsTo(Event, {
+      EventToGo.Event = EventToGo.belongsTo(Event, {
         foreignKey: 'eventId',
       });
 
-      EventToGo.user = EventToGo.belongsTo(User, {
+      EventToGo.User = EventToGo.belongsTo(User, {
         foreignKey: 'userId',
       });
     }
