@@ -1,6 +1,6 @@
 // eslint-disable-next-line quotes
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 // eslint-disable-next-line quotes
 import logo from './img/logo.png';
 // eslint-disable-next-line quotes
@@ -9,6 +9,7 @@ import { logoutUser } from '../../store/userSlice/userSlice';
 
 function Navigation() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isUser = useSelector((state) => state.user.isUser);
 
   const logout = () => {
@@ -30,21 +31,11 @@ function Navigation() {
         <div>
           {!isUser && (
             <>
-              <button className="header_button_reg">
-                <NavLink
-                  className="header_registragion font_button_small"
-                  to="/login"
-                >
+              <button className="header_button_reg" onClick={() => navigate('/login')}>
                   Войти
-                </NavLink>
               </button>
-              <button className="header_button_reg">
-                <NavLink
-                  className="header_registragion font_button_small"
-                  to="/registration"
-                >
+              <button className="header_button_reg" onClick={() => navigate('/registration')}>
                   Регистрация
-                </NavLink>
               </button>
             </>
           )}
