@@ -1,14 +1,32 @@
 const searchRouter = require('express').Router();
-const { Place, PlaceTag } = require('../../db/models');
+const { Place, PlaceTag, PlaceImage } = require('../../db/models');
 
 searchRouter.get('/', async (req, res) => {
   try {
     const { categories, tags } = req.query;
 
-    if (tags === 'all' && categories === 'all') {
+    const tagsFilter = (places) => {
+      const tagsId = tags.split(' ').map((tagId) => Number(tagId));
+      const filteredPlaces = places
+        .filter(
+          (place) => tagsId.every(
+            (tagId) => place.PlaceTags
+              .map(
+                (placeTag) => placeTag.Tag.id,
+              )
+              .includes(tagId),
+          ),
+        );
+      return filteredPlaces;
+    };
+
+    const getPlaces = async () => {
       const places = await Place.findAll({
+        order: [
+          [PlaceImage, 'id', 'ASC'],
+        ],
         include: [
-          Place.PlaceImages,
+          { model: PlaceImage },
           Place.Category,
           {
             model: PlaceTag,
@@ -16,20 +34,19 @@ searchRouter.get('/', async (req, res) => {
           },
         ],
       });
+      return places;
+    };
 
-      res.json({ data: places });
-      return;
-    }
-
-    if (tags === 'all' && categories !== 'all') {
-      const categoriesId = categories
-        .split(' ').map((categoryId) => Number(categoryId));
+    const getCategoryPlaces = async (categoriesId) => {
       const places = await Place.findAll({
         where: {
           categoryId: categoriesId,
         },
+        order: [
+          [PlaceImage, 'id', 'ASC'],
+        ],
         include: [
-          Place.PlaceImages,
+          { model: PlaceImage },
           Place.Category,
           {
             model: PlaceTag,
@@ -37,51 +54,30 @@ searchRouter.get('/', async (req, res) => {
           },
         ],
       });
+      return places;
+    };
+
+    if (categories === 'all') {
+      const places = await getPlaces();
+
+      if (tags !== 'all') {
+        const filteredPlaces = tagsFilter(places);
+        res.json({ data: filteredPlaces });
+        return;
+      }
+
       res.json({ data: places });
       return;
     }
 
-    if (tags !== 'all' && categories === 'all') {
-      const tagsId = tags
-        .split(' ').map((tagId) => Number(tagId));
-      const places = await Place.findAll({
-        include: [
-          Place.PlaceImages,
-          Place.Category,
-          {
-            model: PlaceTag,
-            where: {
-              tagId: tagsId,
-            },
-            include: PlaceTag.Tag,
-          },
-        ],
-      });
-      res.json({ data: places });
+    const categoriesId = categories.split(' ').map((categoryId) => Number(categoryId));
+    const places = await getCategoryPlaces(categoriesId);
+
+    if (tags !== 'all') {
+      const filteredPlaces = tagsFilter(places);
+      res.json({ data: filteredPlaces });
       return;
     }
-
-    const tagsId = tags
-      .split(' ').map((tagId) => Number(tagId));
-    const categoriesId = categories
-      .split(' ').map((categoryId) => Number(categoryId));
-
-    const places = await Place.findAll({
-      where: {
-        categoryId: categoriesId,
-      },
-      include: [
-        Place.PlaceImages,
-        Place.Category,
-        {
-          model: PlaceTag,
-          where: {
-            tagId: tagsId,
-          },
-          include: PlaceTag.Tag,
-        },
-      ],
-    });
 
     res.json({ data: places });
   } catch (error) {
