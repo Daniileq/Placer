@@ -94,7 +94,7 @@ const regUser = createAsyncThunk(
 // изменение данных юзера
 const changeUser = createAsyncThunk(
   'user/changeUser',
-  (data) => fetch(`/api/changeuser${data.id}`, {
+  (data) => fetch(`/api/changeuser/${data.id}`, {
     method: 'put',
     headers: {
       'Content-type': 'application/json',
