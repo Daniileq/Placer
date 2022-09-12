@@ -24,7 +24,8 @@ function Navigation() {
         <div className="nav_center">
           <NavLink to="/" className="font_button">Места</NavLink>
           {isUser && <NavLink to="/profile" className="font_button">Профиль</NavLink>}
-          <NavLink to="/favorites" className="font_button">Избранное</NavLink>
+          {isUser && <NavLink to="/favorites" className="font_button">Избранное</NavLink>}
+          {isUser && <NavLink to="/places_to_go" className="font_button">Хочу пойти</NavLink>}
         </div>
         <div>
           {!isUser && (
