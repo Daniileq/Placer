@@ -5,7 +5,6 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
-import AddCard from '../AddCard/AddCard.jsx';
 import UserPage from './UserPage/UserPage.jsx';
 import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
 // import PlacesToGo from './PlacesToGo/PlacesToGo.jsx';
@@ -14,6 +13,7 @@ import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
+import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,10 +35,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<UserPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
-          <Route path="/myplace" element={<AddCard />} />
-          <Route path="/settings" element={<UserSettingsPage />} />
-          <Route path="/add_place" element={<AddCard />} />
           {/* <Route path="/places_to_go" element={<PlacesToGo />} /> */}
           {/* <Route path="/favorites" element={<FavoritesPage />} /> */}
         </Route>

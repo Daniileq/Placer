@@ -1,48 +1,65 @@
 const placeRouter = require('express').Router();
-const { Place, PlaceTag, Tag } = require('../../db/models');
 
-placeRouter.post('/', async (req, res) => {
+const {
+  Place, Tag, PlaceTag, PlaceImage,
+} = require('../../db/models');
+const upload = require('../../src/upload');
+
+placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
   try {
+    console.log(req.session);
+    if (!req.session || !req.session.user) {
+      res.json({
+        error: 'no user',
+      });
+      return;
+    }
     const { user } = req.session;
     const {
       title,
       adress,
       longitude,
       latitude,
+      categoryId,
       description,
-      category,
-
-      titleTag,
-      tagId,
     } = req.body;
 
-    console.log(
+    const { id } = await Place.create({
+      userId: user.id,
       title,
       adress,
       longitude,
       latitude,
       description,
-      category,
-      'categoryIdcategoryIdcategoryIdcategoryId',
-
-      titleTag,
-      'titleTagtitleTagtitleTagtitleTagtitleTagtitleTag',
-      tagId
-    );
-    const createPlace = await Place.create({
-      where: {
-        userId: user.id,
-        title,
-        adress,
-        longitude,
-        latitude,
-        description,
-        category,
-        categoryId,
-      },
+      categoryId,
+      isModerated: true,
+      isDeleted: false,
     });
+
+    console.log('sadasd');
+
+    const tags = await Tag.findAll();
+
+    const placeTagsId = [];
+    for (let tagIndex = 0; tagIndex < tags.length; tagIndex += 1) {
+      if (req.body[`tags_${tagIndex}`]) {
+        placeTagsId.push(tags[tagIndex].id);
+      }
+    }
+
+    await PlaceTag.bulkCreate(placeTagsId.map((placeTag) => ({
+      placeId: id,
+      tagId: Number(placeTag),
+    })));
+
+    await PlaceImage.bulkCreate(req.files.map((file) => ({
+      src: file.filename,
+      placeId: id,
+      title: file.originalname,
+    })));
+
     res.json({
-      data: createPlace,
+      success: true,
     });
   } catch (error) {
     res.json({
