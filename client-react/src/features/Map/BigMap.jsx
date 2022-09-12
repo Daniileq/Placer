@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import React, { useEffect } from 'react';
 
-function BigMap() {
-  const places = [[59.94, 30.32], [59.94, 30.32], [59.90, 30.30]];
+function BigMap({ placesCoords }) {
   useEffect(() => {
+    // const places = [[59.94, 30.32], [59.94, 30.32], [59.90, 30.30]];
     ymaps.ready(() => {
       const myMap = new ymaps.Map('YMapsID', {
         center: [59.94, 30.32],
@@ -11,15 +11,15 @@ function BigMap() {
         controls: ['routeButtonControl'],
       });
 
-      places.map((place) => {
-        const myPlacemark = new ymaps.Placemark(place, {}, {
+      placesCoords.map((placeCoords) => {
+        const myPlacemark = new ymaps.Placemark(placeCoords, {}, {
           preset: 'islands#blueIcon',
         });
 
         return myMap.geoObjects.add(myPlacemark);
       });
     });
-  }, []);
+  }, [placesCoords]);
 
   return (
     <div>
