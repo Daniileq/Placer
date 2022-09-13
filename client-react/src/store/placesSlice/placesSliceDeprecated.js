@@ -2,20 +2,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  /** {
-      id: null,
-      userId: null,
-      title: null,
-      adress: null,
-      longtitude: null,
-      latitude: null,
-      description: null,
-      tags: null,
-      images: null,
-      categoryId: null,
-      isDeleted: null,
-    }, */
-  favorites: [],
+  favoritePlaces: [],
+  placesToGo: [],
   error: null,
 };
 
@@ -31,21 +19,41 @@ const loadFavorites = createAsyncThunk(
     }),
 );
 
+const toggleLike = createAsyncThunk(
+  'places/toggleLike',
+  (place) => fetch(`api/likes/${place.id}`, {
+    method: 'post',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return { toggle: body.data, place };
+    }),
+);
+
 const placesSlice = createSlice({
   name: 'places',
   initialState,
-  // reducers: {
-  //   disableHelpMessage: (state) => {
-  //     state.helpMessage = null;
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
       .addCase(loadFavorites.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(loadFavorites.fulfilled, (state, action) => {
-        state.favorites = action.payload;
+        state.favoritePlaces = action.payload;
+      })
+      .addCase(toggleLike.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(toggleLike.fulfilled, (state, action) => {
+        if (action.payload.toggle === 'liked') {
+          state.favoritePlaces.push(action.payload.place);
+          return;
+        }
+        state.favoritePlaces = state.favoritePlaces
+          .filter((favoritePlace) => favoritePlace.id !== action.payload.place.id);
       });
   },
 });
@@ -53,12 +61,9 @@ const placesSlice = createSlice({
 // Экспорт reducer-функции
 export default placesSlice.reducer;
 
-// Экспорт action creator-функций
-// export const { disableHelpMessage } = placesSlice.actions;
-
 // Экспорт action creator-функций (thunk)
 export {
-  loadFavorites,
+  loadFavorites, toggleLike,
 };
 
 /* eslint-enable no-param-reassign */

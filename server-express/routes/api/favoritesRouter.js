@@ -13,6 +13,8 @@ favoritesRouter.get('/', async (req, res) => {
           include: [
             Place.PlaceImages,
             Place.Category,
+            Place.Likes,
+            Place.PlaceToGos,
             {
               model: PlaceTag,
               include: PlaceTag.Tag,

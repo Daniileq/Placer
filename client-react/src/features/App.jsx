@@ -15,14 +15,22 @@ import './App.css';
 import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
 import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
+import { loadFavorites } from '../store/placesSlice/placesSliceDeprecated';
 
 function App() {
   const dispatch = useDispatch();
+  const isUser = useSelector((state) => state.user.isUser);
+
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
 
-  const isUser = useSelector((state) => state.user.isUser);
+  useEffect(() => {
+    if (isUser) {
+      dispatch(loadFavorites());
+      // dispatch(loadPlacesToGo())
+    }
+  }, [dispatch, isUser]);
 
   if (isUser === null) {
     return <div>...loading</div>;
