@@ -1,4 +1,4 @@
-import './UserPage.css'
+import './PlacesToGo.css';
 
 function PlacesToGo() {
   return (
