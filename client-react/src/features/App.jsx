@@ -40,7 +40,9 @@ function App() {
   }
 
   return (
-      <Routes>
+    <>
+    {isUser
+      ? (<Routes>
         <Route path='/' element={<Layout/>} >
           <Route index element={<Home/>} />
           <Route path="/registration" element={<Registration />} />
@@ -55,7 +57,20 @@ function App() {
           <Route path="/togo" element={<PlacesToGo />} />
           <Route path='*' element={<Error404 />} />
         </Route>
-      </Routes>
+      </Routes>) : (<Routes>
+        <Route path='/' element={<Layout/>} >
+          <Route index element={<Home/>} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/togo" element={<PlacesToGo />} />
+          <Route path='*' element={<Error404 />} />
+        </Route>
+      </Routes>)
+    }
+    </>
   );
 }
 
