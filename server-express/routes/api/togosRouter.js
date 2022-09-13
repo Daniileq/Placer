@@ -1,9 +1,9 @@
-const favoritesRouter = require('express').Router();
-const { Place, PlaceTag, Like } = require('../../db/models');
+const togosRouter = require('express').Router();
+const { Place, PlaceTag, PlaceToGo } = require('../../db/models');
 
-favoritesRouter.get('/', async (req, res) => {
+togosRouter.get('/', async (req, res) => {
   try {
-    const likes = await Like.findAll({
+    const togos = await PlaceToGo.findAll({
       where: {
         userId: req.session.user.id,
       },
@@ -24,12 +24,12 @@ favoritesRouter.get('/', async (req, res) => {
       ],
     });
 
-    const favoritePlaces = likes.map((like) => like.Place);
+    const togosPlaces = togos.map((togo) => togo.Place);
 
-    res.json({ data: favoritePlaces });
+    res.json({ data: togosPlaces });
   } catch (error) {
     res.json({ error: error.message });
   }
 });
 
-module.exports = favoritesRouter;
+module.exports = togosRouter;

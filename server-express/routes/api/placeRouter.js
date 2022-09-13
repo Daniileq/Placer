@@ -73,6 +73,8 @@ placeRouter.get('/:id', async (req, res) => {
       include: [
         Place.PlaceImages,
         Place.Category,
+        Place.Likes,
+        Place.PlaceToGos,
         {
           model: PlaceTag,
           include: PlaceTag.Tag,
@@ -94,8 +96,8 @@ placeRouter.get('/:id/comments', async (req, res) => {
   try {
     const comments = await Comment.findAll({
       where: { placeId },
+      include: Comment.User,
     });
-    console.log(comments);
     res.json({
       data: comments,
     });
@@ -108,15 +110,16 @@ placeRouter.get('/:id/comments', async (req, res) => {
 
 placeRouter.post('/:id/comments', async (req, res) => {
   const { content, placeId } = req.body;
-  console.log(placeId);
-  console.log(req.session.user.id);
   try {
-    const newComment = await Comment.create({
+    await Comment.create({
       content,
       userId: req.session.user.id,
       placeId,
     });
-    console.log(newComment);
+    const newComment = await Comment.findOne({
+      where: { placeId },
+      include: Comment.User,
+    });
     res.json({
       data: newComment,
     });

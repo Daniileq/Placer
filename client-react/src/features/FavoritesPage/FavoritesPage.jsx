@@ -1,18 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadFavorites } from '../../store/placesSlice/placesSliceDeprecated';
+import { useSelector } from 'react-redux';
 import CardPlace from '../CardPlace/CardPlace.jsx';
 
 function FavoritesPage() {
-  const dispatch = useDispatch();
-  const favorites = useSelector((state) => state.places.favorites);
+  const favoritePlaces = useSelector((state) => state.places.favoritePlaces);
 
-  useEffect(() => {
-    dispatch(loadFavorites());
-  }, [dispatch]);
   return (
     <div>
-      {favorites.map((place) => <CardPlace place={place} key={place.id} />)}
+      {favoritePlaces.map((place) => <CardPlace place={place} key={place.id} />)}
     </div>
   );
 }

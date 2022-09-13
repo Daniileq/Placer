@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Filters from '../Filters/Filters.jsx';
 import CardPlace from '../CardPlace/CardPlace.jsx';
@@ -6,31 +6,52 @@ import './SearchPage.css';
 
 import {
   loadPlaces,
+  setKeyword,
+  keywordFilter,
 } from '../../store/searchSlice/searchSlice';
+import Loader from '../Loader/Loader.jsx';
 
 function SearchPage() {
   const dispatch = useDispatch();
-  const filters = useSelector((state) => state.search.filters);
-  const activeFilters = useSelector((state) => state.search.activeFilters);
-  const loading = useSelector((state) => state.search.loading);
-  const places = useSelector((state) => state.search.places);
 
-  useEffect(() => {
-    const tags = activeFilters.tagsId.length
+  const {
+    filters, activeFilters, loading, keywordPlaces, keyword,
+  } = useSelector((state) => state.search);
+
+  const tags = useMemo(
+    () => (activeFilters.tagsId.length
       ? filters.tags
         .filter((tag) => activeFilters.tagsId.includes(tag.id))
         .map((tag) => tag.id)
         .join('+')
-      : 'all';
-    const categories = activeFilters.categoriesId.length
+      : 'all'),
+    [filters.tags, activeFilters.tagsId],
+  );
+
+  const categories = useMemo(
+    () => (activeFilters.categoriesId.length
       ? filters.categories
         .filter((category) => activeFilters.categoriesId.includes(category.id))
         .map((category) => category.id)
         .join('+')
-      : 'all';
+      : 'all'),
+    [filters.categories, activeFilters.categoriesId],
+  );
+
+  useEffect(() => {
     dispatch(loadPlaces({ categories, tags }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilters]);
+
+  useEffect(() => {
+    const debounceId = setTimeout(() => {
+      dispatch(keywordFilter({ keyword }));
+    }, 500);
+    return () => {
+      clearTimeout(debounceId);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keyword]);
 
   return (
     <div className='content_container'>
@@ -50,12 +71,14 @@ function SearchPage() {
                 name='place_input'
                 className='place_input'
                 type="text"
+                value={keyword}
+                onChange={(event) => dispatch(setKeyword(event.target.value))}
                 placeholder='Введите ключевые слова...'
               />
             </form>
             <div className='search_results_container'>
-              {loading && <p>...loading</p>}
-              {!loading && places.map((place) => <CardPlace place={place} key={place.id} />)}
+              {loading && <Loader />}
+              {!loading && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
             </div>
           </div>
         </div>

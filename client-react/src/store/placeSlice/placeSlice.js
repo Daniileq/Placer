@@ -19,6 +19,7 @@ const loadPlace = createAsyncThunk(
       return body.data;
     }),
 );
+
 const loadPlaceTags = createAsyncThunk(
   'place/loadPlaceTags',
   (id) => fetch(`/api/place/${id}/tags`)
@@ -57,7 +58,7 @@ const placeSlice = createSlice({
       .addCase(loadPlaceTags.fulfilled, (state, action) => {
         state.loading = false;
         state.tags = action.payload;
-      })
+      });
   },
 });
 

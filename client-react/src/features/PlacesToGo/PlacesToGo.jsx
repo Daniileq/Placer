@@ -1,14 +1,13 @@
 import './PlacesToGo.css';
+import { useSelector } from 'react-redux';
+import CardPlace from '../CardPlace/CardPlace.jsx';
 
 function PlacesToGo() {
+  const placesToGo = useSelector((state) => state.places.placesToGo);
   return (
-        <>
-        <div className='profile_container'>
-            <div className="profile_content">
-
-            </div>
-        </div>
-        </>
+    <div>
+    {placesToGo.map((place) => <CardPlace place={place} key={place.id} />)}
+  </div>
   );
 }
 

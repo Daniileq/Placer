@@ -7,18 +7,16 @@ import Comment from '../Comment/Comment.jsx';
 import './PlacePage.css';
 import AddComment from '../AddComment/AddComent.jsx';
 import { loadComments } from '../../store/commentSlice.js/commentSlice';
+import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
 
 function PlacePage() {
   const [isShow, setShow] = useState(false);
-  const comments = useSelector((state) => state.comments.data);
-
   const { id } = useParams();
   const dispatch = useDispatch();
-  const place = useSelector((state) => state.place.data);
 
-  function handleClick() {
-    setShow(true);
-  }
+  const comments = useSelector((state) => state.comments.data);
+  const place = useSelector((state) => state.place.data);
+  const [img, setImg] = useState(null);
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
@@ -31,28 +29,28 @@ function PlacePage() {
       <div className='place_container'>
         <div className='place_container_left'>
           <div className='place_container_image'>
-            { place
-              && place.PlaceImages
-              && <img
-                className="big_place_image"
-                src={place.PlaceImages[0].src}
-                alt={place.PlaceImages[0].title}
-              />
+            { img
+              ? (
+                <img
+                  className="big_place_image"
+                  src={img.src}
+                  alt={img.title}
+                />
+              )
+              : (
+                place.PlaceImages
+                  && <img
+                    className="big_place_image"
+                    src={place.PlaceImages[0].src}
+                    alt={place.PlaceImages[0].title}
+                  />
+              )
             }
           </div>
           <div className='above_place_image'>
             {
-              place
-                && place.PlaceImages
-                && place.PlaceImages.map((image) => (
-                  <div key={image.id} className='place_image_small'>
-                    <img
-                      className="small_place_image"
-                      src={image.src}
-                      alt={image.title}
-                    />
-                  </div>
-                ))
+              place.PlaceImages
+                && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg}/>
             }
           </div>
           <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
@@ -97,9 +95,12 @@ function PlacePage() {
             </div>
             <div className='place_comments'>
               {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
-              <button type='click' onClick={handleClick} className='add_comment_btn'>Добавить комментарий</button>
+              {!isShow
+                && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>Добавить комментарий</button>
+              }
             </div>
-            {isShow && <AddComment />}
+              {isShow && <AddComment />}
+              <ImageSwiper />
     </div>
   );
 }
