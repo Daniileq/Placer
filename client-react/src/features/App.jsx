@@ -46,10 +46,8 @@ function App() {
       ? (<Routes>
         <Route path='/' element={<Layout/>} >
           <Route index element={<Home/>} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<UserPage />} />
-          <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/favorites" element={<FavoritesPage />} />
@@ -63,7 +61,7 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/togo" element={<PlacesToGo />} />

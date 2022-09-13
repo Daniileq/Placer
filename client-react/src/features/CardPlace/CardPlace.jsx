@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import './CardPlace.css';
+import { Link } from 'react-router-dom';
 import PlaceToGoButton from '../PlaceToGoButton/PlaceToGoButton.jsx';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 
@@ -18,7 +19,11 @@ function CardPlace({ place }) {
           />
         }
       </div>
-      <h4 className="card_place_title">{place.title}</h4>
+      <h4 className="card_place_title">
+        <Link to={`/places/${place.id}`}>
+          {place.title}
+        </Link>
+      </h4>
       <div className='card_place_tags'>
         {place.PlaceTags && place.PlaceTags
           .map((placeTag) => (
