@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './Footer.css';
 import facebook from './img/facebook.png';
 import twitter from './img/twitter.png';
@@ -11,9 +12,9 @@ function Footer() {
 
           <div className='footer_logo'>PLACER</div>
           <div className='footer_navigation'>
-            <div className='navigation_links'>На главную</div>
-            <div className='navigation_links'>О проекте</div>
-            <div className='navigation_links'>Контакты</div>
+            <div className='navigation_links'><NavLink to="/">На главную</NavLink></div>
+            <div className='navigation_links'><NavLink to="/about">О проекте</NavLink></div>
+            <div className='navigation_links'><NavLink to="/contacts">Контакты</NavLink></div>
           </div>
           <div className='footer_line'></div>
           <div className='above_footer_line'>
