@@ -7,7 +7,7 @@ searchRouter.get('/', async (req, res) => {
 
     const tagsFilter = (places) => {
       const tagsId = tags.split(' ').map((tagId) => Number(tagId));
-      const filteredPlaces = places
+      const placesByTags = places
         .filter(
           (place) => tagsId.every(
             (tagId) => place.PlaceTags
@@ -17,7 +17,7 @@ searchRouter.get('/', async (req, res) => {
               .includes(tagId),
           ),
         );
-      return filteredPlaces;
+      return placesByTags;
     };
 
     const getPlaces = async () => {
@@ -65,8 +65,8 @@ searchRouter.get('/', async (req, res) => {
       const places = await getPlaces();
 
       if (tags !== 'all') {
-        const filteredPlaces = tagsFilter(places);
-        res.json({ data: filteredPlaces });
+        const placesByTags = tagsFilter(places);
+        res.json({ data: placesByTags });
         return;
       }
 
@@ -78,8 +78,8 @@ searchRouter.get('/', async (req, res) => {
     const places = await getCategoryPlaces(categoriesId);
 
     if (tags !== 'all') {
-      const filteredPlaces = tagsFilter(places);
-      res.json({ data: filteredPlaces });
+      const placesByTags = tagsFilter(places);
+      res.json({ data: placesByTags });
       return;
     }
 
