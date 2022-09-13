@@ -1,21 +1,62 @@
 const placeRouter = require('express').Router();
-const {
-  Place, PlaceTag, Tag, Comment,
-} = require('../../db/models');
 
-placeRouter.post('/', async (req, res) => {
+const {
+  Place, Tag, PlaceTag, PlaceImage,
+} = require('../../db/models');
+const upload = require('../../src/upload');
+
+placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
   try {
+    if (!req.session || !req.session.user) {
+      res.json({
+        error: 'no user',
+      });
+      return;
+    }
+    const { user } = req.session;
     const {
-      title, adress, description, category,
+      title,
+      adress,
+      longitude,
+      latitude,
+      categoryId,
+      description,
     } = req.body;
-    console.log(title, adress, description, category);
-    const createPlace = await Place.create({
-      where: {
-        title, adress, description, category,
-      },
+
+    const { id } = await Place.create({
+      userId: user.id,
+      title,
+      adress,
+      longitude,
+      latitude,
+      description,
+      categoryId,
+      isModerated: true,
+      isDeleted: false,
     });
+
+    const tags = await Tag.findAll();
+
+    const placeTagsId = [];
+    for (let tagIndex = 0; tagIndex < tags.length; tagIndex += 1) {
+      if (req.body[`tags_${tagIndex}`]) {
+        placeTagsId.push(tags[tagIndex].id);
+      }
+    }
+
+    await PlaceTag.bulkCreate(placeTagsId.map((placeTag) => ({
+      placeId: id,
+      tagId: Number(placeTag),
+    })));
+
+    await PlaceImage.bulkCreate(req.files.map((file) => ({
+      src: `/images/${file.filename}`,
+      placeId: id,
+      title: file.originalname,
+    })));
+
     res.json({
-      data: createPlace,
+      success: true,
     });
   } catch (error) {
     res.json({
@@ -32,6 +73,8 @@ placeRouter.get('/:id', async (req, res) => {
       include: [
         Place.PlaceImages,
         Place.Category,
+        Place.Likes,
+        Place.PlaceToGos,
         {
           model: PlaceTag,
           include: PlaceTag.Tag,

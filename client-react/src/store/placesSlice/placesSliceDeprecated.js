@@ -2,26 +2,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  /** {
-      id: null,
-      userId: null,
-      title: null,
-      adress: null,
-      longtitude: null,
-      latitude: null,
-      description: null,
-      tags: null,
-      images: null,
-      categoryId: null,
-      isDeleted: null,
-    }, */
-  data: [],
+  favoritePlaces: [],
+  placesToGo: [],
   error: null,
 };
 
-const loadPlaces = createAsyncThunk(
-  'places/loadPlaces',
-  ({ categories, tags }) => fetch(`/api/search?categories=${categories}&tags=${tags}`)
+const loadFavorites = createAsyncThunk(
+  'places/loadFavorites',
+  () => fetch('/api/favorites')
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -31,22 +19,84 @@ const loadPlaces = createAsyncThunk(
     }),
 );
 
+const loadPlacesToGo = createAsyncThunk(
+  'places/loadPlacesToGo',
+  () => fetch('/api/togos')
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
+const toggleLike = createAsyncThunk(
+  'places/toggleLike',
+  (place) => fetch(`api/likes/${place.id}`, {
+    method: 'post',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return { toggle: body.data, place };
+    }),
+);
+
+const toggleGo = createAsyncThunk(
+  'places/toggleGo',
+  (place) => fetch(`api/placetogo/${place.id}`, {
+    method: 'post',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return { toggle: body.data, place };
+    }),
+);
+
 const placesSlice = createSlice({
   name: 'places',
   initialState,
-  // reducers: {
-  //   disableHelpMessage: (state) => {
-  //     state.helpMessage = null;
-  //   },
-  // },
   extraReducers: (builder) => {
     builder
-      .addCase(loadPlaces.rejected, (state, action) => {
+      .addCase(loadFavorites.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(loadPlaces.fulfilled, (state, action) => {
-        state.isUser = true;
-        state.data = action.payload;
+      .addCase(loadFavorites.fulfilled, (state, action) => {
+        state.favoritePlaces = action.payload;
+      })
+      .addCase(toggleLike.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(toggleLike.fulfilled, (state, action) => {
+        if (action.payload.toggle === 'liked') {
+          state.favoritePlaces.push(action.payload.place);
+          return;
+        }
+        state.favoritePlaces = state.favoritePlaces
+          .filter((favoritePlace) => favoritePlace.id !== action.payload.place.id);
+      })
+      .addCase(loadPlacesToGo.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadPlacesToGo.fulfilled, (state, action) => {
+        state.placesToGo = action.payload;
+      })
+      .addCase(toggleGo.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(toggleGo.fulfilled, (state, action) => {
+        if (action.payload.toggle === 'goOn') {
+          state.placesToGo.push(action.payload.place);
+          return;
+        }
+        state.placesToGo = state.placesToGo
+          .filter((placeToGo) => placeToGo.id !== action.payload.place.id);
       });
   },
 });
@@ -54,12 +104,9 @@ const placesSlice = createSlice({
 // Экспорт reducer-функции
 export default placesSlice.reducer;
 
-// Экспорт action creator-функций
-// export const { disableHelpMessage } = placesSlice.actions;
-
 // Экспорт action creator-функций (thunk)
 export {
-  loadPlaces,
+  loadFavorites, toggleLike, toggleGo, loadPlacesToGo,
 };
 
 /* eslint-enable no-param-reassign */

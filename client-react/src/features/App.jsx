@@ -5,22 +5,35 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
-import AddCard from '../AddCard/AddCard.jsx';
 import UserPage from './UserPage/UserPage.jsx';
 import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
+import FavoritesPage from './FavoritesPage/FavoritesPage.jsx';
+import About from './About/About.jsx';
+import Contacts from './Contacts/Contacts.jsx';
+import Error404 from './ErrorPages/Error404/Error404.jsx';
+import PlacesToGo from './PlacesToGo/PlacesToGo.jsx';
 
 import './App.css';
 
 import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
+import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
+import { loadFavorites, loadPlacesToGo } from '../store/placesSlice/placesSliceDeprecated';
 
 function App() {
   const dispatch = useDispatch();
+  const isUser = useSelector((state) => state.user.isUser);
+
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
 
-  const isUser = useSelector((state) => state.user.isUser);
+  useEffect(() => {
+    if (isUser) {
+      dispatch(loadFavorites());
+      dispatch(loadPlacesToGo())
+    }
+  }, [dispatch, isUser]);
 
   if (isUser === null) {
     return <div>...loading</div>;
@@ -34,8 +47,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<UserPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
-          <Route path="/myplace" element={<AddCard />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/togo" element={<PlacesToGo />} />
+          <Route path='*' element={<Error404 />} />
         </Route>
       </Routes>
   );

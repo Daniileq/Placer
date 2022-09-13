@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Place } = require('../db/models');
+const { User, Place, PlaceTag } = require('../db/models');
 
 authRouter.post('/registration', async (req, res) => {
   try {
@@ -117,7 +117,21 @@ authRouter.post('/login', async (req, res) => {
       return;
     }
 
-    const userPlaces = await Place.findAll({ where: { userId: user.id } });
+    const userPlaces = await Place.findAll({
+      where: {
+        userId: user.id,
+      },
+      include: [
+        Place.PlaceImages,
+        Place.Category,
+        Place.Likes,
+        Place.PlaceToGos,
+        {
+          model: PlaceTag,
+          include: PlaceTag.Tag,
+        },
+      ],
+    });
 
     req.session.user = {
       id: user.id,

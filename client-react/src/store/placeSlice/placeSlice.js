@@ -58,7 +58,7 @@ const placeSlice = createSlice({
       .addCase(loadPlaceTags.fulfilled, (state, action) => {
         state.loading = false;
         state.tags = action.payload;
-      })
+      });
   },
 });
 
