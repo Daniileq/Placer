@@ -7,7 +7,6 @@ const upload = require('../../src/upload');
 
 placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
   try {
-    console.log(req.session);
     if (!req.session || !req.session.user) {
       res.json({
         error: 'no user',
@@ -36,8 +35,6 @@ placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
       isDeleted: false,
     });
 
-    console.log('sadasd');
-
     const tags = await Tag.findAll();
 
     const placeTagsId = [];
@@ -53,7 +50,7 @@ placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
     })));
 
     await PlaceImage.bulkCreate(req.files.map((file) => ({
-      src: file.filename,
+      src: `/images/${file.filename}`,
       placeId: id,
       title: file.originalname,
     })));
@@ -76,6 +73,8 @@ placeRouter.get('/:id', async (req, res) => {
       include: [
         Place.PlaceImages,
         Place.Category,
+        Place.Likes,
+        Place.PlaceToGos,
         {
           model: PlaceTag,
           include: PlaceTag.Tag,
