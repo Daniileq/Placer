@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  keyWord: '',
+  keyword: '',
   filters: {
     tags: [],
     categories: [],
@@ -12,6 +12,7 @@ const initialState = {
     categoriesId: [],
   },
   places: [],
+  keywordPlaces: [],
   loading: false,
   error: null,
 };
@@ -74,6 +75,19 @@ const searchSlice = createSlice({
       state.activeFilters.categoriesId = state.activeFilters.categoriesId
         .filter((categoryId) => categoryId !== toggledCategoryId);
     },
+    setKeyword: (state, action) => {
+      state.keyword = action.payload;
+    },
+    keywordFilter: (state, action) => {
+      state.keywordPlaces = state.places
+        .filter(
+          (place) => {
+            const tagsString = place.PlaceTags.map((placeTag) => placeTag.Tag.title).join(' ');
+            const generalString = `${place.title} ${place.description} ${tagsString}`;
+            return generalString.toLowerCase().includes(action.payload.keyword.toLowerCase());
+          },
+        );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -107,7 +121,9 @@ const searchSlice = createSlice({
 export default searchSlice.reducer;
 
 // Экспорт action creator-функций
-export const { toggleTag, toggleCategory } = searchSlice.actions;
+export const {
+  toggleTag, toggleCategory, setKeyword, keywordFilter,
+} = searchSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
