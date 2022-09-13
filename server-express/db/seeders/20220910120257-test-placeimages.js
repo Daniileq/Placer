@@ -317,8 +317,22 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          src: 'https://irecommend.ru/sites/default/files/product-images/859485/OdI4TtiGEb8EMypM0xy3Rw.JPG',
+          placeId: 1,
+          title: 'Фото 7',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://kuda-spb.ru/uploads/e42de3335ab140672068d3a474c7be90.jpg',
+          placeId: 1,
+          title: 'Фото 8',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
-      {}
+      {},
     );
   },
 

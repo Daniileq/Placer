@@ -43,12 +43,6 @@
     width: 100%;
     height: 100%;
 }
-.small_place_image {
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-}
 
 .place_comments {
     margin-top: 5%;
@@ -56,8 +50,4 @@
     flex-direction: column;
     width: 40vw;
     background-color: #F4ECE0;
-}
-
-.active {
-    border: 3px solid #f68d63;
 }

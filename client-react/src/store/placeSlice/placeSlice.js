@@ -19,6 +19,7 @@ const loadPlace = createAsyncThunk(
       return body.data;
     }),
 );
+
 const loadPlaceTags = createAsyncThunk(
   'place/loadPlaceTags',
   (id) => fetch(`/api/place/${id}/tags`)
