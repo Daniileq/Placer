@@ -31,8 +31,10 @@ function CardPlace({ place }) {
       <p className="card_place_text">
         {place.description.length && place.description}
       </p>
-      {isUser && <PlaceToGoButton place={place}/>}
+      <div className='card_place_buttons'>
       {isUser && <LikeButton place={place} />}
+      {isUser && <PlaceToGoButton place={place}/>}
+      </div>
     </div>
   );
 }
