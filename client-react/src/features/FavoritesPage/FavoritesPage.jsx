@@ -1,15 +1,8 @@
-// import { useEffect } from 'react';
-import { /** useDispatch , */ useSelector } from 'react-redux';
-// import { loadFavorites } from '../../store/placesSlice/placesSliceDeprecated';
+import { useSelector } from 'react-redux';
 import CardPlace from '../CardPlace/CardPlace.jsx';
 
 function FavoritesPage() {
-  // const dispatch = useDispatch();
   const favoritePlaces = useSelector((state) => state.places.favoritePlaces);
-
-  // useEffect(() => {
-  //   dispatch(loadFavorites());
-  // }, [dispatch]);
 
   return (
     <div>
