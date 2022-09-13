@@ -233,6 +233,12 @@ module.exports = {
           title: 'Фото 1',
           createdAt: new Date(),
           updatedAt: new Date(),
+        },{
+          src: 'https://www.newhollandsp.ru/upload/iblock/df3/df33885cdc202c52de6b8d37e5d4127e.jpg',
+          placeId: 15,
+          title: 'Фото 1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
       ],
       {}

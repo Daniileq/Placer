@@ -140,14 +140,57 @@ module.exports = {
           tagId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
-        }, {
+        },
+        {
           placeId: 13,
+          tagId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 13,
+          tagId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 14,
           tagId: 7,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          placeId: 15,
+          tagId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 15,
+          tagId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 15,
+          tagId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 15,
+          tagId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          placeId: 15,
+          tagId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
-      {},
+      {}
     );
   },
 
