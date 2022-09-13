@@ -18,7 +18,7 @@ import './App.css';
 import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
 import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
-import { loadFavorites } from '../store/placesSlice/placesSliceDeprecated';
+import { loadFavorites, loadPlacesToGo } from '../store/placesSlice/placesSliceDeprecated';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     if (isUser) {
       dispatch(loadFavorites());
-      // dispatch(loadPlacesToGo())
+      dispatch(loadPlacesToGo())
     }
   }, [dispatch, isUser]);
 

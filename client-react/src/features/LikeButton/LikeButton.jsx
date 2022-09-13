@@ -58,7 +58,9 @@ function LikeButton({ place }) {
           </button>
         </form>
         <div className="current_likes font_caption_small">
-          {place.Likes.filter((like) => like.userId !== userId).length + Number(isLiked)}
+          {place.Likes.filter(
+            (like) => like.userId !== userId,
+          ).length + Number(isLiked)}
         </div>
       </div>
     </div >

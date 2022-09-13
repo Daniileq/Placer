@@ -19,9 +19,35 @@ const loadFavorites = createAsyncThunk(
     }),
 );
 
+const loadPlacesToGo = createAsyncThunk(
+  'places/loadPlacesToGo',
+  () => fetch('/api/togos')
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
 const toggleLike = createAsyncThunk(
   'places/toggleLike',
   (place) => fetch(`api/likes/${place.id}`, {
+    method: 'post',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return { toggle: body.data, place };
+    }),
+);
+
+const toggleGo = createAsyncThunk(
+  'places/toggleGo',
+  (place) => fetch(`api/placetogo/${place.id}`, {
     method: 'post',
   })
     .then((response) => response.json())
@@ -54,6 +80,23 @@ const placesSlice = createSlice({
         }
         state.favoritePlaces = state.favoritePlaces
           .filter((favoritePlace) => favoritePlace.id !== action.payload.place.id);
+      })
+      .addCase(loadPlacesToGo.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadPlacesToGo.fulfilled, (state, action) => {
+        state.placesToGo = action.payload;
+      })
+      .addCase(toggleGo.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(toggleGo.fulfilled, (state, action) => {
+        if (action.payload.toggle === 'goOn') {
+          state.placesToGo.push(action.payload.place);
+          return;
+        }
+        state.placesToGo = state.placesToGo
+          .filter((placeToGo) => placeToGo.id !== action.payload.place.id);
       });
   },
 });
@@ -63,7 +106,7 @@ export default placesSlice.reducer;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadFavorites, toggleLike,
+  loadFavorites, toggleLike, toggleGo, loadPlacesToGo,
 };
 
 /* eslint-enable no-param-reassign */
