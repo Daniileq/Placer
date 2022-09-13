@@ -1,6 +1,72 @@
 .add_place_form {
-  width: 900px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  min-width: 800px;
+  min-height: 1300px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 100px;
+  width: 100px;
 }
+
+.checkbox_input {
+  width: 30px;
+  height: 30px;
+}
+
+.add_place_form h4 {
+  margin-bottom: 50px;
+}
+
+.add_place_form input, select, textarea {
+  border: 1px solid #f4d3a1;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+  transition: 0.2s;
+}
+
+.add_place_form input:hover,
+.add_place_form input:focus,
+.add_place_form input:hover,
+.add_place_form input:focus 
+.add_place_form textarea:hover,
+.add_place_form textarea:focus {
+  border: solid 1px #ffb84e;
+}
+
+.add_place_btn {
+  background: #ff733b;
+  border-radius: 4px;
+  width: 200px;
+  height: 56px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 40px;
+}
+
+.add_place_form label {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  width: 410px;
+  text-align: left;
+  margin: 3px;
+}
+
+.description {
+  height: 100px;
+}
+
+.add_place_form p {
+  text-align: center;
+  margin: 20px;
+}
+
+
