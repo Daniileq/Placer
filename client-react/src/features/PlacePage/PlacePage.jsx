@@ -10,10 +10,10 @@ import { loadComments } from '../../store/commentSlice.js/commentSlice';
 
 function PlacePage() {
   const [isShow, setShow] = useState(false);
-  const comments = useSelector((state) => state.comments.data);
-
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  const comments = useSelector((state) => state.comments.data);
   const place = useSelector((state) => state.place.data);
 
   function handleClick() {
@@ -97,9 +97,11 @@ function PlacePage() {
             </div>
             <div className='place_comments'>
               {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
-              <button type='click' onClick={handleClick} className='add_comment_btn'>Добавить комментарий</button>
+              {!isShow
+                && <button type='click' onClick={handleClick} className='add_comment_btn'>Добавить комментарий</button>
+              }
             </div>
-            {isShow && <AddComment />}
+              {isShow && <AddComment />}
     </div>
   );
 }
