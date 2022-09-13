@@ -42,7 +42,7 @@ function App() {
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path='*' element={<Error404 />} />
-          {/* <Route path='**' element={<AnotherError />} /> */}
+          <Route path='/something_wrong' element={<AnotherError />} />
           {/* <Route path="/places_to_go" element={<PlacesToGo />} /> */}
         </Route>
       </Routes>
