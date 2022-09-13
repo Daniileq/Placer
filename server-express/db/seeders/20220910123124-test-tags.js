@@ -24,6 +24,14 @@ module.exports = {
       title: 'Культурный отдых',
       createdAt: new Date(),
       updatedAt: new Date(),
+    }, {
+      title: 'Лекции',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      title: 'Рестораны',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 
