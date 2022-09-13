@@ -7,6 +7,7 @@ import Comment from '../Comment/Comment.jsx';
 import './PlacePage.css';
 import AddComment from '../AddComment/AddComent.jsx';
 import { loadComments } from '../../store/commentSlice.js/commentSlice';
+import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
 
 function PlacePage() {
   const [isShow, setShow] = useState(false);
@@ -48,17 +49,8 @@ function PlacePage() {
           </div>
           <div className='above_place_image'>
             {
-              place
-                && place.PlaceImages
-                && place.PlaceImages.map((image) => (
-                  <div key={image.id} className='place_image_small' onClick={() => setImg(image)}>
-                    <img
-                      className={img === image ? 'small_place_image active' : 'small_place_image'}
-                      src={image.src}
-                      alt={image.title}
-                    />
-                  </div>
-                ))
+              place.PlaceImages
+                && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg}/>
             }
           </div>
           <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
@@ -108,6 +100,7 @@ function PlacePage() {
               }
             </div>
               {isShow && <AddComment />}
+              <ImageSwiper />
     </div>
   );
 }
