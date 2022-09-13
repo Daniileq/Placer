@@ -20,6 +20,10 @@ module.exports = {
       title: 'Новые пространства',
       createdAt: new Date(),
       updatedAt: new Date(),
+    }, {
+      title: 'Активный отдых',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 
