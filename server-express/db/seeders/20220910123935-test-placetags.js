@@ -70,6 +70,51 @@ module.exports = {
       tagId: 6,
       createdAt: new Date(),
       updatedAt: new Date(),
+    }, {
+      placeId: 7,
+      tagId: 7,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 8,
+      tagId: 7,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 9,
+      tagId: 8,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 10,
+      tagId: 7,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 10,
+      tagId: 8,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 11,
+      tagId: 5,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 11,
+      tagId: 6,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 11,
+      tagId: 3,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      placeId: 11,
+      tagId: 3,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 

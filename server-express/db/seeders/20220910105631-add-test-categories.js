@@ -12,6 +12,14 @@ module.exports = {
       title: 'Театры',
       createdAt: new Date(),
       updatedAt: new Date(),
+    }, {
+      title: 'Лекции',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      title: 'Новые пространства',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 

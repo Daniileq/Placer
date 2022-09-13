@@ -108,6 +108,72 @@ module.exports = {
       title: 'Фото 3',
       createdAt: new Date(),
       updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/event/50/8b/508bded00878dc73199dc604ca5694a5.jpg',
+      placeId: 7,
+      title: 'Фото 1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/event/5c/c3/5cc362c2191ba825ff987945a7785575.jpeg',
+      placeId: 7,
+      title: 'Фото 2',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/event/39/3f/393fe70db7030455ed33cd32bef77b47.jpg',
+      placeId: 7,
+      title: 'Фото 3',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/97/95/9795353fde28895dfa52a74196ae9e2b.jpg',
+      placeId: 8,
+      title: 'Фото 1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/37/97/37973f360bc22fdf5e21feeedd196272.jpg',
+      placeId: 8,
+      title: 'Фото 2',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/db/44/db44bb709faed7157fef8ec9dfc9745c.jpg',
+      placeId: 8,
+      title: 'Фото 3',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/1d/1f/1d1f9ef4ca61721d2b7eb414a34a7c79.jpeg',
+      placeId: 9,
+      title: 'Фото 1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/21/cc/21cc26e4148273276ef90f6919354af6.jpg',
+      placeId: 10,
+      title: 'Фото 1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/85/0b/850b590e79f9aef1ef9ed3983672871c.jpg',
+      placeId: 10,
+      title: 'Фото 2',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/f6/32/f63279002450ed02b66ece837ff8c048.JPG',
+      placeId: 11,
+      title: 'Фото 1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }, {
+      src: 'https://kudago.com/media/thumbs/xl/images/place/b8/4c/b84c05b07153bce85ba0fbdf7a4f871b.JPG',
+      placeId: 11,
+      title: 'Фото 2',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 
