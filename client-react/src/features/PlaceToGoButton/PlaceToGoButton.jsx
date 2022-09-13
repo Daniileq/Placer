@@ -12,7 +12,7 @@ function PlaceToGoButton({ place }) {
             <form action="#" onSubmit={handlePlaceToGoSubmit}>
                 <button type='submit' className='place_to_go_btn'>Хочу пойти</button>
                 <div className='font_caption_small'>
-                    {place.PlaceToGos.length}
+                    {place.PlaceToGos && place.PlaceToGos.length}
                 </div>
             </form>
         </div>

@@ -41,7 +41,9 @@ function UserPage() {
             <h3>Мои места</h3>
             <NavLink to="/add_place">Добавить место</NavLink>
             <div className='cards'>
-              {user.places.length && user.places.map((place) => <CardPlace place={place}/>)}
+              {user.places
+              && user.places.length
+              && user.places.map((place) => <CardPlace key={place.id} place={place}/>)}
             </div>
           </div>
         </div>
