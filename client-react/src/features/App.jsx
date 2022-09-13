@@ -8,6 +8,8 @@ import Login from './Login/Login.jsx';
 import UserPage from './UserPage/UserPage.jsx';
 import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
 import FavoritesPage from './FavoritesPage/FavoritesPage.jsx';
+import Error404 from './ErrorPages/Error404/Error404.jsx';
+// import AnotherError from './ErrorPages/AnotherError/AnotherError.jsx';
 // import PlacesToGo from './PlacesToGo/PlacesToGo.jsx';
 
 import './App.css';
@@ -39,6 +41,8 @@ function App() {
           <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path='/404' element={<Error404 />} />
+          {/* <Route path='/something_wrong' element={<AnotherError />} /> */}
           {/* <Route path="/places_to_go" element={<PlacesToGo />} /> */}
         </Route>
       </Routes>
