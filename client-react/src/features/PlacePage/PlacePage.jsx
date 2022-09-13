@@ -15,10 +15,7 @@ function PlacePage() {
 
   const comments = useSelector((state) => state.comments.data);
   const place = useSelector((state) => state.place.data);
-
-  function handleClick() {
-    setShow(true);
-  }
+  const [img, setImg] = useState(null);
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
@@ -31,13 +28,22 @@ function PlacePage() {
       <div className='place_container'>
         <div className='place_container_left'>
           <div className='place_container_image'>
-            { place
-              && place.PlaceImages
-              && <img
-                className="big_place_image"
-                src={place.PlaceImages[0].src}
-                alt={place.PlaceImages[0].title}
-              />
+            { img
+              ? (
+                <img
+                  className="big_place_image"
+                  src={img.src}
+                  alt={img.title}
+                />
+              )
+              : (
+                place.PlaceImages
+                  && <img
+                    className="big_place_image"
+                    src={place.PlaceImages[0].src}
+                    alt={place.PlaceImages[0].title}
+                  />
+              )
             }
           </div>
           <div className='above_place_image'>
@@ -45,9 +51,9 @@ function PlacePage() {
               place
                 && place.PlaceImages
                 && place.PlaceImages.map((image) => (
-                  <div key={image.id} className='place_image_small'>
+                  <div key={image.id} className='place_image_small' onClick={() => setImg(image)}>
                     <img
-                      className="small_place_image"
+                      className={img === image ? 'small_place_image active' : 'small_place_image'}
                       src={image.src}
                       alt={image.title}
                     />
@@ -98,7 +104,7 @@ function PlacePage() {
             <div className='place_comments'>
               {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
               {!isShow
-                && <button type='click' onClick={handleClick} className='add_comment_btn'>Добавить комментарий</button>
+                && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>Добавить комментарий</button>
               }
             </div>
               {isShow && <AddComment />}
