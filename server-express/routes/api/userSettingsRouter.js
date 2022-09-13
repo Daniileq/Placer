@@ -3,8 +3,9 @@
 const userSettingsRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
+const upload = require('../../src/upload');
 
-userSettingsRouter.route('/:id').put(async (req, res) => {
+userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -18,6 +19,8 @@ userSettingsRouter.route('/:id').put(async (req, res) => {
       password,
       repeatPass,
     } = req.body;
+
+    console.log(req.body);
 
     const uniqUser = await User.findOne({ where: { id } });
 
@@ -69,6 +72,7 @@ userSettingsRouter.route('/:id').put(async (req, res) => {
 
     let updatedUser = await User.update(
       {
+        photo: req.file ? `/images/${req.file.filename}` : uniqUser.photo,
         displayName,
         email,
         login,

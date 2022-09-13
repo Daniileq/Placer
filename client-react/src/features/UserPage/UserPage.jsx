@@ -8,17 +8,12 @@ import avatar from './images/avatar.png';
 
 function UserPage() {
   const user = useSelector((state) => state.user.data);
-  const navigation = useNavigate();
-
-  const navBack = (event) => {
-    event.preventDefault();
-    navigation('/');
-  };
+  const navigate = useNavigate();
 
   return (
     <div className='profile_container'>
       <div className="profile_content">
-        <div className='backbtn'><a onClick={navBack} href='/'>На главную</a></div>
+        <div className='backbtn'><NavLink onClick={() => navigate('/')} to='/'>На главную</NavLink></div>
         <div className='profile'>
           <div className='user_info'>
             {user.photo && <img src={user.photo} alt="фото" className="user_photo"/>}
@@ -30,9 +25,21 @@ function UserPage() {
             <div className='details'>Логин: {user.login}</div>
             <div className='details'>Почта: {user.email}</div>
             <div className='details'>Город: {user.city}</div>
-            <div className='details'>Пол: {user.sex}</div>
-            <div className='details'>Возраст: {user.age}</div>
-            <div className='details'>Обо мне: {user.about}</div>
+            {
+              user.sex
+                ? <div className='details'>Пол: {user.sex}</div>
+                : <div className='details'>Пол: не указан</div>
+            }
+            {
+              user.age
+                ? <div className='details'>Возраст: {user.age}</div>
+                : <div className='details'>Возраст: не указан</div>
+            }
+            {
+              user.about
+                ? <div className='details'>Обо мне: {user.about}</div>
+                : <div className='details'>Обо мне: не указано</div>
+            }
             <NavLink className='edit_btn' to="/settings">Редактировать</NavLink>
           </div>
         </div>

@@ -1,4 +1,4 @@
-.photoInput {
+/* .photoInput {
   opacity: 0;
   height: 0;
   width: 0;
@@ -6,15 +6,10 @@
   overflow: hidden;
   padding: 0;
   margin: 0;
-}
+} */
 
-.user_photo {
-  margin-left: 54px;
-  margin-right: 55px;
-  margin-bottom: 16px;
-  width: 251px;
-  height: 251px;
-  border-radius: 50%;
+.user_settings_form h4 {
+  margin-bottom: 30px;
 }
 
 .user_settings_form {
@@ -30,7 +25,7 @@
   width: 100px;
 }
 
-.user_settings_form input, select, textarea {
+.user_settings_form input, .user_settings_form select, .user_settings_form textarea {
   border: 1px solid #f4d3a1;
   border-radius: 4px;
   font-size: 14px;
@@ -46,7 +41,7 @@
 .user_settings_form input:hover,
 .user_settings_form input:focus,
 .user_settings_form input:hover,
-.user_settings_form input:focus 
+.user_settings_form input:focus, 
 .user_settings_form textarea:hover,
 .user_settings_form textarea:focus {
   border: solid 1px #ffb84e;

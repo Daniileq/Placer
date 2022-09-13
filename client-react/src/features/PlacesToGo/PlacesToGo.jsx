@@ -1,5 +1,4 @@
 import './PlacesToGo.css';
-
 import { useSelector } from 'react-redux';
 import CardPlace from '../CardPlace/CardPlace.jsx';
 

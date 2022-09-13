@@ -94,12 +94,9 @@ const regUser = createAsyncThunk(
 // изменение данных юзера
 const changeUser = createAsyncThunk(
   'user/changeUser',
-  (data) => fetch(`/api/changeuser/${data.id}`, {
+  ({ data, userId }) => fetch(`/api/changeuser/${userId}`, {
     method: 'put',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(data),
+    body: data,
   })
     .then((response) => response.json())
     .then((body) => {

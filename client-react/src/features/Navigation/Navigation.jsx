@@ -14,6 +14,7 @@ function Navigation() {
 
   const logout = () => {
     dispatch(logoutUser());
+    navigate('/');
   };
 
   return (
