@@ -28,6 +28,11 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          title: 'Открой новое',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

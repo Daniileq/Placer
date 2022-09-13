@@ -275,6 +275,48 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          src: 'https://kudago.com/media/thumbs/xl/images/place/b4/f0/b4f0bb71e5952aeb54aafbf10ec8ece9.jpg',
+          placeId: 18,
+          title: 'Фото 1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://kudago.com/media/thumbs/xl/images/place/13/5c/135c605fb9178b82a8de27eb43c4dcd5.jpg',
+          placeId: 19,
+          title: 'Фото 1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://kudago.com/media/thumbs/xl/images/place/6c/d2/6cd2482acfb0758dd1ee92b91db43956.jpg',
+          placeId: 19,
+          title: 'Фото 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Mosque_SPB.jpg/280px-Mosque_SPB.jpg',
+          placeId: 20,
+          title: 'Фото 1',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/c6/a1/c5/caption.jpg?w=1200&h=-1&s=1',
+          placeId: 20,
+          title: 'Фото 2',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          src: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/b3/9e/60/inside.jpg?w=1200&h=-1&s=1',
+          placeId: 20,
+          title: 'Фото 3',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
