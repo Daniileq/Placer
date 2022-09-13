@@ -68,7 +68,6 @@ a {
 }
 
 .my_data {
-  background-color: white;
   width: 161px;
   height: 34px;
   text-align: center;
@@ -83,6 +82,8 @@ a {
   width: 1171px;
   margin-top: 20px;
   border-radius: 8px;
+  min-height: 300px;
+
   /* display: flex;
   justify-content: center; */
 }
