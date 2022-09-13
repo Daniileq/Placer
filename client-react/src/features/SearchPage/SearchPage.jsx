@@ -9,6 +9,7 @@ import {
   setKeyword,
   keywordFilter,
 } from '../../store/searchSlice/searchSlice';
+import Loader from '../Loader/Loader.jsx';
 
 function SearchPage() {
   const dispatch = useDispatch();
@@ -76,7 +77,7 @@ function SearchPage() {
               />
             </form>
             <div className='search_results_container'>
-              {loading && <p>...loading</p>}
+              {loading && <Loader />}
               {!loading && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
             </div>
           </div>
