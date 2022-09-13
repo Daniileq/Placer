@@ -113,6 +113,14 @@ const searchSlice = createSlice({
       .addCase(loadPlaces.fulfilled, (state, action) => {
         state.loading = false;
         state.places = action.payload;
+        state.keywordPlaces = state.places
+          .filter(
+            (place) => {
+              const tagsString = place.PlaceTags.map((placeTag) => placeTag.Tag.title).join(' ');
+              const generalString = `${place.title} ${place.description} ${tagsString}`;
+              return generalString.toLowerCase().includes(state.keyword.toLowerCase());
+            },
+          );
       });
   },
 });

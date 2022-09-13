@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     if (isUser) {
       dispatch(loadFavorites());
-      dispatch(loadPlacesToGo())
+      dispatch(loadPlacesToGo());
     }
   }, [dispatch, isUser]);
 
