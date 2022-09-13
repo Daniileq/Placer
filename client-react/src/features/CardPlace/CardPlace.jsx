@@ -1,7 +1,11 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+
 import './CardPlace.css';
+import PlaceToGoButton from '../PlaceToGoButton/PlaceToGoButton.jsx';
+import LikeButton from '../LikeButton/LikeButton.jsx';
 
 function CardPlace({ place }) {
+  const isUser = useSelector((state) => state.user.isUser);
   return (
     <div className='card_place'>
       <div className='card_place_image'>
@@ -27,6 +31,10 @@ function CardPlace({ place }) {
       <p className="card_place_text">
         {place.description.length && place.description}
       </p>
+      <div className='card_place_buttons'>
+      {isUser && <LikeButton place={place} />}
+      {isUser && <PlaceToGoButton place={place}/>}
+      </div>
     </div>
   );
 }

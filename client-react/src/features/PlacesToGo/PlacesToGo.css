@@ -1,0 +1,11 @@
+.profile_container {
+    background-color: #f4ece0;
+  }
+  
+  .profile_content {
+    box-sizing: border-box;
+    width: 1170px;
+    margin: 0 auto;
+  } 
+
+  

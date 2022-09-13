@@ -20,16 +20,17 @@
   color: #6B625E;
 }
 
-.header_registragion {
-  text-decoration: none;
-  color: #ff733b;
-}
 .header_button_reg {
   background-color: #f4d3a1;
-  color: white;
+  color: #ff733b;
+  font-size: 16px;
   padding: 12px 20px;
   margin-left: 16px;
   border-radius: 8px;
   cursor: pointer;
   border: none;
 }
+
+/* .favorite_places{
+  margin-right: 20px;
+} */

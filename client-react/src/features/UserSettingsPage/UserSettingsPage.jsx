@@ -25,17 +25,15 @@ function UserSettingsPage() {
       password: event.target.password.value,
       repeatPass: event.target.repeatPass.value,
     };
+    console.log(data);
     dispatch(changeUser(data));
   }
 
   return (
         <>
       <div>
-        <h2>Настройки пользователя</h2>
-        <br />
-        <br />
-
-        <form onSubmit={settingsSubmit} className="userSettingsForm">
+        <form onSubmit={settingsSubmit} className="user_settings_form">
+          <h4>Настройки пользователя</h4>
 
           <div className='avatar'>
             {
@@ -57,21 +55,26 @@ function UserSettingsPage() {
           <br />
           <button type="submit" onClick={handleUpload}>Сохранить</button> */}
 
-          <input type="text" name="displayName" placeholder="Имя" defaultValue={user.displayName} required />
-          <br />
+          <label htmlFor="nameInput">Имя</label>
+          <input type="text" name="displayName" id='nameInput' placeholder="Имя" defaultValue={user.displayName} required />
+
+          <label htmlFor="emailInput" >Email</label>
           <input
             type="email"
             name="email"
+            id='emailInput'
             placeholder="Email"
             pattern="^\S+@\S+\.\S+$"
             title='Почта должна быть указана в формате email@mail.com'
             defaultValue={user.email}
             required
           />
-          <br />
-          <input type="text" name="login" placeholder="Login" defaultValue={user.login} required />
-          <br />
-          <select name="city" defaultValue={user.city}>
+
+          <label htmlFor="loginInput">Login</label>
+          <input type="text" name="login" id='loginInput' placeholder="Login" defaultValue={user.login} required />
+
+          <label htmlFor="cityInput">Город</label>
+          <select name="city" id='cityInput' defaultValue={user.city}>
             <option>Санкт-Петербург</option>
             <option>Москва</option>
             <option>Казань</option>
@@ -80,36 +83,42 @@ function UserSettingsPage() {
             <option>Калининград</option>
             <option>Великий Новгород</option>
           </select>
-          <br />
-          <select name="sex" defaultValue={user.sex}>
+
+          <label htmlFor="sexInput">Пол</label>
+          <select name="sex" id='sexInput' defaultValue={user.sex}>
             <option>Мужской</option>
             <option>Женский</option>
             <option>Небинарный</option>
           </select>
-          <br />
-          <input type="number" name="age" placeholder="Возраст" defaultValue={user.age} />
-          <br />
-          <input type="text" name="about" placeholder="О себе" defaultValue={user.about} />
-          <br />
+
+          <label htmlFor="aboutInput">Возраст</label>
+          <input type="number" name="age" id='aboutInput' placeholder="Возраст" defaultValue={user.age} />
+
+          <label htmlFor="aboutInput">Расскажи о себе</label>
+          <textarea type="text" name="about" id='aboutInput' className='about_input' placeholder="О себе" defaultValue={user.about} />
+
+          <label htmlFor="passwordInput">Пароль</label>
           <input
             type="password"
             name="password"
+            id='passwordInput'
             placeholder="Новый пароль"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
           />
-          <br />
+
+          <label htmlFor="repeatPassInput">Повторите пароль</label>
           <input
             type="password"
             name="repeatPass"
+            id='repeatPassInput'
             placeholder="Повторите пароль"
           />
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <br />
-          <button type='submit'>Сохранить</button>
+
+          <button className='user_settings_btn' type='submit'>Сохранить</button>
         </form>
-        <br />
-        <br />
+
       </div>
     </>
   );
