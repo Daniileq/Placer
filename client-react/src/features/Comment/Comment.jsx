@@ -1,11 +1,16 @@
 import React from 'react';
+import './Comment.css';
 
 function Comment({ comment }) {
   return (
-    <div>
-      <h5>{comment.userId}</h5>
-      <p>{comment.content}</p>
-    </div>
+    <>
+    { comment
+      && <div className='comment_contaiiner'>
+        <h5>{comment.User.displayName}</h5>
+        <p>{comment.content}</p>
+      </div>
+    }
+  </>
   );
 }
 
