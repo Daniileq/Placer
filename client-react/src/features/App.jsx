@@ -19,6 +19,7 @@ import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
 import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
 import { loadFavorites, loadPlacesToGo } from '../store/placesSlice/placesSliceDeprecated';
+import Loader from './Loader/Loader.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function App() {
   }, [dispatch, isUser]);
 
   if (isUser === null) {
-    return <div>...loading</div>;
+    return <Loader />;
   }
 
   return (

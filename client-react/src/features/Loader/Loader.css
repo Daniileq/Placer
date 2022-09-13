@@ -1,0 +1,24 @@
+.loader_container {
+    position: fixed;
+    top: 38%;
+    left: 40%;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 150px;
+    height: 150px;
+    border: 20px solid #F4D3A1;
+    border-top: 20px solid #FF733B;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {transform: rotate(0turn)}
+    to {transform: rotate(1turn)}
+}
