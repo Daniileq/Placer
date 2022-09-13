@@ -30,5 +30,6 @@ module.exports = function serverConfig(app) {
   app.use(cookieParser());
   app.use(session(sessionConfig));
   app.use(express.static(path.resolve('public')));
+  app.use(express.static(path.join(__dirname, '../../client-react/build')));
   app.use(express.urlencoded({ extended: true }));
 };

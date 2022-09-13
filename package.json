@@ -1,0 +1,21 @@
+{
+  "name": "placer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server-express && npm i && npx sequelize db:migrate && cd ../client-react && npm i && DISABLE_ESLINT_PLUGIN=true npm run build",
+    "start": "cd server-express && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michae1-Jackson/Placer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michae1-Jackson/Placer/issues"
+  },
+  "homepage": "https://github.com/Michae1-Jackson/Placer#readme"
+}

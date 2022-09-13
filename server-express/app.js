@@ -2,6 +2,7 @@ require('dotenv').config();
 const http = require('node:http');
 const express = require('express');
 const socketIO = require('socket.io');
+const path = require('node:path');
 
 const serverConfig = require('./config/server.config');
 const testDatabaseConnection = require('./src/testDatabaseConnection');
@@ -20,6 +21,10 @@ serverConfig(app);
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 app.use('/apikey', keysRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client-react/build/index.html'));
+});
 
 wsServer.on('connection', (socket) => {
   socket.on('chat:outgoing', (message) => {
