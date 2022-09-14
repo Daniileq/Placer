@@ -1,0 +1,8 @@
+.place_to_go_container form{
+    display: flex;
+}
+
+.place_to_go_btn {
+    line-height: 16px;
+    padding-top: 5px;
+}

@@ -22,10 +22,10 @@ function Filters() {
   return (
     <div className="filters_container">
       <div className='category'>
-        <p>категории</p>
+        <p>КАТЕГОРИИ: </p>
         <div className="options_container">
           {filters.categories.map((category) => (
-            <div className='option_item' key={category.id}>
+            <div className='option_item font_caption' key={category.id}>
               <input
                 data-id={category.id}
                 id={`categories_${category.id}`}
@@ -52,10 +52,10 @@ function Filters() {
         </div>
       </div>
       <div className='tags'>
-        <p>тэги</p>
+        <p>ТЭГИ:</p>
         <div className="options_container">
           {filters.tags.map((tag) => (
-            <div className='option_item' key={tag.id}>
+            <div className='option_item font_caption' key={tag.id}>
               <input
                 data-id={tag.id}
                 id={`tags_${tag.id}`}

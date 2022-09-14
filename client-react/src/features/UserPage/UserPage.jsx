@@ -40,7 +40,7 @@ function UserPage() {
   return (
     <div className='profile_container'>
       <div className="profile_content">
-        <div className='backbtn'><NavLink onClick={() => navigate('/')} to='/'>На главную</NavLink></div>
+        <div className='backbtn font_button_small'><NavLink onClick={() => navigate('/')} to='/'>← На главную</NavLink></div>
         <div className='profile'>
           <div className='user_info'>
             {personLoaded
@@ -62,26 +62,30 @@ function UserPage() {
             }
           </div>
           <div className='user_data_profile'>
-            { personLoaded
+            {personLoaded
               && isUser
               && personInfo.login === user.login
               ? (
                 <>
-                <h4 className='my_data'>Мои данные</h4>
+                <div className='data_profile_container'>
+                  <h4 className='my_data'>Мои данные</h4>
+                  <NavLink className='edit_btn font_button' to="/settings">Редактировать ✐</NavLink>
+                </div>
                 <div className='details'>Логин: {personLoaded && personInfo.login}</div>
-                <div className='details'>Почта: {personLoaded && personInfo.email}</div>
+                <div className='details'>Почта: {personLoaded && user.email}</div>
                 <div className='details'>Город: {personLoaded && personInfo.city}</div>
                 </>
               )
               : (
                 <>
-                <h4 className='my_data'>Данные пользователя</h4>
+                <div className='data_profile_container'>
+                  <h4 className='my_data'>Данные пользователя</h4>
+                </div>
                 <div className='details'>Логин: {personLoaded && personInfo.login}</div>
                 <div className='details'>Город: {personLoaded && personInfo.city}</div>
                 </>
               )
               }
-
             {
               personLoaded && personInfo.sex
                 ? <div className='details'>Пол: {personInfo.sex}</div>
@@ -97,32 +101,29 @@ function UserPage() {
                 ? <div className='details'>Обо мне: {personInfo.about}</div>
                 : <div className='details'>Обо мне: не указано</div>
             }
-            { personLoaded
-              && isUser
-              && personInfo.login === user.login
-              ? <NavLink className='edit_btn' to="/settings">Редактировать</NavLink>
-              : <></>
-            }
-
           </div>
         </div>
         <div className='places'>
           <div className='my_places'>
-          { personLoaded
+          {personLoaded
               && isUser
               && personInfo.login === user.login
             ? (
-              <>
-              <h3>Мои места</h3>
-              <NavLink to="/newplace">Добавить место</NavLink>
-              </>
+              <div className='my_places_headers'>
+                <h3>Мои места</h3>
+                <NavLink to="/newplace" className='font_button' >Добавить место +</NavLink>
+              </div>
             )
-            : <h3>Места пользователя</h3>
+            : (
+              <div className='my_places_headers'>
+                <h3>Места пользователя</h3>
+              </div>
+            )
             }
-            <div className='cards'>
+            <div className='cards flex_container'>
               {personLoaded
-              && personPlaces.length
-              && personPlaces.map((place) => <CardPlace key={place.id} place={place}/>)}
+                && personPlaces.length
+                && personPlaces.map((place) => <CardPlace key={place.id} place={place} />)}
             </div>
           </div>
         </div>

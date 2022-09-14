@@ -11,6 +11,7 @@
 }
 
 .filters_container {
+  margin-right: 40px;
   display: flex;
   flex-direction: column;
   row-gap: 50px;
@@ -30,7 +31,6 @@
 .place_search_form {
   display: flex;
   flex-direction: column;
-
 }
 
 .place_input {
@@ -41,6 +41,13 @@
   line-height: 24px;
   font-size: 24px;
   transition: 0.2s;
+  margin-top: 10px;
+}
+
+.place_input::placeholder {
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
 }
 
 .place_input:hover,
@@ -49,7 +56,11 @@
 }
 
 .search_results_container {
+  padding-top: 30px;
   min-height: 100vh;
+  display: flex;
+  gap: 40px 30px;
+  flex-wrap: wrap;
 }
 
 .show_type {
