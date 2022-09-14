@@ -45,8 +45,8 @@ function PlacePage() {
                 place.PlaceImages
                   && <img
                     className="big_place_image"
-                    src={place.PlaceImages[0].src}
-                    alt={place.PlaceImages[0].title}
+                    src={place.PlaceImages.length && place.PlaceImages[0].src}
+                    alt={place.PlaceImages.length && place.PlaceImages[0].title}
                   />
               )
             }
@@ -124,7 +124,6 @@ function PlacePage() {
       <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
       <ImageSwiper />
     </div>
-  </div>
   );
 }
 
