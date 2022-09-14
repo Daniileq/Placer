@@ -22,6 +22,7 @@ function CardPlace({ place }) {
       <h4 className="card_place_title">
         {place.title}
       </h4>
+      <h5>{place.adress}</h5>
       <div className='card_place_tags'>
         {place.PlaceTags && place.PlaceTags
           .map((placeTag) => (
