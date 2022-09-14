@@ -46,6 +46,8 @@ function App() {
       ? (<Routes>
         <Route path='/' element={<Layout/>} >
           <Route index element={<Home/>} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
           {/* <Route path="/profile" element={<UserPage />} /> */}
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/newplace" element={<AddPlacePage />} />

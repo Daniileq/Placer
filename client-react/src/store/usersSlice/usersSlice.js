@@ -17,6 +17,9 @@ const loadPerson = createAsyncThunk(
       if (body.error) {
         throw new Error(body.error);
       }
+      if (!body.data) {
+        throw new Error('Пользователь не найден');
+      }
       return body.data;
     }),
 );
