@@ -2,14 +2,28 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  userPageInfo: {},
+  personInfo: {},
+  personPlaces: [],
   userLoginsToGo: [],
+  personLoaded: null,
   error: null,
 };
 
-const loadUser = createAsyncThunk(
-  'users/loadUser',
-  () => fetch('/api/users/:login')
+const loadPerson = createAsyncThunk(
+  'users/loadPerson',
+  ({ login }) => fetch(`/api/users/${login}`)
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
+const loadPersonPlaces = createAsyncThunk(
+  'users/loadPersonPlaces',
+  ({ personId }) => fetch(`/api/users/${personId}/places`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -36,17 +50,25 @@ const usersSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(loadUser.rejected, (state, action) => {
+      .addCase(loadPerson.rejected, (state, action) => {
+        state.personLoaded = false;
         state.error = action.error.message;
       })
-      .addCase(loadUser.fulfilled, (state, action) => {
-        state.userPageInfo = action.payload;
+      .addCase(loadPerson.fulfilled, (state, action) => {
+        state.personLoaded = true;
+        state.personInfo = action.payload;
       })
       .addCase(loadUserLoginsToGo.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(loadUserLoginsToGo.fulfilled, (state, action) => {
         state.userLoginsToGo = action.payload;
+      })
+      .addCase(loadPersonPlaces.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadPersonPlaces.fulfilled, (state, action) => {
+        state.personPlaces = action.payload;
       });
   },
 });
@@ -56,7 +78,7 @@ export default usersSlice.reducer;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loadUserLoginsToGo,
+  loadPerson, loadPersonPlaces, loadUserLoginsToGo,
 };
 
 /* eslint-enable no-param-reassign */

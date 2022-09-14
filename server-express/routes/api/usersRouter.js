@@ -1,5 +1,7 @@
 const usersRouter = require('express').Router();
-const { User, PlaceToGo } = require('../../db/models');
+const {
+  User, Place, PlaceToGo, PlaceTag, PlaceImage,
+} = require('../../db/models');
 
 usersRouter.get('/togo/:placeId', async (req, res) => {
   const { placeId } = req.params;
@@ -23,9 +25,10 @@ usersRouter.get('/togo/:placeId', async (req, res) => {
 usersRouter.get('/:login', async (req, res) => {
   const { login } = req.params;
   try {
-    const user = await User.findOne({
-      where: login,
+    const person = await User.findOne({
+      where: { login },
       attributes: [
+        'id',
         'login',
         'displayName',
         'photo',
@@ -35,7 +38,36 @@ usersRouter.get('/:login', async (req, res) => {
         'about',
       ],
     });
-    res.json({ data: user });
+
+    res.json({ data: person });
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+});
+
+usersRouter.get('/:personId/places/', async (req, res) => {
+  const { personId } = req.params;
+  try {
+    const personPlaces = await Place.findAll({
+      where: {
+        userId: Number(personId),
+      },
+      order: [
+        [PlaceImage, 'id', 'ASC'],
+      ],
+      include: [
+        Place.PlaceImages,
+        Place.Category,
+        Place.Likes,
+        Place.PlaceToGos,
+        {
+          model: PlaceTag,
+          include: PlaceTag.Tag,
+        },
+      ],
+    });
+
+    res.json({ data: personPlaces });
   } catch (error) {
     res.json({ error: error.message });
   }
