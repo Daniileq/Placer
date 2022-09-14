@@ -27,8 +27,8 @@ function PlaceToGoButton({ place }) {
             <form action="#" onSubmit={handlePlaceToGoSubmit}>
                 <button type='submit' className='place_to_go_btn'>
                   {isGoOn
-                    ? 'Пойду'
-                    : 'Не пойду'
+                    ? 'Хочу пойти'
+                    : 'Иду'
                   }
                 </button>
                 <div className='font_caption_small'>

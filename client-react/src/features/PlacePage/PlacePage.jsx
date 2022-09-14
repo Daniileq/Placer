@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { loadPlace, loadPlaceTags } from '../../store/placeSlice/placeSlice';
+import { loadPlace } from '../../store/placeSlice/placeSlice';
 import Map from '../Map/Map.jsx';
 import Comment from '../Comment/Comment.jsx';
 import './PlacePage.css';
 import AddComment from '../AddComment/AddComent.jsx';
 import { loadComments } from '../../store/commentSlice.js/commentSlice';
 import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
+import { loadUserLoginsToGo } from '../../store/usersSlice/usersSlice';
 
 function PlacePage() {
   const [isShow, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const userLoginsToGo = useSelector((state) => state.users.userLoginsToGo);
   const comments = useSelector((state) => state.comments.data);
   const place = useSelector((state) => state.place.data);
   const [img, setImg] = useState(null);
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
-    dispatch(loadPlaceTags(Number(id)));
+    // dispatch(loadPlaceTags(Number(id)));
     dispatch(loadComments(id));
+    dispatch(loadUserLoginsToGo({ placeId: id }));
   }, [dispatch, id]);
 
   return (
@@ -84,6 +87,11 @@ function PlacePage() {
               && place.Category
               && <p>{place.Category.title}</p>
             }
+          </div>
+          <div>
+            <span className='font_subheading_small'> Кто собирается пойти :
+            {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`}>{login}</Link>)}
+            </span>
           </div>
         </div>
       </div>

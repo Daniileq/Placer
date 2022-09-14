@@ -6,8 +6,8 @@ function PlacesToGo() {
   const placesToGo = useSelector((state) => state.places.placesToGo);
   return (
     <div>
-    {placesToGo.map((place) => <CardPlace place={place} key={place.id} />)}
-  </div>
+      {placesToGo.map((place) => <CardPlace place={place} key={place.id} />)}
+    </div>
   );
 }
 
