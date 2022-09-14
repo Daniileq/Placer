@@ -44,6 +44,12 @@
   margin-top: 10px;
 }
 
+.place_input::placeholder {
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
 .place_input:hover,
 .place_input:focus {
   border: solid 1px #ffb84e;
