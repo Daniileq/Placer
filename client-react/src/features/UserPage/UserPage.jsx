@@ -20,8 +20,8 @@ function UserPage() {
             {!user.photo && <img src={avatar} alt="фото" className="user_photo"/>}
             <div className='user_name'>{user.displayName}</div>
           </div>
-          <div className='user_data'>
-            <div className='my_data'>Мои данные</div>
+          <div className='user_data_profile'>
+            <h4 className='my_data'>Мои данные</h4>
             <div className='details'>Логин: {user.login}</div>
             <div className='details'>Почта: {user.email}</div>
             <div className='details'>Город: {user.city}</div>
