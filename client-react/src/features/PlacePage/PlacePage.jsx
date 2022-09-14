@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadPlace } from '../../store/placeSlice/placeSlice';
+
 import Map from '../Map/Map.jsx';
 import Comment from '../Comment/Comment.jsx';
 import './PlacePage.css';
@@ -14,6 +15,7 @@ function PlacePage() {
   const [isShow, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userLoginsToGo = useSelector((state) => state.users.userLoginsToGo);
   const comments = useSelector((state) => state.comments.data);
@@ -22,7 +24,6 @@ function PlacePage() {
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
-    // dispatch(loadPlaceTags(Number(id)));
     dispatch(loadComments(id));
     dispatch(loadUserLoginsToGo({ placeId: id }));
   }, [dispatch, id]);
@@ -102,13 +103,18 @@ function PlacePage() {
               }
             </div>
             <div className='place_comments'>
-              {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
+              <div>
+                {comments.length} комментарий
+                </div>
+              {comments.length
+                && comments.map((comment) => <Comment key={comment.id} comment={comment}/>)
+              }
               {!isShow
                 && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>Добавить комментарий</button>
               }
             </div>
               {isShow && <AddComment />}
-              <ImageSwiper />
+        <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
     </div>
   );
 }
