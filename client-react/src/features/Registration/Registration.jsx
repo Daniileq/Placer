@@ -35,8 +35,8 @@ function Registration() {
   }, [isUser, navigate]);
 
   return (
-    <>
-      <div>
+    <div className='registration_container'>
+      <div className='registration_form_div'>
         <form className="registration_form" onSubmit={regSubmit}>
           <h4>Регистрация</h4>
 
@@ -91,7 +91,7 @@ function Registration() {
           <button className='registration_btn' type="submit">Зарегистрироваться</button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
