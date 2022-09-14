@@ -1,5 +1,6 @@
 const apiRouter = require('express').Router();
 
+const usersRouter = require('./api/usersRouter');
 const tagsRouter = require('./api/tagsRouter');
 const categoriesRouter = require('./api/categoriesRouter');
 const searchRouter = require('./api/searchRouter');
@@ -10,6 +11,7 @@ const placestogoRouter = require('./api/placestogoRouter');
 const togosRouter = require('./api/togosRouter');
 const userSettingsRouter = require('./api/userSettingsRouter');
 
+apiRouter.use('/users', usersRouter);
 apiRouter.use('/tags', tagsRouter);
 apiRouter.use('/categories', categoriesRouter);
 apiRouter.use('/search', searchRouter);
