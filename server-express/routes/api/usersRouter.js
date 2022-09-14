@@ -36,6 +36,7 @@ usersRouter.get('/:login', async (req, res) => {
         'sex',
         'city',
         'about',
+        'tgUsername',
       ],
     });
 

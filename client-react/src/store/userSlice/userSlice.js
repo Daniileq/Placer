@@ -12,6 +12,7 @@ const initialState = {
     sex: null,
     city: null,
     about: null,
+    tgUsername: null,
     places: [],
     isAdmin: null,
   },
@@ -174,6 +175,7 @@ const userSlice = createSlice({
           sex: null,
           city: null,
           about: null,
+          tgUsername: null,
           isAdmin: null,
         };
       })
