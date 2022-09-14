@@ -10,7 +10,7 @@ module.exports = {
           email: 'vitalya@italy.it',
           login: 'Виталя',
           displayName: 'Vetal',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1200px-User_icon-cp.svg.png',
           age: '28',
@@ -24,7 +24,7 @@ module.exports = {
           email: 'lexa@gmail.com',
           login: 'Алексей',
           displayName: 'Лёха',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -38,7 +38,7 @@ module.exports = {
           email: 'tamara@gmail.com',
           login: 'Тамара',
           displayName: 'Tamara',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '20',
@@ -52,7 +52,7 @@ module.exports = {
           email: 'oscar@gmail.com',
           login: 'Оскар',
           displayName: 'Oskar',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -66,7 +66,7 @@ module.exports = {
           email: 'vika@gmail.com',
           login: 'Вика',
           displayName: 'Vika',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '20',
@@ -80,7 +80,7 @@ module.exports = {
           email: 'kristina@gmail.com',
           login: 'Кристина',
           displayName: 'Kristina',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '20',
@@ -94,7 +94,7 @@ module.exports = {
           email: 'denis@gmail.com',
           login: 'Денис',
           displayName: 'Denis',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -108,7 +108,7 @@ module.exports = {
           email: 'daniil@gmail.com',
           login: 'Даниил',
           displayName: 'Danya',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -122,7 +122,7 @@ module.exports = {
           email: 'adam@gmail.com',
           login: 'Aдам',
           displayName: 'Adam',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -136,7 +136,7 @@ module.exports = {
           email: 'vadim@gmail.com',
           login: 'Вадим',
           displayName: 'Vadim',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -150,7 +150,7 @@ module.exports = {
           email: 'sergey@gmail.com',
           login: 'Сергей',
           displayName: 'Serega',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -164,7 +164,7 @@ module.exports = {
           email: 'kirill@gmail.com',
           login: 'Кирилл',
           displayName: 'Kirill',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
@@ -178,7 +178,7 @@ module.exports = {
           email: 'vladimir@gmail.com',
           login: 'Владимир',
           displayName: 'Vladimir',
-          password,
+          password: 'Qwerty12',
           photo:
             'https://memepedia.ru/wp-content/uploads/2017/08/%D0%B3%D0%B4%D0%B5-%D0%BB%D0%B5%D1%85%D0%B0-2.jpg',
           age: '30',
