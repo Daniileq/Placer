@@ -1,7 +1,7 @@
-import React, { useEffect, useState, Link } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { loadPlace, loadPlaceTags } from '../../store/placeSlice/placeSlice';
+import { loadPlace } from '../../store/placeSlice/placeSlice';
 import Map from '../Map/Map.jsx';
 import Comment from '../Comment/Comment.jsx';
 import './PlacePage.css';
@@ -22,7 +22,7 @@ function PlacePage() {
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
-    dispatch(loadPlaceTags(Number(id)));
+    // dispatch(loadPlaceTags(Number(id)));
     dispatch(loadComments(id));
     dispatch(loadUserLoginsToGo({ placeId: id }));
   }, [dispatch, id]);
@@ -90,7 +90,7 @@ function PlacePage() {
           </div>
           <div>
             <span className='font_subheading_small'> Кто собирается пойти :
-            {userLoginsToGo.map((login) => <Link to={`/${login}`}>{login}</Link>)}
+            {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`}>{login}</Link>)}
             </span>
           </div>
         </div>
