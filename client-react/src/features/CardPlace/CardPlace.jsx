@@ -38,8 +38,10 @@ function CardPlace({ place }) {
         </p>
         <div className='card_place_buttons'>
           {isUser && <LikeButton place={place} />}
-          <button className="more_button font_button_small" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
           {isUser && <PlaceToGoButton place={place} />}
+        </div>
+        <div className='card_place_more'>
+          <button className="more_button font_button_small" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
         </div>
       </div>
     </div>

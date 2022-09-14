@@ -57,7 +57,7 @@ function LikeButton({ place }) {
               : svgHeart}
           </button>
         </form>
-        <div className="current_likes font_caption_small">
+        <div className="current_likes font_caption">
           {place.Likes.filter(
             (like) => like.userId !== userId,
           ).length + Number(isLiked)}

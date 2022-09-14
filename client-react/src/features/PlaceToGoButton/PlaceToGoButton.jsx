@@ -25,13 +25,13 @@ function PlaceToGoButton({ place }) {
   return (
         <div className='place_to_go_container'>
             <form action="#" onSubmit={handlePlaceToGoSubmit}>
-                <button type='submit' className='place_to_go_btn'>
+                <button type='submit' className='place_to_go_btn font_caption_small'>
                   {isGoOn
                     ? 'Хочу пойти'
                     : 'Иду'
                   }
                 </button>
-                <div className='font_caption_small'>
+                <div className='font_caption'>
                   {place.PlaceToGos.filter(
                     (placetogo) => placetogo.userId !== userId,
                   ).length + Number(isGoOn)}
