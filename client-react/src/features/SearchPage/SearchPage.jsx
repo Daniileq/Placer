@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Filters from '../Filters/Filters.jsx';
 import CardPlace from '../CardPlace/CardPlace.jsx';
+import BigMap from '../Map/BigMap.jsx';
 import './SearchPage.css';
 
 import {
@@ -13,6 +14,7 @@ import Loader from '../Loader/Loader.jsx';
 
 function SearchPage() {
   const dispatch = useDispatch();
+  const [islist, setIsList] = useState(true);
 
   const {
     filters, activeFilters, loading, keywordPlaces, keyword,
@@ -76,9 +78,20 @@ function SearchPage() {
                 placeholder='Введите ключевые слова...'
               />
             </form>
+            <div className='show_type'>
+              <div className={islist ? 'list active' : 'list'} onClick={() => setIsList(true)}>Списком</div>
+              <div className={!islist ? 'map active' : 'map'} onClick={() => setIsList(false)}>На карте</div>
+            </div>
             <div className='search_results_container'>
               {loading && <Loader />}
-              {!loading && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
+              {islist
+                && !loading
+                && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)
+              }
+              {!islist
+                && !loading
+                && <BigMap />
+              }
             </div>
           </div>
         </div>
