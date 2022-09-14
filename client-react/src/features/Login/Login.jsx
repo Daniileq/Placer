@@ -11,9 +11,12 @@ function Login() {
   const navigate = useNavigate();
 
   // Удаление helpMessage при размонтировании компонента
-  useEffect(() => () => {
-    dispatch(disableHelpMessage());
-  }, [dispatch]);
+  useEffect(
+    () => () => {
+      dispatch(disableHelpMessage());
+    },
+    [dispatch],
+  );
 
   function loginSubmit(event) {
     event.preventDefault();
@@ -31,41 +34,39 @@ function Login() {
   }, [isUser, navigate]);
 
   return (
-    <>
-      <div className="App">
-        <div className="login_form_conteiner">
-          <form className="login_form" onSubmit={loginSubmit}>
-            <h4>Вход</h4>
-            <label htmlFor="emailInput" >Email</label>
-              <input
-                className='font_caption'
-                type="email"
-                name="email"
-                id='emailInput'
-                placeholder="Email"
-                pattern="^\S+@\S+\.\S+$"
-                title='Почта должна быть указана в формате email@mail.com'
-                required
-              />
-            <label htmlFor="passwordInput">Пароль</label>
-              <input
-                className='font_caption'
-                type="password"
-                name="password"
-                id='passwordInput'
-                placeholder="Пароль"
-                // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
-                required
-              />
-            { helpMessage && <div className="helpText">{helpMessage}</div>}
-            <button className='login_btn' type="submit">
-              Войти
-            </button>
-          </form>
-        </div>
+    <div className="login_container">
+      <div className="login_form_div">
+        <form className="login_form" onSubmit={loginSubmit}>
+          <h4>Вход</h4>
+          <label htmlFor="emailInput">Email</label>
+          <input
+            className="font_caption"
+            type="email"
+            name="email"
+            id="emailInput"
+            placeholder="Email"
+            pattern="^\S+@\S+\.\S+$"
+            title="Почта должна быть указана в формате email@mail.com"
+            required
+          />
+          <label htmlFor="passwordInput">Пароль</label>
+          <input
+            className="font_caption"
+            type="password"
+            name="password"
+            id="passwordInput"
+            placeholder="Пароль"
+            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
+            required
+          />
+          {helpMessage && <div className="helpText">{helpMessage}</div>}
+          <button className="login_btn" type="submit">
+            Войти
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 

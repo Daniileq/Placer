@@ -50,12 +50,12 @@ function UserPage() {
             { personLoaded && !personInfo.photo && <img src={avatar} alt="фото" className="user_photo"/>}
             <div className='user_name'>{user.displayName}</div>
           </div>
-          <div className='user_data'>
+          <div className='user_data_profile'>
             { personLoaded
               && isUser
               && personInfo.login === user.login
-              ? <div className='my_data'>Мои данные</div>
-              : <div className='my_data'>Данные пользователя:</div>}
+              ? <h4 className='my_data'>Мои данные</h4>
+              : <h4 className='my_data'>Данные пользователя</h4>}
             <div className='details'>Логин: {personLoaded && personInfo.login}</div>
             <div className='details'>Почта: {personLoaded && personInfo.email}</div>
             <div className='details'>Город: {personLoaded && personInfo.city}</div>
