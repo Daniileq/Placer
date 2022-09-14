@@ -1,8 +1,10 @@
+import './Contacts.css';
+
 function Contacts() {
   return (
-    <>
-      <p>Россия, Санкт-Петербург, ул. Кирочная, д. 19</p>
-    </>
+    <div className="contacts_container">
+      <h5>Россия, Санкт-Петербург, ул. Кирочная, д. 19</h5>
+    </div>
   );
 }
 

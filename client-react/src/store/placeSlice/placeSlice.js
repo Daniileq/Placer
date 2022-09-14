@@ -75,17 +75,6 @@ const placeSlice = createSlice({
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(loadPlaceTags.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(loadPlaceTags.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
-      .addCase(loadPlaceTags.fulfilled, (state, action) => {
-        state.loading = false;
-        state.tags = action.payload;
-      })
       .addCase(editPlace.pending, (state) => {
         state.loading = true;
       })
