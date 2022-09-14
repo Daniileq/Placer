@@ -52,3 +52,18 @@
   display: flex;
   justify-content: space-around;
 }
+
+.more_button{
+  background-color: #f4d3a1;
+  color: #ff733b;
+  font-size: 16px;
+  padding: 12px 20px;
+  margin-left: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.card_place_title{
+  text-align: center;
+}
