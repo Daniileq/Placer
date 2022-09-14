@@ -30,9 +30,8 @@ function AddPlacePage() {
       myMap.events.add('click', (e) => {
         const coords = e.get('coords');
 
-        console.log(coords);
         // Если метка уже создана – просто передвигаем ее.
-       
+
         setLongitude(coords[0]);
         setLatitude(coords[1]);
         // eslint-disable-next-line no-undef
@@ -43,11 +42,10 @@ function AddPlacePage() {
             preset: 'islands#blueIcon',
           },
         );
-         myMap.geoObjects.add(myPlacemark);
-        // if(myPlacemark){
-
-        // }
-        console.log(myPlacemark);
+        if (myPlacemark) {
+          myMap.geoObjects.removeAll();
+        }
+        myMap.geoObjects.add(myPlacemark);
       });
     });
   }, []);
