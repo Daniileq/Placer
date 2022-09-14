@@ -12,6 +12,7 @@ import About from './About/About.jsx';
 import Contacts from './Contacts/Contacts.jsx';
 import Error404 from './ErrorPages/Error404/Error404.jsx';
 import PlacesToGo from './PlacesToGo/PlacesToGo.jsx';
+import EditPlacePage from './EditPlacePage/EditPlacePage.jsx';
 
 import './App.css';
 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           {/* <Route path="/profile" element={<UserPage />} /> */}
           <Route path="/places/:id" element={<PlacePage />} />
+          <Route path="/places/:id/edit" element={<EditPlacePage />} />
           <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
           <Route path="/favorites" element={<FavoritesPage />} />

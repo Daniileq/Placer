@@ -6,7 +6,7 @@ const { User, Place, PlaceTag } = require('../db/models');
 authRouter.post('/registration', async (req, res) => {
   try {
     const {
-      displayName, email, login, city, password, repeatPass,
+      displayName, email, login, city, password, repeatPass, tgUsername,
     } = req.body;
 
     const routesArr = ['profile', 'newplace', 'settings', 'favorites', 'about', 'contacts', 'togo', 'registration', 'login', 'places'];
@@ -69,6 +69,7 @@ authRouter.post('/registration', async (req, res) => {
       sex: '',
       city,
       about: '',
+      tgUsername,
       isAdmin: false,
     });
 
@@ -82,6 +83,7 @@ authRouter.post('/registration', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
+      tgUsername: user.tgUsername,
       places: [],
       isAdmin: user.isAdmin,
     };
@@ -149,6 +151,7 @@ authRouter.post('/login', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
+      tgUsername: user.tgUsername,
       places: userPlaces,
       isAdmin: user.isAdmin,
     };
@@ -172,6 +175,7 @@ authRouter.delete('/logout', (req, res) => {
 
 authRouter.get('/', (req, res) => {
   const { user } = req.session;
+  console.log(user);
   if (user) {
     res.json({ isUser: true, user });
   } else {

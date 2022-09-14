@@ -49,7 +49,7 @@
   left: 91px;
   right: 91px;
   bottom: 113px;
-  width: 178px;
+  width: 250px;
   height: 34px;
   text-align: center;
   font-size: 28px;
@@ -108,4 +108,15 @@
  display: flex;
  align-items: baseline;
  justify-content: space-between;
+}
+
+.tg_btn {
+  background-color: #f4d3a1;
+  color: #ff733b;
+  font-size: 16px;
+  padding: 12px 20px;
+  margin-left: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
 }

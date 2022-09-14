@@ -1,7 +1,7 @@
 const placeRouter = require('express').Router();
 
 const {
-  Place, Tag, PlaceTag, PlaceImage,
+  Place, Tag, PlaceTag, PlaceImage, Comment,
 } = require('../../db/models');
 const upload = require('../../src/upload');
 
@@ -91,11 +91,45 @@ placeRouter.get('/:id', async (req, res) => {
   }
 });
 
+placeRouter.get('/:id/delete', async (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    const place = await Place.findOne({
+      where: { id },
+    });
+    place.isDeleted = true;
+    await place.save();
+
+    res.json({
+      data: place,
+    });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
+placeRouter.put('/:id/edit', async (req, res) => {
+  // Приходит пустой обЪект
+  console.log(req.body);
+  try {
+    // res.json({
+    //   data:
+    // });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
 placeRouter.get('/:id/comments', async (req, res) => {
   const placeId = Number(req.params.id);
   try {
     const comments = await Comment.findAll({
       where: { placeId },
+      order: [['createdAt', 'ASC']],
       include: Comment.User,
     });
     res.json({
@@ -111,17 +145,18 @@ placeRouter.get('/:id/comments', async (req, res) => {
 placeRouter.post('/:id/comments', async (req, res) => {
   const { content, placeId } = req.body;
   try {
-    await Comment.create({
+    const newComment = await Comment.create({
       content,
       userId: req.session.user.id,
       placeId,
     });
-    const newComment = await Comment.findOne({
-      where: { placeId },
-      include: Comment.User,
-    });
     res.json({
-      data: newComment,
+      data: {
+        content: newComment.content,
+        User: {
+          displayName: req.session.user.displayName,
+        },
+      },
     });
   } catch (error) {
     res.json({

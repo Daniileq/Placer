@@ -16,6 +16,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
       sex,
       age,
       about,
+      tgUsername,
       password,
       repeatPass,
     } = req.body;
@@ -80,6 +81,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
           sex,
           age,
           about,
+          tgUsername,
           password: hash,
         },
         {
@@ -100,11 +102,10 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         sex: updatedUser.sex,
         city: updatedUser.city,
         about: updatedUser.about,
+        tgUsername: updatedUser.tgUsername,
         isAdmin: updatedUser.isAdmin,
       };
     } else {
-      console.log('нет пароля', password);
-
       let updatedUser = await User.update(
         {
           photo: req.file ? `/images/${req.file.filename}` : uniqUser.photo,
@@ -115,6 +116,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
           sex,
           age,
           about,
+          tgUsername,
         },
         {
           where: { id },
@@ -134,6 +136,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         sex: updatedUser.sex,
         city: updatedUser.city,
         about: updatedUser.about,
+        tgUsername: updatedUser.tgUsername,
         isAdmin: updatedUser.isAdmin,
       };
     }

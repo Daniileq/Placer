@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import './UserSettingsPage.css';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeUser,
@@ -14,9 +14,10 @@ import avatar from './images/avatar.png';
 function UserSettingsPage() {
   const [upload, setUpload] = useState(null);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const user = useSelector((state) => state.user.data);
   const helpMessage = useSelector((state) => state.user.helpMessage);
+
+  console.log(user);
 
   useEffect(
     () => () => {
@@ -25,15 +26,8 @@ function UserSettingsPage() {
     [dispatch],
   );
 
-  // const photoSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.target);
-  //   dispatch(changeUserPhoto({ data, userId: user.id }));
-  // };
-
   const photoUpload = () => {
     const data = new FormData();
-    console.log(upload);
     data.append('photo', upload);
     dispatch(changeUserPhoto({ data, userId: user.id }));
   };
@@ -49,7 +43,7 @@ function UserSettingsPage() {
       <div className="profile_container">
         <div className="profile_content">
           <div className="backbtn">
-            <NavLink to="/profile">Назад</NavLink>
+            <NavLink to={`/${user.login}`}>Назад</NavLink>
           </div>
           <div className="profile">
             <div className="user_info">
@@ -70,16 +64,6 @@ function UserSettingsPage() {
                   </label>
                   {/* <div class="input-file-list"></div> */}
                 </div>
-
-                {/* <form onSubmit={photoSubmit} className="user_photo_form">
-                 <input
-                  name="photo"
-                  className="photoInput"
-                  type="file"
-                  accept="image/*,.png,.jpg,.jpeg"
-                />
-                <button className='user_settings_btn' type='submit'>Изменить фото</button>
-              </form> */}
               </div>
               <button onClick={photoUpload} className="user_settings_btn" type="button">
                     Изменить фото
@@ -88,13 +72,6 @@ function UserSettingsPage() {
             <div className="user_data">
               <form onSubmit={settingsSubmit} className="user_settings_form">
                 <h4 className="my_data">Редактирование пользователя</h4>
-
-                {/* <input
-                  name="photo"
-                  className="photoInput"
-                  type="file"
-                  accept="image/*,.png,.jpg,.jpeg"
-                /> */}
 
                 <div className="field">
                   <label htmlFor="nameInput">Имя:</label>
@@ -166,6 +143,17 @@ function UserSettingsPage() {
                     id="aboutInput"
                     placeholder="Возраст"
                     defaultValue={user.age}
+                  />
+                </div>
+
+                <div className="field">
+                  <label htmlFor="tgUsername">Ссылка на телеграмм:</label>
+                  <input
+                    type="text"
+                    name="tgUsername"
+                    id="tgUsername"
+                    placeholder="Ссылка на телеграмм"
+                    defaultValue={user.tgUsername}
                   />
                 </div>
 

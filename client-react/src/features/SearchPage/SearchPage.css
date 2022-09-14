@@ -62,3 +62,32 @@
   gap: 40px 30px;
   flex-wrap: wrap;
 }
+
+.show_type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30vw;
+}
+
+.list,
+.map {
+  text-overflow: clip;
+  padding: 4px 14px;
+  border-radius: 4px;
+  border: solid 1px #f4d3a1;
+  color: #ff6600;
+  height: 4vh;
+  width: 14vw;
+  font-size: 18px;
+  text-align: center;
+  transition: 0.2s;
+  /* -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; */
+}
+
+.active {
+  background-color: #f4d3a1;
+}
