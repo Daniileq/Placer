@@ -22,7 +22,7 @@ function AddComment() {
   return (
     <form onSubmit={handleSubmit}>
       <input type='text' name='content' />
-      <button type='submit'>Отправить</button>
+      <button type='submit'>Добавить комментарий</button>
     </form>
   );
 }

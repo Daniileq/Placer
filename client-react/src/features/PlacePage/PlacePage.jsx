@@ -11,7 +11,7 @@ import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
 import { loadUserLoginsToGo } from '../../store/usersSlice/usersSlice';
 
 function PlacePage() {
-  const [isShow, setShow] = useState(false);
+  // const [isShow, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -103,11 +103,15 @@ function PlacePage() {
             </div>
             <div className='place_comments'>
               {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
-              {!isShow
-                && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>Добавить комментарий</button>
-              }
+              <div>
+                <AddComment />
+              </div>
+              {/* {!isShow
+                && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>
+                </button>
+              } */}
             </div>
-              {isShow && <AddComment />}
+              {/* {isShow && <AddComment />} */}
               <ImageSwiper />
     </div>
   );
