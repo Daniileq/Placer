@@ -46,7 +46,7 @@ function App() {
       ? (<Routes>
         <Route path='/' element={<Layout/>} >
           <Route index element={<Home/>} />
-          <Route path="/profile" element={<UserPage />} />
+          {/* <Route path="/profile" element={<UserPage />} /> */}
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/newplace" element={<AddPlacePage />} />
           <Route path='/settings' element={<UserSettingsPage/>} />
@@ -54,6 +54,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/togo" element={<PlacesToGo />} />
+          <Route path='/:login' element={<UserPage />} />
           <Route path='*' element={<Error404 />} />
         </Route>
       </Routes>) : (<Routes>
