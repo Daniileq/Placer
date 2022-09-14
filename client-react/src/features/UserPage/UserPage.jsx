@@ -6,6 +6,7 @@ import avatar from './images/avatar.png';
 import './UserPage.css';
 
 import { loadPerson, loadPersonPlaces } from '../../store/usersSlice/usersSlice';
+import Loader from '../Loader/Loader.jsx';
 
 function UserPage() {
   const dispatch = useDispatch();
@@ -13,12 +14,12 @@ function UserPage() {
   const user = useSelector((state) => state.user.data);
   const { personInfo, personPlaces, personLoaded } = useSelector((state) => state.users);
   const { login } = useParams();
+  console.log(login);
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadPerson({ login }));
     return () => {
-
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -30,6 +31,12 @@ function UserPage() {
     }
     dispatch(loadPersonPlaces({ personId: personInfo.id }));
   }, [navigate, dispatch, personLoaded, personInfo]);
+
+  if (personLoaded === null) {
+    return (
+      <Loader />
+    );
+  }
 
   return (
     <div className='profile_container'>
@@ -44,8 +51,8 @@ function UserPage() {
             <div className='user_name'>{user.displayName}</div>
           </div>
           <div className='user_data'>
-            { isUser
-              && personLoaded
+            { personLoaded
+              && isUser
               && personInfo.login === user.login
               ? <div className='my_data'>Мои данные</div>
               : <div className='my_data'>Данные пользователя:</div>}
