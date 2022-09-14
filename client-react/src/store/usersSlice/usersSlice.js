@@ -21,7 +21,7 @@ const loadUser = createAsyncThunk(
 
 const loadUserLoginsToGo = createAsyncThunk(
   'users/loadUserLoginsToGo',
-  () => fetch('/api/users/togo')
+  ({ placeId }) => fetch(`/api/users/togo/${placeId}`)
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -40,15 +40,13 @@ const usersSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(loadUser.fulfilled, (state, action) => {
-        console.log(state);
-        console.log(action);
+        state.userPageInfo = action.payload;
       })
       .addCase(loadUserLoginsToGo.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(loadUserLoginsToGo.fulfilled, (state, action) => {
-        console.log(state);
-        console.log(action);
+        state.userLoginsToGo = action.payload;
       });
   },
 });
