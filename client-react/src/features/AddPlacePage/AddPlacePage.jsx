@@ -3,14 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadCategories, loadTags } from '../../store/searchSlice/searchSlice';
 import { addPlace } from '../../store/addPlaceSlice/addPlaceSlice';
 import './AddPlacePage.css';
-import { useState } from 'react';
 
 function AddPlacePage() {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.search.filters);
 
-  const[coord, SetCoord] = useState('');
-  
+  let myPlacemark;
   useEffect(() => {
     ymaps.ready(() => {
       const myMap = new ymaps.Map(
