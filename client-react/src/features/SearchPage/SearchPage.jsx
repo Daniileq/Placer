@@ -64,8 +64,8 @@ function SearchPage() {
           </div>
 
           <div className='search_right_column'>
-            <form className='place_search_form' method="get">
-              <label htmlFor="place_input">поиск:</label>
+            <form className='place_search_form font_subheading_small' method="get">
+              <label htmlFor="place_input">ПОИСК:</label>
               <input
                 id='place_input'
                 name='place_input'
