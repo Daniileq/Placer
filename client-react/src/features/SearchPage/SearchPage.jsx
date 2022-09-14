@@ -82,17 +82,17 @@ function SearchPage() {
               <div className={islist ? 'list active' : 'list'} onClick={() => setIsList(true)}>Списком</div>
               <div className={!islist ? 'map active' : 'map'} onClick={() => setIsList(false)}>На карте</div>
             </div>
-            <div className='search_results_container'>
               {loading && <Loader />}
-              {islist
-                && !loading
-                && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)
+              {!loading
+                && islist
+                ? (
+                  <div className='search_results_container'>
+                    {keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
+                  </div>
+                ) : (
+                  <BigMap />
+                )
               }
-              {!islist
-                && !loading
-                && <BigMap />
-              }
-            </div>
           </div>
         </div>
       </div>
