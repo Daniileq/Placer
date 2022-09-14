@@ -7,8 +7,9 @@ usersRouter.get('/togo/:placeId', async (req, res) => {
     const userLoginsToGo = (await User.findAll({
       include: {
         model: PlaceToGo,
-        where: Number(placeId),
-
+        where: {
+          placeId: Number(placeId),
+        },
       },
       attributes: ['login'],
     })).map((user) => user.login);
