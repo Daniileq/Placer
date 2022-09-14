@@ -22,6 +22,7 @@ searchRouter.get('/', async (req, res) => {
 
     const getPlaces = async () => {
       const places = await Place.findAll({
+        where: { isDeleted: false },
         order: [
           [PlaceImage, 'id', 'ASC'],
         ],
