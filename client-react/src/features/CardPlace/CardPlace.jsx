@@ -24,7 +24,7 @@ function CardPlace({ place }) {
           {place.title}
         </h4>
         <h5>{place.adress}</h5>
-        <div className='card_place_tags'>
+        <div className='card_place_tags font_caption_small'>
           {place.PlaceTags && place.PlaceTags
             .map((placeTag) => (
               <div key={placeTag.Tag.id} className='card_place_tag'>
@@ -38,7 +38,7 @@ function CardPlace({ place }) {
         </p>
         <div className='card_place_buttons'>
           {isUser && <LikeButton place={place} />}
-          <button className="more_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
+          <button className="more_button font_button_small" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
           {isUser && <PlaceToGoButton place={place} />}
         </div>
       </div>

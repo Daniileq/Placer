@@ -2,35 +2,33 @@
   width: 426px;
   background-color: #F4ECE0;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 
 .card_place_image {
   border-radius: 8px 8px 0px 0px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 426px;
   min-height: 213px;
-}
-
-.card_place_image img {
   max-width: 100%;
 }
 
+.card_place_image img {
+  height: 300px;
+}
+
 .card_place_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 10px 20px 30px 20px ;
   text-align: center;
 }
 
 .card_place_tags {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
+  gap: 10px 14px;
 }
 
 .card_place_tag {
@@ -51,11 +49,10 @@
 }
 
 .more_button {
+  min-width: 120px;
   background-color: #f4d3a1;
   color: #ff733b;
   font-size: 16px;
-  padding: 12px 20px;
-  margin-left: 16px;
   border-radius: 8px;
   cursor: pointer;
   border: none;
