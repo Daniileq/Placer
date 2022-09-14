@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-
 import './CardPlace.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PlaceToGoButton from '../PlaceToGoButton/PlaceToGoButton.jsx';
 import LikeButton from '../LikeButton/LikeButton.jsx';
 
 function CardPlace({ place }) {
+  const navigate = useNavigate();
   const isUser = useSelector((state) => state.user.isUser);
   return (
     <div className='card_place'>
@@ -20,9 +20,7 @@ function CardPlace({ place }) {
         }
       </div>
       <h4 className="card_place_title">
-        <Link to={`/places/${place.id}`}>
-          {place.title}
-        </Link>
+        {place.title}
       </h4>
       <div className='card_place_tags'>
         {place.PlaceTags && place.PlaceTags
@@ -38,6 +36,7 @@ function CardPlace({ place }) {
       </p>
       <div className='card_place_buttons'>
       {isUser && <LikeButton place={place} />}
+      <button className="more_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
       {isUser && <PlaceToGoButton place={place}/>}
       </div>
     </div>
