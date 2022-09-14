@@ -45,6 +45,9 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      tgUsername: {
+        type: Sequelize.TEXT,
+      },
       isAdmin: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

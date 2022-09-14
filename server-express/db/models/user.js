@@ -79,6 +79,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    tgUsername: {
+      type: DataTypes.TEXT,
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
