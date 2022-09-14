@@ -101,6 +101,13 @@ footer a {
   padding: 0 135px;
 }
 
+.flex_container {
+  display: flex;
+  gap: 40px 30px;
+  padding-top: 30px;
+  flex-wrap: wrap;
+}
+
 .font_subheading,
 .font_subheading_small {
   font-weight: 600;
