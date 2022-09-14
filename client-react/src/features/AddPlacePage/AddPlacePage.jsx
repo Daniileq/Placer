@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCategories, loadTags } from '../../store/searchSlice/searchSlice';
 import { addPlace } from '../../store/addPlaceSlice/addPlaceSlice';
@@ -7,6 +7,9 @@ import './AddPlacePage.css';
 function AddPlacePage() {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.search.filters);
+
+  const [longitude, setLongitude] = useState(null);
+  const [latitude, setLatitude] = useState(null);
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
@@ -20,24 +23,30 @@ function AddPlacePage() {
         },
         {
           searchControlProvider: 'yandex#search',
-        }
+        },
       );
 
       // Слушаем клик на карте.
       myMap.events.add('click', (e) => {
-        let coords = e.get('coords');
+        const coords = e.get('coords');
 
         console.log(coords);
         // Если метка уже создана – просто передвигаем ее.
+       
+        setLongitude(coords[0]);
+        setLatitude(coords[1]);
+        // eslint-disable-next-line no-undef
         const myPlacemark = new ymaps.Placemark(
           [coords[0], coords[1]],
           {},
           {
             preset: 'islands#blueIcon',
-          }
+          },
         );
+         myMap.geoObjects.add(myPlacemark);
+        // if(myPlacemark){
 
-        myMap.geoObjects.add(myPlacemark);
+        // }
         console.log(myPlacemark);
       });
     });
@@ -70,11 +79,22 @@ function AddPlacePage() {
       >
         карта
       </div>
-      {/* <label htmlFor="longitude">Долгота:</label>
-      <input id="longitude" name="longitude" required />
+      <label htmlFor="longitude">Долгота:</label>
+      <input
+        id="longitude"
+        name="longitude"
+        value={longitude}
+        onChange={(event) => setLongitude(Number(event.target.value))}
+        required
+      />
       <label htmlFor="latitude">Широта:</label>
-      <input id="latitude" name="latitude" required /> */}
-      {/* </div> */}
+      <input
+        id="latitude"
+        name="latitude"
+        value={latitude}
+        onChange={(event) => setLatitude(Number(event.target.value))}
+        required
+      />
       <label htmlFor="placeImages">Фотографии места:</label>
       <input
         type="file"
