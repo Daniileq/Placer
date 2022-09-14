@@ -9,6 +9,7 @@ const likesRouter = require('./api/likesRouter');
 const placestogoRouter = require('./api/placestogoRouter');
 const togosRouter = require('./api/togosRouter');
 const userSettingsRouter = require('./api/userSettingsRouter');
+const userPhotoRouter = require('./api/userPhotoRouter ');
 
 apiRouter.use('/tags', tagsRouter);
 apiRouter.use('/categories', categoriesRouter);
@@ -16,6 +17,7 @@ apiRouter.use('/search', searchRouter);
 apiRouter.use('/place', placeRouter);
 apiRouter.use('/favorites', favoriteRouter);
 apiRouter.use('/changeuser', userSettingsRouter);
+apiRouter.use('/changeuserphoto', userPhotoRouter);
 apiRouter.use('/likes', likesRouter);
 apiRouter.use('/placetogo', placestogoRouter);
 apiRouter.use('/togos', togosRouter);
