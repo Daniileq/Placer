@@ -19,26 +19,28 @@ function CardPlace({ place }) {
           />
         }
       </div>
-      <h4 className="card_place_title">
-        {place.title}
-      </h4>
-      <h5>{place.adress}</h5>
-      <div className='card_place_tags'>
-        {place.PlaceTags && place.PlaceTags
-          .map((placeTag) => (
-            <div key={placeTag.Tag.id} className='card_place_tag'>
-              {placeTag.Tag.title}
-            </div>
-          ))
-        }
-      </div>
-      <p className="card_place_text">
-        {place.description.length && place.description}
-      </p>
-      <div className='card_place_buttons'>
-      {isUser && <LikeButton place={place} />}
-      <button className="more_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
-      {isUser && <PlaceToGoButton place={place}/>}
+      <div className='card_place_content'>
+        <h4 className="card_place_title">
+          {place.title}
+        </h4>
+        <h5>{place.adress}</h5>
+        <div className='card_place_tags'>
+          {place.PlaceTags && place.PlaceTags
+            .map((placeTag) => (
+              <div key={placeTag.Tag.id} className='card_place_tag'>
+                {placeTag.Tag.title}
+              </div>
+            ))
+          }
+        </div>
+        <p className="card_place_text">
+          {place.description.length && place.description}
+        </p>
+        <div className='card_place_buttons'>
+          {isUser && <LikeButton place={place} />}
+          <button className="more_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>
+          {isUser && <PlaceToGoButton place={place} />}
+        </div>
       </div>
     </div>
   );
