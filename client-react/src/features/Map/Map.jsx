@@ -6,8 +6,8 @@ function Map({ place }) {
     let myMap;
     ymaps.ready(() => {
       myMap = new ymaps.Map('YMapsID', {
-        center: [59.94, 30.32],
-        zoom: 10,
+        center: [place.longitude, place.latitude],
+        zoom: 12,
         controls: ['routeButtonControl'],
       });
 
