@@ -12,7 +12,7 @@ import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
 import { loadUserLoginsToGo } from '../../store/usersSlice/usersSlice';
 
 function PlacePage() {
-  const [isShow, setShow] = useState(false);
+  // const [isShow, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -97,25 +97,34 @@ function PlacePage() {
         </div>
       </div>
       <div className='place_map'>
-              {
-                place.longitude
-                && <Map place={place} />
-              }
-            </div>
-            <div className='place_comments'>
-              <div>
-                {comments.length} комментарий
-                </div>
-              {comments.length
-                && comments.map((comment) => <Comment key={comment.id} comment={comment}/>)
-              }
-              {!isShow
-                && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>Добавить комментарий</button>
-              }
-            </div>
-              {isShow && <AddComment />}
-        <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+        {
+          place.longitude
+          && <Map place={place} />
+        }
+      </div>
+      <div className='place_comments'>
+        <h3>Комментарии</h3>
+        <div>
+          {comments.length} комментариев
+        </div>
+        {
+          <div>
+            {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
+          </div>
+        }
+        <div>
+          <AddComment />
+        </div>
+        {/* {!isShow
+            && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>
+            </button>
+        } */}
+        {/* {isShow && <AddComment />} */}
+      </div>
+      <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+      <ImageSwiper />
     </div>
+  </div>
   );
 }
 

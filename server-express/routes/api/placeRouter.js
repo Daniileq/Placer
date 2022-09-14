@@ -129,6 +129,7 @@ placeRouter.get('/:id/comments', async (req, res) => {
   try {
     const comments = await Comment.findAll({
       where: { placeId },
+      order: [['createdAt', 'ASC']],
       include: Comment.User,
     });
     res.json({
@@ -144,17 +145,18 @@ placeRouter.get('/:id/comments', async (req, res) => {
 placeRouter.post('/:id/comments', async (req, res) => {
   const { content, placeId } = req.body;
   try {
-    await Comment.create({
+    const newComment = await Comment.create({
       content,
       userId: req.session.user.id,
       placeId,
     });
-    const newComment = await Comment.findOne({
-      where: { placeId },
-      include: Comment.User,
-    });
     res.json({
-      data: newComment,
+      data: {
+        content: newComment.content,
+        User: {
+          displayName: req.session.user.displayName,
+        },
+      },
     });
   } catch (error) {
     res.json({
