@@ -81,7 +81,7 @@ function UserPage() {
           <div className='my_places'>
             <h3>Мои места</h3>
             <NavLink to="/newplace">Добавить место</NavLink>
-            <div className='cards'>
+            <div className='cards flex_container'>
               {personLoaded
               && personPlaces.length
               && personPlaces.map((place) => <CardPlace key={place.id} place={place}/>)}
