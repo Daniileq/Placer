@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Link } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { loadPlace, loadPlaceTags } from '../../store/placeSlice/placeSlice';
@@ -90,7 +90,7 @@ function PlacePage() {
           </div>
           <div>
             <span className='font_subheading_small'> Кто собирается пойти :
-            {userLoginsToGo.map((login) => <p>{login}</p>)}
+            {userLoginsToGo.map((login) => <Link to={`/${login}`}>{login}</Link>)}
             </span>
           </div>
         </div>
