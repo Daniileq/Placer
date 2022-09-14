@@ -9,6 +9,8 @@ authRouter.post('/registration', async (req, res) => {
       displayName, email, login, city, password, repeatPass,
     } = req.body;
 
+    const routesArr = ['profile', 'newplace', 'settings', 'favorites', 'about', 'contacts', 'togo', 'registration', 'login', 'places'];
+
     if (
       displayName.length < 1
       || email.length < 1
@@ -42,6 +44,10 @@ authRouter.post('/registration', async (req, res) => {
     }
     if (login.includes('/')) {
       res.json({ message: 'Логин недействителен' });
+      return;
+    }
+    if (routesArr.includes(login)) {
+      res.json({ message: 'Такой логин нельзя использовать' });
       return;
     }
     if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {

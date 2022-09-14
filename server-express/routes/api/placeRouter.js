@@ -91,6 +91,39 @@ placeRouter.get('/:id', async (req, res) => {
   }
 });
 
+placeRouter.get('/:id/delete', async (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    const place = await Place.findOne({
+      where: { id },
+    });
+    place.isDeleted = true;
+    await place.save();
+
+    res.json({
+      data: place,
+    });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
+placeRouter.put('/:id/edit', async (req, res) => {
+  // Приходит пустой обЪект
+  console.log(req.body);
+  try {
+    // res.json({
+    //   data:
+    // });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
 placeRouter.get('/:id/comments', async (req, res) => {
   const placeId = Number(req.params.id);
   try {

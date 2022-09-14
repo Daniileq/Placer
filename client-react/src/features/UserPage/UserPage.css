@@ -1,15 +1,9 @@
-.profile_container {
-  background-color: #f4ece0;
-}
-
-.profile_content {
-  box-sizing: border-box;
-  width: 1170px;
-  margin: 0 auto;
-}
-
 .profile {
   display: flex;
+}
+
+.user_data_profile h4 {
+  margin-bottom: 30px;
 }
 
 .user_info {
@@ -22,12 +16,18 @@
   width: 360px;
 }
 
-.user_data {
+.user_data_profile {
   width: 791px;
   margin-left: 20px;
   background-color: white;
   border-radius: 8px;
   position: relative;
+}
+
+.user_data_profile div {
+  background-color: white;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
 }
 
 .user_photo {
@@ -63,14 +63,13 @@
   /* color: #FF733B; */
 }
 
-a {
+.backbtn a {
   color: #ff733b;
 }
 
 .my_data {
-  width: 161px;
   height: 34px;
-  text-align: center;
+  text-align: left;
   line-height: 34px;
   font-size: 26px;
   margin-top: 40px;
@@ -98,7 +97,7 @@ a {
 
 .details {
   background-color: white;
-  margin-left: 68px;
+  margin-left: 54px;
   margin-top: 10px;
 }
 
@@ -106,4 +105,5 @@ a {
   position: absolute;
   left: 600px;
   top: 55px; 
+  color: #ff733b;
 }

@@ -110,6 +110,25 @@ const changeUser = createAsyncThunk(
     }),
 );
 
+// изменение фото юзера
+const changeUserPhoto = createAsyncThunk(
+  'user/changeUserPhoto',
+  ({ data, userId }) => fetch(`/api/changeuserphoto/${userId}`, {
+    method: 'put',
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      if (body.message) {
+        throw new Error(body.message);
+      }
+      return body.user;
+    }),
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -169,7 +188,13 @@ const userSlice = createSlice({
         state.helpMessage = action.error.message;
       })
       .addCase(changeUser.fulfilled, (state, action) => {
-        state.isUser = true;
+        state.helpMessage = 'Данные пользователя успешно обновлены';
+        state.data = action.payload;
+      })
+      .addCase(changeUserPhoto.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUserPhoto.fulfilled, (state, action) => {
         state.data = action.payload;
       });
   },
@@ -183,7 +208,7 @@ export const { disableHelpMessage } = userSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loginUser, logoutUser, regUser, changeUser,
+  loadUser, loginUser, logoutUser, regUser, changeUser, changeUserPhoto,
 };
 
 /* eslint-enable no-param-reassign */
