@@ -3,3 +3,16 @@ textarea[name=content] {
     min-width: 100%;
     max-width: 100%;
 }
+
+textarea {
+    padding-top: 5px;
+}
+
+button[type=submit] {
+    background-color: #f4d3a1;
+    color: #ff733b;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}

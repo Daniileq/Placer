@@ -23,7 +23,7 @@ function AddComment() {
   return (
     <form onSubmit={handleSubmit}>
       <textarea type='text' name='content' placeholder='Введите комментарий' rows='3' required />
-      <button type='submit'>Добавить комментарий</button>
+      <button className='font_caption_small' type='submit'>Добавить комментарий</button>
     </form>
   );
 }
