@@ -31,6 +31,39 @@ function PlacePage() {
   return (
     <div className='content_container'>
       <div className='place_container'>
+        <div className='place_container_right'>
+          <h4>
+            {place.title}
+          </h4>
+          <div>
+            <span className='font_subheading_small'>ОПИСАНИЕ :</span>
+            <p className='place_description font_body_small' style={{ lineHeight: '26px' }}>
+              {place.description}
+            </p>
+          </div>
+          <div>
+            <span className='font_subheading_small'>Теги:
+            </span>
+            {
+              place.PlaceTags
+              && place.PlaceTags.length
+              && place.PlaceTags.map((placeTag) => (
+                <p key={placeTag.Tag.id}>{placeTag.Tag.title}</p>
+              ))
+            }
+            <span className='font_subheading_small'> Категория:
+            </span>
+            {place
+              && place.Category
+              && <p>{place.Category.title}</p>
+            }
+          </div>
+          <div>
+            <span className='font_subheading_small'> Кто собирается пойти:
+              {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`} className='user_go' target="_blank">{' '}{login}</Link>)}
+            </span>
+          </div>
+        </div>
         <div className='place_container_left'>
           <div className='place_container_image'>
             {img
@@ -57,45 +90,12 @@ function PlacePage() {
               && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg} />
             }
           </div>
-          <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
+        </div>
+      </div>
+      <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
           <div className='place_location_text font_body_small'>
             <p>Адрес: {place.adress}</p>
           </div>
-        </div>
-        <div className='place_container_right'>
-          <h4>
-            {place.title}
-          </h4>
-          <div>
-            <span className='font_subheading_small'>ОПИСАНИЕ :</span>
-            <p className='place_description font_body_small' style={{ lineHeight: '26px' }}>
-              {place.description}
-            </p>
-          </div>
-          <div>
-            <span className='font_subheading_small'>ТЭГ :
-            </span>
-            {
-              place.PlaceTags
-              && place.PlaceTags.length
-              && place.PlaceTags.map((placeTag) => (
-                <p key={placeTag.Tag.id}>{placeTag.Tag.title}</p>
-              ))
-            }
-            <span className='font_subheading_small'> Категории :
-            </span>
-            {place
-              && place.Category
-              && <p>{place.Category.title}</p>
-            }
-          </div>
-          <div>
-            <span className='font_subheading_small'> Кто собирается пойти :
-              {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`}>{login}</Link>)}
-            </span>
-          </div>
-        </div>
-      </div>
       <div className='place_map'>
         {
           place.longitude
