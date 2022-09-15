@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeUser,
+  changeUserPass,
   changeUserPhoto,
   disableHelpMessage,
 } from '../../store/userSlice/userSlice';
@@ -35,6 +36,12 @@ function UserSettingsPage() {
     event.preventDefault();
     const data = new FormData(event.target);
     dispatch(changeUser({ data, userId: user.id }));
+  };
+
+  const changePassSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    dispatch(changeUserPass({ data, userId: user.id }));
   };
 
   return (
@@ -168,7 +175,19 @@ function UserSettingsPage() {
                   />
                 </div>
 
-                <div className="field">
+                {helpMessage && (
+                  <div className="helpText" style={{ color: 'red' }}>
+                    {helpMessage}
+                  </div>
+                )}
+
+                <button className="user_settings_btn" type="submit">
+                  Сохранить
+                </button>
+              </form>
+
+              <form onSubmit={changePassSubmit}>
+              <div className="field">
                   <label htmlFor="passwordInput">Пароль:</label>
                   <input
                     type="password"
@@ -190,15 +209,10 @@ function UserSettingsPage() {
                   />
                 </div>
 
-                {helpMessage && (
-                  <div className="helpText" style={{ color: 'red' }}>
-                    {helpMessage}
-                  </div>
-                )}
-
                 <button className="user_settings_btn" type="submit">
                   Сохранить
                 </button>
+
               </form>
             </div>
           </div>

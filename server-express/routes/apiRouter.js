@@ -11,6 +11,7 @@ const placestogoRouter = require('./api/placestogoRouter');
 const togosRouter = require('./api/togosRouter');
 const userSettingsRouter = require('./api/userSettingsRouter');
 const userPhotoRouter = require('./api/userPhotoRouter ');
+const userPassRouter = require('./api/userPassRouter');
 
 apiRouter.use('/users', usersRouter);
 apiRouter.use('/tags', tagsRouter);
@@ -19,6 +20,7 @@ apiRouter.use('/search', searchRouter);
 apiRouter.use('/place', placeRouter);
 apiRouter.use('/favorites', favoriteRouter);
 apiRouter.use('/changeuser', userSettingsRouter);
+apiRouter.use('/changeuserpass', userPassRouter);
 apiRouter.use('/changeuserphoto', userPhotoRouter);
 apiRouter.use('/likes', likesRouter);
 apiRouter.use('/placetogo', placestogoRouter);
