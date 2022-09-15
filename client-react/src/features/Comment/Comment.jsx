@@ -40,8 +40,8 @@ function Comment({ comment, place }) {
               ? (
               <div className='change_comment_div'>
                 <form onSubmit={changeFunction}>
-                  <input defaultValue={comment.content} name='contentComment' ></input>
-                  <button type='submit'>Сохранить</button>
+                  <textarea defaultValue={comment.content} name='contentComment' rows={3}></textarea>
+                  <button className='font_caption_small' type='submit'>Сохранить</button>
                 </form>
               </div>
               ) : (<p>{comment.content}</p>)}
