@@ -172,6 +172,30 @@ placeRouter.post('/:id/comments', async (req, res) => {
   }
 });
 
+placeRouter.put('/:id/comments', async (req, res) => {
+  const { content, commentId } = req.body;
+  try {
+    const updatedComment = await Comment.update({
+      content,
+    }, {
+      where: { id: commentId },
+      returning: true,
+    });
+    res.json({
+      data: {
+        ...updatedComment[1][0].dataValues,
+        User: {
+          login: req.session.user.login,
+        },
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
 placeRouter.delete('/:id/comments', async (req, res) => {
   const { commentId } = req.body;
   try {
