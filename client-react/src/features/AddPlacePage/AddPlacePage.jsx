@@ -8,14 +8,16 @@ function AddPlacePage() {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.search.filters);
 
+  const [address, setAddress] = useState('');
   const [longitude, setLongitude] = useState(null);
   const [latitude, setLatitude] = useState(null);
 
   useEffect(() => {
+    let myMap;
     // eslint-disable-next-line no-undef
     ymaps.ready(() => {
       // eslint-disable-next-line no-undef
-      const myMap = new ymaps.Map(
+      myMap = new ymaps.Map(
         'map',
         {
           center: [59.94, 30.32],
@@ -46,8 +48,16 @@ function AddPlacePage() {
           myMap.geoObjects.removeAll();
         }
         myMap.geoObjects.add(myPlacemark);
+        // eslint-disable-next-line no-undef
+        ymaps.geocode(coords).then((res) => {
+          const object = res.geoObjects.get(0);
+          setAddress(object.getAddressLine());
+        });
       });
     });
+    return () => {
+      myMap.destroy();
+    };
   }, []);
 
   useEffect(() => {
@@ -67,26 +77,33 @@ function AddPlacePage() {
       <label htmlFor="title">Название места:</label>
       <input id="title" name="title" required />
       <label htmlFor="adress">Адрес:</label>
-      <input id="adress" name="adress" required />
+      <input
+        id="adress"
+        name="adress"
+        value={address}
+        onChange={(event) => setAddress((event.target.value))}
+        required
+      />
       {/* <div className="coordinates"> */}
-      <p>Координаты:</p>
+      <p>Положение на карте:</p>
       <div
         // onClick={(e) => mapClick(e)}
         id="map"
         style={{ width: `${450}px`, height: `${350}px` }}
       >
-        карта
       </div>
-      <label htmlFor="longitude">Долгота:</label>
+      {/* <label htmlFor="longitude">Долгота:</label> */}
       <input
+        style={{ visibility: 'hidden' }}
         id="longitude"
         name="longitude"
         value={longitude}
         onChange={(event) => setLongitude(Number(event.target.value))}
         required
       />
-      <label htmlFor="latitude">Широта:</label>
+      {/* <label htmlFor="latitude">Широта:</label> */}
       <input
+        style={{ visibility: 'hidden' }}
         id="latitude"
         name="latitude"
         value={latitude}

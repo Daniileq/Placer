@@ -70,6 +70,16 @@
   width: 30vw;
 }
 
+.show_type > div {
+  cursor: pointer;
+  text-align: center;
+  line-height: 28px;
+}
+
+.show_type > div:hover:not(.active_show) {
+  background-color: #ffecce;
+}
+
 .list,
 .map {
   text-overflow: clip;
@@ -88,6 +98,6 @@
   user-select: none; */
 }
 
-.active {
+.active_show {
   background-color: #f4d3a1;
 }
