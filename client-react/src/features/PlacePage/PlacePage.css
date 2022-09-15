@@ -5,6 +5,10 @@
 .place_container_left {
     width: 70vw;
     margin-right: 30px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .place_location_text {
@@ -13,7 +17,8 @@
 }
 
 .place_container_image {
-    height: 563px;
+    height: 463px;
+    width: 700px;
     background-color: #D9D9D9;
     border-radius: 8px;
 }
@@ -50,6 +55,20 @@
     padding: 20px 20px;
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 83%;
     background-color: #F4ECE0;
+}
+
+.user_go{
+    color: orangered
+}
+
+.place_map{
+    display: flex;
+    margin-top: 30px;
+}
+
+.edit_place_btn{
+    margin-left: 20px; 
+    margin-bottom: 30px;
 }

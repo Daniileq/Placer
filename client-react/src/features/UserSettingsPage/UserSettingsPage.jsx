@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import './UserSettingsPage.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeUser,
@@ -49,7 +49,7 @@ function UserSettingsPage() {
       <div className="profile_container">
         <div className="profile_content">
           <div className="backbtn">
-            <NavLink to={`/${user.login}`}>Назад</NavLink>
+            <Link to={`/${user.login}`}>Назад</Link>
           </div>
           <div className="profile">
             <div className="user_info">

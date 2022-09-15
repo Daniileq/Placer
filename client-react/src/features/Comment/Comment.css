@@ -7,6 +7,18 @@
   justify-content: space-between;
 }
 
-.comment_buttons button{
+.comment_buttons button {
   margin-left: 14px;
+}
+
+.change_comment_div {
+  width: 85%;
+}
+
+.change_comment_div button {
+}
+
+textarea[name=contentComment] {
+  min-width: 100%;
+  max-width: 100%;
 }

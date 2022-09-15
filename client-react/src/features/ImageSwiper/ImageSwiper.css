@@ -1,6 +1,7 @@
 .swiper {
-  width: 100%;
-  height: 100%;
+  width: 700px;
+  height: 75%;
+
 }
 
 .swiper-slide {
@@ -27,7 +28,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .place_image_small {

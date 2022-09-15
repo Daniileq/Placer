@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   data: {},
   tags: [],
-  loading: false,
+  loading: true,
   error: null,
 };
 
@@ -34,9 +34,9 @@ const loadPlaceTags = createAsyncThunk(
 
 const editPlace = createAsyncThunk(
   'place/editPlace',
-  (payload) => fetch(`/api/place/${Number(payload.id)}/edit`, {
+  ({ data, id }) => fetch(`/api/place/${id}`, {
     method: 'PUT',
-    body: payload.data,
+    body: data,
   })
     .then((response) => response.json())
     .then((body) => {
@@ -49,7 +49,9 @@ const editPlace = createAsyncThunk(
 
 const deletePlace = createAsyncThunk(
   'place/deletePlace',
-  (id) => fetch(`/api/place/${Number(id)}/delete`)
+  (id) => fetch(`/api/place/${Number(id)}`, {
+    method: 'DELETE',
+  })
     .then((response) => response.json())
     .then((body) => {
       if (body.error) {
@@ -62,6 +64,12 @@ const deletePlace = createAsyncThunk(
 const placeSlice = createSlice({
   name: 'place',
   initialState,
+  reducers: {
+    disablePlace: (state) => {
+      state.loading = true;
+      state.data = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPlace.pending, (state) => {
@@ -73,6 +81,7 @@ const placeSlice = createSlice({
       })
       .addCase(loadPlace.fulfilled, (state, action) => {
         state.loading = false;
+        state.success = true;
         state.data = action.payload;
       })
       .addCase(editPlace.pending, (state) => {
@@ -84,6 +93,7 @@ const placeSlice = createSlice({
       })
       .addCase(editPlace.fulfilled, (state, action) => {
         state.loading = false;
+        state.success = true;
         state.data = action.payload;
       })
       .addCase(deletePlace.pending, (state) => {
@@ -101,6 +111,8 @@ const placeSlice = createSlice({
 });
 
 export default placeSlice.reducer;
+
+export const { disablePlace } = placeSlice.actions;
 
 export {
   loadPlace, loadPlaceTags, editPlace, deletePlace,

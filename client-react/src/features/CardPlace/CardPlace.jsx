@@ -23,7 +23,7 @@ function CardPlace({ place }) {
         <h4 className="card_place_title">
           {place.title}
         </h4>
-        <h5>{place.adress}</h5>
+        <h5>{place.address}</h5>
         <div className='card_place_tags font_caption_small'>
           {place.PlaceTags && place.PlaceTags
             .map((placeTag) => (
@@ -37,8 +37,16 @@ function CardPlace({ place }) {
           {place.description.length && place.description}
         </p>
         <div className='card_place_buttons'>
-          {isUser && <LikeButton place={place} />}
-          {isUser && <PlaceToGoButton place={place} />}
+        {isUser
+          ? <>
+              <LikeButton place={place} />
+              <PlaceToGoButton place={place} />
+            </>
+          : <>
+              <p>Нравится: {place.Likes.length}</p>
+              <p>Хочет пойти: {place.PlaceToGos.length}</p>
+            </>
+          }
         </div>
         <div className='card_place_more'>
           <button className="more_button font_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>

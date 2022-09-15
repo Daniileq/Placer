@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      adress: {
+      address: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
