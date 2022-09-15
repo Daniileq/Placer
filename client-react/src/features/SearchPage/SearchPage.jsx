@@ -14,7 +14,7 @@ import Loader from '../Loader/Loader.jsx';
 
 function SearchPage() {
   const dispatch = useDispatch();
-  const [islist, setIsList] = useState(true);
+  const [isList, setIsList] = useState(true);
 
   const {
     filters, activeFilters, loading, keywordPlaces, keyword,
@@ -52,7 +52,7 @@ function SearchPage() {
     return () => {
       clearTimeout(debounceId);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (
@@ -79,20 +79,21 @@ function SearchPage() {
               />
             </form>
             <div className='show_type'>
-              <div className={islist ? 'list active' : 'list'} onClick={() => setIsList(true)}>Списком</div>
-              <div className={!islist ? 'map active' : 'map'} onClick={() => setIsList(false)}>На карте</div>
+              <div className={isList ? 'list active_show' : 'list'} onClick={() => setIsList(true)}>Списком</div>
+              <div className={!isList ? 'map active_show' : 'map'} onClick={() => setIsList(false)}>На карте</div>
             </div>
-              {loading && <Loader />}
-              {!loading
-                && islist
-                ? (
-                  <div className='search_results_container'>
-                    {keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
-                  </div>
-                ) : (
-                  <BigMap />
-                )
-              }
+            {loading && <Loader />}
+            {!loading && isList
+              && (
+                <div className='search_results_container'>
+                  {keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
+                </div>
+              )}
+            {!loading && !isList
+              && (
+                <BigMap />
+              )
+            }
           </div>
         </div>
       </div>
