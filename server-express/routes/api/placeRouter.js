@@ -178,7 +178,7 @@ placeRouter.delete('/:id/comments', async (req, res) => {
     await Comment.destroy({ where: { id: commentId } });
     res.json({
       data: {
-        delete: true,
+        commentId,
       },
     });
   } catch (error) {
