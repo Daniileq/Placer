@@ -25,7 +25,7 @@ function UserPage() {
 
   useEffect(() => {
     if (personLoaded === false) {
-      navigate('*');
+      navigate('/notfound');
       return;
     }
     dispatch(loadPersonPlaces({ personId: personInfo.id }));

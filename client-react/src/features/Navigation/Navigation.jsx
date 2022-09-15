@@ -1,6 +1,6 @@
 // eslint-disable-next-line quotes
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 // eslint-disable-next-line quotes
 import logo from './img/logo.png';
 // eslint-disable-next-line quotes
@@ -21,9 +21,9 @@ function Navigation() {
   return (
     <div className="nav_container">
       <div className="header_navigathion">
-        <NavLink className="header_nav_log_placer" to="/">
+        <Link className="header_nav_log_placer" to="/">
           <img src={logo} alt="placer" />
-        </NavLink>
+        </Link>
         <div className="nav_center">
           <NavLink to="/" className="font_button">Места</NavLink>
           {isUser && <NavLink to={`/${login}`} className="font_button">Профиль</NavLink>}
