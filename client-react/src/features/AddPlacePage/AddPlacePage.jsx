@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadCategories, loadTags } from '../../store/searchSlice/searchSlice';
 import { addPlace } from '../../store/addPlaceSlice/addPlaceSlice';
 import './AddPlacePage.css';
+import AddPlaceOnMap from '../Map/AddPlaceOnMap.jsx';
 
 function AddPlacePage() {
   const dispatch = useDispatch();
@@ -11,54 +12,6 @@ function AddPlacePage() {
   const [address, setAddress] = useState('');
   const [longitude, setLongitude] = useState('');
   const [latitude, setLatitude] = useState('');
-
-  useEffect(() => {
-    let myMap;
-    // eslint-disable-next-line no-undef
-    ymaps.ready(() => {
-      // eslint-disable-next-line no-undef
-      myMap = new ymaps.Map(
-        'map',
-        {
-          center: [59.94, 30.32],
-          zoom: 9,
-        },
-        {
-          searchControlProvider: 'yandex#search',
-        },
-      );
-
-      // Слушаем клик на карте.
-      myMap.events.add('click', (e) => {
-        const coords = e.get('coords');
-
-        // Если метка уже создана – просто передвигаем ее.
-
-        setLongitude(coords[0]);
-        setLatitude(coords[1]);
-        // eslint-disable-next-line no-undef
-        const myPlacemark = new ymaps.Placemark(
-          [coords[0], coords[1]],
-          {},
-          {
-            preset: 'islands#blueIcon',
-          },
-        );
-        if (myPlacemark) {
-          myMap.geoObjects.removeAll();
-        }
-        myMap.geoObjects.add(myPlacemark);
-        // eslint-disable-next-line no-undef
-        ymaps.geocode(coords).then((res) => {
-          const object = res.geoObjects.get(0);
-          setAddress(object.getAddressLine());
-        });
-      });
-    });
-    return () => {
-      myMap.destroy();
-    };
-  }, []);
 
   useEffect(() => {
     dispatch(loadTags());
@@ -76,22 +29,17 @@ function AddPlacePage() {
       <h4>Добавление места</h4>
       <label htmlFor="title">Название места:</label>
       <input id="title" name="title" required />
-      <label htmlFor="adress">Адрес:</label>
+      <label htmlFor="address">Адрес:</label>
       <input
-        id="adress"
-        name="adress"
+        id="address"
+        name="address"
         value={address}
         onChange={(event) => setAddress((event.target.value))}
         required
       />
       {/* <div className="coordinates"> */}
       <p>Положение на карте:</p>
-      <div
-        // onClick={(e) => mapClick(e)}
-        id="map"
-        style={{ width: `${450}px`, height: `${350}px` }}
-      >
-      </div>
+      <AddPlaceOnMap setAddress={setAddress} setLatitude={setLatitude} setLongitude={setLongitude}/>
       {/* <label htmlFor="longitude">Долгота:</label> */}
       <input
         style={{ visibility: 'hidden' }}

@@ -39,8 +39,8 @@ function BigMap() {
           balloonContentHeader: `<p>${place && place.title}</p><br>`,
           balloonContentBody: `<img src=${place && place.PlaceImages[0] && place.PlaceImages[0].src} height="150" width="200"> <br/> `
           + `<button class="openPlace${place.id}">Подробнее<button /> <br/>`,
-          balloonContentFooter: `${place.adress}`,
-          hintContent: `${place.adress}`,
+          balloonContentFooter: `${place.address}`,
+          hintContent: `${place.address}`,
         });
 
         const openPlaceFunc = (event) => {
