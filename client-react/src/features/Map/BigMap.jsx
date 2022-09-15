@@ -22,6 +22,7 @@ function BigMap() {
 
   useEffect(() => {
     let myMap;
+    const openPlaceFuncs = {};
     ymaps.ready(() => {
       myMap = new ymaps.Map('YMapsID', {
         center: [59.94, 30.32],
@@ -30,20 +31,45 @@ function BigMap() {
       });
 
       placesCoords.map((placeCoords) => {
-        const myPlacemark = new ymaps.Placemark(placeCoords, {}, {
+        const place = places.find(
+          (pl) => pl.longitude === placeCoords[0] && pl.latitude === placeCoords[1],
+        );
+        const myPlacemark = new ymaps.Placemark(placeCoords, {
           preset: 'islands#blueIcon',
+          balloonContentHeader: `<p>${place && place.title}</p><br>`,
+          balloonContentBody: `<img src=${place && place.PlaceImages[0] && place.PlaceImages[0].src} height="150" width="200"> <br/> `
+          + `<button class="openPlace${place.id}">Подробнее<button /> <br/>`,
+          balloonContentFooter: `${place.adress}`,
+          hintContent: `${place.adress}`,
         });
+
+        const openPlaceFunc = (event) => {
+          if (event.target.classList.contains(`openPlace${place.id}`)) {
+            navigate(`/places/${place.id}`);
+          }
+        };
+
+        openPlaceFuncs[`${place.id}`] = openPlaceFunc;
+
         myPlacemark.events.add('click', () => {
-          const cords = myPlacemark.geometry._coordinates.map((coord) => Number(coord));
-          const currPl = places.find((pl) => pl.longitude === cords[0] && pl.latitude === cords[1]);
-          navigate(`/places/${currPl.id}`);
+          myPlacemark.balloon.open();
         });
+        document.addEventListener(
+          'click',
+          openPlaceFunc,
+        );
         return myMap.geoObjects.add(myPlacemark);
       });
     });
 
     return () => {
       myMap.destroy();
+      places.forEach((place) => {
+        document.removeEventListener(
+          'click',
+          openPlaceFuncs[`${place.id}`],
+        );
+      });
     };
   }, [placesCoords, places, navigate]);
 
