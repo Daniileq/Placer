@@ -20,7 +20,7 @@ function Comment({ comment, place }) {
       {comment
         && <div className='comment_container'>
           <span className='font_subheading_small'>{comment.User.login}</span>
-          <div className='comment_container_content'>
+          <div className='comment_container_content font_caption_small'>
             <p>{comment.content}</p>
             {userId === comment.userId
               ? (
