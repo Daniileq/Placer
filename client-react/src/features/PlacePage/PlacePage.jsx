@@ -109,7 +109,7 @@ function PlacePage() {
         </div>
         {
           <div>
-            {comments.map((comment) => <Comment key={comment.id} comment={comment} />)}
+            {comments.map((comment) => <Comment key={comment.id} comment={comment} place={place}/>)}
           </div>
         }
         <div>
