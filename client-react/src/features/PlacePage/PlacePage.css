@@ -45,7 +45,9 @@
 }
 
 .place_comments {
-    margin-top: 5%;
+    border-radius: 8px;
+    margin-top: 40px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     width: 40vw;
