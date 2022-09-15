@@ -5,7 +5,7 @@ import CardPlace from '../CardPlace/CardPlace.jsx';
 import avatar from './images/avatar.png';
 import './UserPage.css';
 
-import { loadPerson, loadPersonPlaces } from '../../store/usersSlice/usersSlice';
+import { loadPerson, loadPersonPlaces, disablePerson } from '../../store/usersSlice/usersSlice';
 import Loader from '../Loader/Loader.jsx';
 
 function UserPage() {
@@ -19,6 +19,7 @@ function UserPage() {
   useEffect(() => {
     dispatch(loadPerson({ login }));
     return () => {
+      dispatch(disablePerson());
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [login]);
@@ -123,7 +124,8 @@ function UserPage() {
             <div className='cards flex_container'>
               {personLoaded
                 && personPlaces.length
-                && personPlaces.map((place) => <CardPlace key={place.id} place={place} />)}
+                ? personPlaces.map((place) => <CardPlace key={place.id} place={place} />)
+                : <p>Пока не добавлено ни одного места</p>}
             </div>
           </div>
         </div>
