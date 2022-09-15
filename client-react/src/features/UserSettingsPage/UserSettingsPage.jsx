@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 import './UserSettingsPage.css';
 import { Link } from 'react-router-dom';
@@ -13,10 +14,11 @@ import {
 import avatar from './images/avatar.png';
 
 function UserSettingsPage() {
-  const [upload, setUpload] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
   const helpMessage = useSelector((state) => state.user.helpMessage);
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
 
   useEffect(
     () => () => {
@@ -26,7 +28,6 @@ function UserSettingsPage() {
   );
 
   const photoUpload = (event) => {
-    // setUpload(event.target.files[0]);
     const data = new FormData();
     data.append('photo', event.target.files[0]);
     dispatch(changeUserPhoto({ data, userId: user.id }));
@@ -42,6 +43,14 @@ function UserSettingsPage() {
     event.preventDefault();
     const data = new FormData(event.target);
     dispatch(changeUserPass({ data, userId: user.id }));
+  };
+
+  const toggleBtn = () => {
+    setState((prev) => !prev);
+  };
+
+  const toggleBtn2 = () => {
+    setState2((prev) => !prev);
   };
 
   return (
@@ -68,16 +77,14 @@ function UserSettingsPage() {
                   />
                   <span>+</span>
                   </label>
-                  {/* <div className="input-file-list"></div> */}
                 </div>
+                <div className='user_name'>{user.displayName}</div>
               </div>
-              {/* <button onClick={photoUpload} className="user_settings_btn" type="button">
-                Изменить фото
-              </button> */}
             </div>
             <div className="user_data">
               <form onSubmit={settingsSubmit} className="user_settings_form">
                 <h4 className="my_data">Редактирование пользователя</h4>
+                <h4 className="my_data">Основные:</h4>
 
                 <div className="field">
                   <label htmlFor="nameInput">Имя:</label>
@@ -125,6 +132,7 @@ function UserSettingsPage() {
                     <option>Казань</option>
                     <option>Саратов</option>
                     <option>Челябинск</option>
+                    <option>Грозный</option>
                     <option>Калининград</option>
                     <option>Великий Новгород</option>
                   </select>
@@ -175,38 +183,39 @@ function UserSettingsPage() {
                   />
                 </div>
 
-                {helpMessage && (
-                  <div className="helpText" style={{ color: 'red' }}>
-                    {helpMessage}
-                  </div>
-                )}
-
                 <button className="user_settings_btn" type="submit">
                   Сохранить
                 </button>
               </form>
 
-              <form onSubmit={changePassSubmit}>
+              <form onSubmit={changePassSubmit} className="user_pass_form">
+              <h4 className="my_data">Изменение пароля:</h4>
               <div className="field">
                   <label htmlFor="passwordInput">Пароль:</label>
                   <input
-                    type="password"
+                    type={state ? 'text' : 'password'}
                     name="password"
                     id="passwordInput"
                     placeholder="Новый пароль"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
                   />
+                  <button type='button' onClick={toggleBtn} className="change_pass_btn">
+                    { state ? <AiOutlineEye/> : <AiOutlineEyeInvisible/> }
+                  </button>
                 </div>
 
                 <div className="field">
                   <label htmlFor="repeatPassInput">Повторите пароль:</label>
                   <input
-                    type="password"
+                    type={state2 ? 'text' : 'password'}
                     name="repeatPass"
                     id="repeatPassInput"
                     placeholder="Повторите пароль"
                   />
+                  <button type='button' onClick={toggleBtn2} className="change_pass_btn">
+                    { state2 ? <AiOutlineEye/> : <AiOutlineEyeInvisible/> }
+                  </button>
                 </div>
 
                 <button className="user_settings_btn" type="submit">
@@ -214,6 +223,17 @@ function UserSettingsPage() {
                 </button>
 
               </form>
+
+              {helpMessage && helpMessage === 'Данные пользователя успешно обновлены' ? (
+                  <div className="helpText" style={{ color: 'green' }}>
+                    {helpMessage}
+                  </div>
+              ) : (
+                <div className="helpText" style={{ color: 'red' }}>
+                    {helpMessage}
+                </div>
+              )
+            }
             </div>
           </div>
         </div>
