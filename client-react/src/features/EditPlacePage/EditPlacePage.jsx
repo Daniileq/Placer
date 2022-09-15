@@ -36,6 +36,8 @@ function EditPlacePage() {
   useEffect(() => {
     if (!loading) {
       setInitCoords([place.longitude, place.latitude]);
+      setLongitude(place.longitude);
+      setLatitude(place.latitude);
       setCategoryId(place.Category.id);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
