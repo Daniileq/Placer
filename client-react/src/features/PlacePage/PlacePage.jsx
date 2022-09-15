@@ -33,7 +33,7 @@ function PlacePage() {
       <div className='place_container'>
         <div className='place_container_left'>
           <div className='place_container_image'>
-            { img
+            {img
               ? (
                 <img
                   className="big_place_image"
@@ -43,18 +43,18 @@ function PlacePage() {
               )
               : (
                 place.PlaceImages
-                  && <img
-                    className="big_place_image"
-                    src={place.PlaceImages.length && place.PlaceImages[0].src}
-                    alt={place.PlaceImages.length && place.PlaceImages[0].title}
-                  />
+                && <img
+                  className="big_place_image"
+                  src={place.PlaceImages.length && place.PlaceImages[0].src}
+                  alt={place.PlaceImages.length && place.PlaceImages[0].title}
+                />
               )
             }
           </div>
           <div className='above_place_image'>
             {
               place.PlaceImages
-                && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg}/>
+              && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg} />
             }
           </div>
           <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
@@ -84,14 +84,14 @@ function PlacePage() {
             }
             <span className='font_subheading_small'> Категории :
             </span>
-            { place
+            {place
               && place.Category
               && <p>{place.Category.title}</p>
             }
           </div>
           <div>
             <span className='font_subheading_small'> Кто собирается пойти :
-            {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`}>{login}</Link>)}
+              {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`}>{login}</Link>)}
             </span>
           </div>
         </div>
@@ -105,11 +105,11 @@ function PlacePage() {
       <div className='place_comments'>
         <h3>Комментарии</h3>
         <div>
-          {comments.length} комментариев
+          {comments.length === 0 ? <p className='font_caption'>Нет комментариев</p> : <p className='font_caption'>{comments.length} комментария</p>}
         </div>
         {
           <div>
-            {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
+            {comments.map((comment) => <Comment key={comment.id} comment={comment} place={place}/>)}
           </div>
         }
         <div>

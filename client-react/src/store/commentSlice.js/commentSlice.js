@@ -35,6 +35,22 @@ const addComment = createAsyncThunk(
     }),
 );
 
+const deleteComment = createAsyncThunk(
+  'comments/deleteComment',
+  (data) => fetch(`/api/place/${data.placeId}/comments`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
 const commentsSlice = createSlice({
   name: 'comments',
   initialState,
@@ -61,6 +77,18 @@ const commentsSlice = createSlice({
       .addCase(addComment.fulfilled, (state, action) => {
         state.loading = false;
         state.data.push(action.payload);
+      })
+      .addCase(deleteComment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteComment.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deleteComment.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = state.data
+          .filter((comment) => comment.id !== action.payload.commentId);
       });
   },
 });
@@ -68,7 +96,7 @@ const commentsSlice = createSlice({
 export default commentsSlice.reducer;
 
 export {
-  loadComments, addComment,
+  loadComments, addComment, deleteComment,
 };
 
 /* eslint-enable no-param-reassign */
