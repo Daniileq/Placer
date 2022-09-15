@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const upload = require('../../src/upload');
 
-userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
+userSettingsRouter.put('/:id', upload.any(), async (req, res) => {
   try {
     const { id } = req.params;
     const {

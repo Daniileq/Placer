@@ -19,6 +19,8 @@ function PlacePage() {
 
   const userLoginsToGo = useSelector((state) => state.users.userLoginsToGo);
   const comments = useSelector((state) => state.comments.data);
+  const isUser = useSelector((state) => state.user.isUser);
+  const userId = useSelector((state) => state.user.data.id);
   const place = useSelector((state) => state.place.data);
   const [img, setImg] = useState(null);
 
@@ -112,16 +114,24 @@ function PlacePage() {
             {comments.map((comment) => <Comment key={comment.id} comment={comment} place={place}/>)}
           </div>
         }
-        <div>
-          <AddComment />
-        </div>
+        {isUser
+          ? (<div>
+               <AddComment />
+            </div>)
+          : <></>
+        }
         {/* {!isShow
             && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>
             </button>
         } */}
         {/* {isShow && <AddComment />} */}
       </div>
-      <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+      {isUser && userId === place.userId
+        ? (<div>
+             <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+          </div>)
+        : <></>
+        }
       <ImageSwiper />
     </div>
   );
