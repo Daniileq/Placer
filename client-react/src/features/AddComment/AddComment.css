@@ -1,0 +1,5 @@
+textarea[name=content] {
+    margin-top: 20px;
+    min-width: 100%;
+    max-width: 100%;
+}

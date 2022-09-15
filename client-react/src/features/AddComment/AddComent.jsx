@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addComment } from '../../store/commentSlice.js/commentSlice';
+import './AddComment.css';
 
 function AddComment() {
   const { id } = useParams();
@@ -21,7 +22,7 @@ function AddComment() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' name='content' />
+      <textarea type='text' name='content' placeholder='Введите комментарий' rows='3' required />
       <button type='submit'>Добавить комментарий</button>
     </form>
   );
