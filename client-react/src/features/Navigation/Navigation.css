@@ -31,6 +31,10 @@
   border: none;
 }
 
+.active {
+  border-bottom: solid 2px #ff733b;
+}
+
 /* .favorite_places{
   margin-right: 20px;
 } */
