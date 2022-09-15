@@ -141,7 +141,7 @@ function EditPlacePage() {
             className='checkbox_input'
             id={`tags_${tag.id}`}
             type="checkbox"
-            tagId={tag.id}
+            tagid={tag.id}
             name={`tags_${tagIndex}`}
             defaultChecked={place.PlaceTags.some((placeTag) => tag.id === placeTag.Tag.id)}
           />
