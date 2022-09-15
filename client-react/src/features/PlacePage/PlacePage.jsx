@@ -44,37 +44,6 @@ function PlacePage() {
   return (
     <div className='content_container'>
       <div className='place_container'>
-        <div className='place_container_left'>
-          <div className='place_container_image'>
-            { img
-              ? (
-                <img
-                  className="big_place_image"
-                  src={img.src}
-                  alt={img.title}
-                />
-              )
-              : (
-                place.PlaceImages
-                  && <img
-                    className="big_place_image"
-                    src={place.PlaceImages.length && place.PlaceImages[0].src}
-                    alt={place.PlaceImages.length && place.PlaceImages[0].title}
-                  />
-              )
-            }
-          </div>
-          <div className='above_place_image'>
-            {
-              place.PlaceImages
-                && <ImageSwiper images={place.PlaceImages} img={img} setImg={setImg}/>
-            }
-          </div>
-          <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
-          <div className='place_location_text font_body_small'>
-            <p>Адрес: {place.address}</p>
-          </div>
-        </div>
         <div className='place_container_right'>
           <h4>
             {place.title}
@@ -157,10 +126,9 @@ function PlacePage() {
           </div>
         }
         {isUser
-          ? (<div>
-               <AddComment />
+          && (<div>
+              <AddComment />
             </div>)
-          : <></>
         }
         {/* {!isShow
             && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>
