@@ -50,7 +50,7 @@
 .registration_btn {
   background: #ff733b;
   border-radius: 4px;
-  width: 200px;
+  width: 230px;
   height: 56px;
   border: none;
   font-family: "Montserrat", sans-serif;
@@ -65,4 +65,21 @@
   width: 410px;
   text-align: left;
   margin: 3px;
+}
+
+.registration_form select {
+  cursor: pointer;
+  background-color: white;
+}
+
+/* Hover/Active */
+.registration_btn:hover {
+	background-color: #ff8b5e;
+}
+.registration_btn:active {
+	background-color: #c56a47;
+}
+
+.helpText {
+  color: red;
 }
