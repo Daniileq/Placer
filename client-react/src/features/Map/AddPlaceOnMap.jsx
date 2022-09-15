@@ -20,12 +20,14 @@ export default function AddPlaceOnMap({
         },
       );
 
-      // eslint-disable-next-line no-undef
-      const initPlacemark = new ymaps.Placemark([initCoords[0], initCoords[1]], {}, {
-        preset: 'islands#blueIcon',
-      });
+      if (initCoords) {
+        // eslint-disable-next-line no-undef
+        const initPlacemark = new ymaps.Placemark([initCoords[0], initCoords[1]], {}, {
+          preset: 'islands#blueIcon',
+        });
 
-      myMap.geoObjects.add(initPlacemark);
+        myMap.geoObjects.add(initPlacemark);
+      }
 
       // Слушаем клик на карте.
       myMap.events.add('click', (e) => {
