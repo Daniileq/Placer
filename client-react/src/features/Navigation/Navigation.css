@@ -1,40 +1,228 @@
-.header_navigathion {
-  padding: 20px 0 ;
+.header_navigation {
+  position: relative;
+  padding: 10px 0;
   display: flex;
-  justify-content: space-between;
+  column-gap: 10%;
+  height: 90px;
 }
 .header_nav_log_placer {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  cursor: pointer;
   color: black;
 }
-.nav_center {
+
+#menu__toggle,
+.menu__btn,
+.menu__btn > span {
+  display: none;
+}
+
+.no_user_place {
+  position: absolute;
+  right: 50%;
+}
+
+.menu__box {
+  width: 100%;
+  list-style: none;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 44px;
-  cursor: pointer;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 32px;
 }
 
-.nav_center > a {
-  padding: 10px;
-  color: #6B625E;
+.menu__box a,
+.menu__box button {
+  display: flex;
+  align-items: center;
 }
 
-.header_button_reg {
+.menu__box a {
+  padding: 20px;
+  color: #000000;
+  transition: 0.2s;
+}
+
+.menu__box a:hover {
+  color: #c73800;
+}
+
+.menu__box > .exit_button {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.menu__box button {
+  height: 45px;
+  align-self: center;
+  justify-self: center;
+  display: block;
+  transition: 0.4s;
+}
+
+.menu__box button:hover {
+  color: #2c2828;
+  background-color: #ff8858;
+}
+
+.active {
+  position: relative;
+  /* border-bottom: solid 2px #ff733b; */
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  left: 8px;
+  height: 3px;
+  width: calc(100% - 16px);
+  background-color: #ff733b;
+}
+
+.auth_button {
   background-color: #f4d3a1;
   color: #ff733b;
   font-size: 16px;
   padding: 12px 20px;
-  margin-left: 16px;
   border-radius: 8px;
   cursor: pointer;
   border: none;
 }
 
-.active {
-  border-bottom: solid 2px #ff733b;
+@media only screen and (max-width: 1365px) {
+  .header_navigation {
+    column-gap: 50px;
+  }
+
+  .reg_button {
+    margin-left: 32px;
+  }
+
+  .menu__box {
+    gap: 0;
+  }
 }
 
-/* .favorite_places{
-  margin-right: 20px;
-} */
+@media only screen and (max-width: 1200px) {
+  .welcome_content_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 32px;
+  }
+
+  .welcome_pic_wrapper {
+    margin-right: 0;
+    margin-left: auto;
+    justify-self: flex-end;
+  }
+
+  .menu__btn,
+  .menu__btn > span {
+    display: block;
+  }
+
+  .menu__box a {
+    justify-content: center;
+  }
+
+  .header_links {
+    text-align: center;
+  }
+
+  .auth_button {
+    width: 100%;
+  }
+
+  .no_user_place {
+    position: initial;
+  }
+
+  .reg_button {
+    margin-left: 0;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+  }
+
+  #menu__toggle:checked + .menu__btn > span {
+    transform: rotate(45deg);
+  }
+
+  #menu__toggle:checked + .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+
+  #menu__toggle:checked + .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  #menu__toggle:checked ~ .menu__box {
+    right: 0 !important;
+  }
+
+  .menu__btn {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 20;
+  }
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition-duration: 0.25s;
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -12px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 12px;
+  }
+  .menu__box {
+    z-index: 10;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #eceff1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.25s;
+  }
+
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+  }
+
+  .menu__item:hover {
+    background-color: #cfd8dc;
+  }
+}
