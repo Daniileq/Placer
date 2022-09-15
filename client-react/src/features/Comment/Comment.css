@@ -1,7 +1,12 @@
-.comment_contaiiner {
-  margin: 3%;
+.comment_container {
+  margin: 8px;
 }
 
-h5 {
-  font-size: medium;
+.comment_container_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment_buttons button{
+  margin-left: 14px;
 }
