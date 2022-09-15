@@ -66,3 +66,20 @@
   text-align: left;
   margin: 3px;
 }
+
+.registration_form select {
+  cursor: pointer;
+  background-color: white;
+}
+
+/* Hover/Active */
+.registration_btn:hover {
+	background-color: #ff8b5e;
+}
+.registration_btn:active {
+	background-color: #c56a47;
+}
+
+.helpText {
+  color: red;
+}

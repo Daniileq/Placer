@@ -92,7 +92,6 @@ const regUser = createAsyncThunk(
     }),
 );
 
-// изменение данных юзера
 const changeUser = createAsyncThunk(
   'user/changeUser',
   ({ data, userId }) => fetch(`/api/changeuser/${userId}`, {
@@ -111,7 +110,24 @@ const changeUser = createAsyncThunk(
     }),
 );
 
-// изменение фото юзера
+const changeUserPass = createAsyncThunk(
+  'user/changeUserPass',
+  ({ data, userId }) => fetch(`/api/changeuserpass/${userId}`, {
+    method: 'put',
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      if (body.message) {
+        throw new Error(body.message);
+      }
+      return body.user;
+    }),
+);
+
 const changeUserPhoto = createAsyncThunk(
   'user/changeUserPhoto',
   ({ data, userId }) => fetch(`/api/changeuserphoto/${userId}`, {
@@ -193,6 +209,13 @@ const userSlice = createSlice({
         state.helpMessage = 'Данные пользователя успешно обновлены';
         state.data = action.payload;
       })
+      .addCase(changeUserPass.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUserPass.fulfilled, (state, action) => {
+        state.helpMessage = 'Данные пользователя успешно обновлены';
+        state.data = action.payload;
+      })
       .addCase(changeUserPhoto.rejected, (state, action) => {
         state.helpMessage = action.error.message;
       })
@@ -210,7 +233,7 @@ export const { disableHelpMessage } = userSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loginUser, logoutUser, regUser, changeUser, changeUserPhoto,
+  loadUser, loginUser, logoutUser, regUser, changeUser, changeUserPass, changeUserPhoto,
 };
 
 /* eslint-enable no-param-reassign */
