@@ -10,3 +10,18 @@
 .comment_buttons button{
   margin-left: 14px;
 }
+
+
+.change_comment_div {
+  display: flex;
+}
+
+.change_comment_div button {
+  font-size: 14px;
+  padding: 8px;
+  outline: none;
+  margin-left: -100px;
+  height: 35px;
+  width: 100px;
+  border: 1px solid black;
+}
