@@ -10,8 +10,8 @@ function AddPlacePage() {
   const filters = useSelector((state) => state.search.filters);
 
   const [address, setAddress] = useState('');
-  const [longitude, setLongitude] = useState(null);
-  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState('');
+  const [latitude, setLatitude] = useState('');
 
   useEffect(() => {
     dispatch(loadTags());
@@ -86,7 +86,7 @@ function AddPlacePage() {
               className="checkbox_input"
               id={`tags_${tag.id}`}
               type="checkbox"
-              tagId={tag.id}
+              tagid={tag.id}
               name={`tags_${tagIndex}`}
             />
             <label className="tag_label" htmlFor={`tags_${tag.id}`}>

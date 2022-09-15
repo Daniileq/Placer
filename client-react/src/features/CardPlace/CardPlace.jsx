@@ -37,8 +37,16 @@ function CardPlace({ place }) {
           {place.description.length && place.description}
         </p>
         <div className='card_place_buttons'>
-          {isUser && <LikeButton place={place} />}
-          {isUser && <PlaceToGoButton place={place} />}
+        {isUser
+          ? <>
+              <LikeButton place={place} />
+              <PlaceToGoButton place={place} />
+            </>
+          : <>
+              <p>Нравится: {place.Likes.length}</p>
+              <p>Хочет пойти: {place.PlaceToGos.length}</p>
+            </>
+          }
         </div>
         <div className='card_place_more'>
           <button className="more_button font_button" onClick={() => navigate(`/places/${place.id}`)}>Подробнее</button>

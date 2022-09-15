@@ -82,6 +82,7 @@
 .user_data {
   width: 791px;
   margin-left: 20px;
+  padding-top: 30px;
   background-color: white;
   border-radius: 8px;
   position: relative;

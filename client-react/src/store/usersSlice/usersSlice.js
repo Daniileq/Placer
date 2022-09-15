@@ -51,6 +51,12 @@ const loadUserLoginsToGo = createAsyncThunk(
 const usersSlice = createSlice({
   name: 'users',
   initialState,
+  reducers: {
+    disablePerson: (state) => {
+      state.personInfo = {};
+      state.personLoaded = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPerson.rejected, (state, action) => {
@@ -78,6 +84,8 @@ const usersSlice = createSlice({
 
 // Экспорт reducer-функции
 export default usersSlice.reducer;
+
+export const { disablePerson } = usersSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {

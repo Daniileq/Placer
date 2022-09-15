@@ -1,7 +1,7 @@
 const placeRouter = require('express').Router();
 
 const {
-  Place, Tag, PlaceTag, PlaceImage, Comment,
+  Place, Tag, PlaceTag, PlaceImage, Comment, User,
 } = require('../../db/models');
 const upload = require('../../src/upload');
 
@@ -35,6 +35,7 @@ placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
       isDeleted: false,
     });
 
+    // TODO переделать
     const tags = await Tag.findAll();
 
     const placeTagsId = [];
@@ -190,7 +191,14 @@ placeRouter.get('/:id/comments', async (req, res) => {
     const comments = await Comment.findAll({
       where: { placeId },
       order: [['createdAt', 'ASC']],
-      include: Comment.User,
+      include: [
+        {
+          model: User,
+          attributes: [
+            'login',
+          ],
+        },
+      ],
     });
     res.json({
       data: comments,
@@ -212,10 +220,50 @@ placeRouter.post('/:id/comments', async (req, res) => {
     });
     res.json({
       data: {
-        content: newComment.content,
+        ...newComment.dataValues,
         User: {
-          displayName: req.session.user.displayName,
+          login: req.session.user.login,
         },
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
+placeRouter.put('/:id/comments', async (req, res) => {
+  const { content, commentId } = req.body;
+  try {
+    const updatedComment = await Comment.update({
+      content,
+    }, {
+      where: { id: commentId },
+      returning: true,
+    });
+    res.json({
+      data: {
+        ...updatedComment[1][0].dataValues,
+        User: {
+          login: req.session.user.login,
+        },
+      },
+    });
+  } catch (error) {
+    res.json({
+      error: error.message,
+    });
+  }
+});
+
+placeRouter.delete('/:id/comments', async (req, res) => {
+  const { commentId } = req.body;
+  try {
+    await Comment.destroy({ where: { id: commentId } });
+    res.json({
+      data: {
+        commentId,
       },
     });
   } catch (error) {
