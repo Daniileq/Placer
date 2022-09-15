@@ -105,7 +105,7 @@ function PlacePage() {
       <div className='place_comments'>
         <h3>Комментарии</h3>
         <div>
-          {comments.length === 0 ? <p className='font_caption_small'>Нет комментариев</p> : <p className='font_caption_small'>{comments.length} комментариев</p>}
+          {comments.length === 0 ? <p className='font_caption'>Нет комментариев</p> : <p className='font_caption'>{comments.length} комментария</p>}
         </div>
         {
           <div>
