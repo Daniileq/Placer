@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadPlace } from '../../store/placeSlice/placeSlice';
+import { disablePlace, loadPlace } from '../../store/placeSlice/placeSlice';
 
 import Map from '../Map/Map.jsx';
 import Comment from '../Comment/Comment.jsx';
@@ -10,6 +10,7 @@ import AddComment from '../AddComment/AddComent.jsx';
 import { loadComments } from '../../store/commentSlice.js/commentSlice';
 import ImageSwiper from '../ImageSwiper/ImageSwiper.jsx';
 import { loadUserLoginsToGo } from '../../store/usersSlice/usersSlice';
+import Loader from '../Loader/Loader.jsx';
 
 function PlacePage() {
   // const [isShow, setShow] = useState(false);
@@ -19,14 +20,21 @@ function PlacePage() {
 
   const userLoginsToGo = useSelector((state) => state.users.userLoginsToGo);
   const comments = useSelector((state) => state.comments.data);
-  const place = useSelector((state) => state.place.data);
+  const { loading, data: place } = useSelector((state) => state.place);
   const [img, setImg] = useState(null);
 
   useEffect(() => {
     dispatch(loadPlace(Number(id)));
     dispatch(loadComments(id));
     dispatch(loadUserLoginsToGo({ placeId: id }));
+    return () => {
+      dispatch(disablePlace());
+    };
   }, [dispatch, id]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className='content_container'>
@@ -59,7 +67,7 @@ function PlacePage() {
           </div>
           <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
           <div className='place_location_text font_body_small'>
-            <p>Адрес: {place.adress}</p>
+            <p>Адрес: {place.address}</p>
           </div>
         </div>
         <div className='place_container_right'>
