@@ -35,6 +35,7 @@ placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
       isDeleted: false,
     });
 
+    // TODO переделать
     const tags = await Tag.findAll();
 
     const placeTagsId = [];
