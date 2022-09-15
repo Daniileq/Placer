@@ -1,7 +1,24 @@
-.comment_contaiiner {
-  margin: 3%;
+.comment_container {
+  margin-top: 14px;
 }
 
-h5 {
-  font-size: medium;
+.comment_container_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment_buttons button {
+  margin-left: 14px;
+}
+
+.change_comment_div {
+  width: 85%;
+}
+
+.change_comment_div button {
+}
+
+textarea[name=contentComment] {
+  min-width: 100%;
+  max-width: 100%;
 }

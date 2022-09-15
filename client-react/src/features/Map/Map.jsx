@@ -24,7 +24,7 @@ function Map({ place }) {
 
   return (
     <>
-      <div id="YMapsID" style={{ width: `${450}px`, height: `${350}px` }}>
+      <div id="YMapsID" style={{ width: `${83}%`, height: `${450}px` }}>
       </div>
     </>
   );

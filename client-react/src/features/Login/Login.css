@@ -62,3 +62,17 @@
   text-align: left;
   margin: 3px;
 }
+
+
+.password_input {
+  display: flex;
+}
+
+.password_btn {
+  font-size: 20px;
+  padding: 8px;
+  outline: none;
+  margin-left: -40px;
+  height: 40px;
+  width: 40px
+}

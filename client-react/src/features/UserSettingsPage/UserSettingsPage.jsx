@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import './UserSettingsPage.css';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   changeUser,
@@ -17,8 +17,6 @@ function UserSettingsPage() {
   const user = useSelector((state) => state.user.data);
   const helpMessage = useSelector((state) => state.user.helpMessage);
 
-  console.log(user);
-
   useEffect(
     () => () => {
       dispatch(disableHelpMessage());
@@ -26,9 +24,10 @@ function UserSettingsPage() {
     [dispatch],
   );
 
-  const photoUpload = () => {
+  const photoUpload = (event) => {
+    // setUpload(event.target.files[0]);
     const data = new FormData();
-    data.append('photo', upload);
+    data.append('photo', event.target.files[0]);
     dispatch(changeUserPhoto({ data, userId: user.id }));
   };
 
@@ -43,7 +42,7 @@ function UserSettingsPage() {
       <div className="profile_container">
         <div className="profile_content">
           <div className="backbtn">
-            <NavLink to={`/${user.login}`}>Назад</NavLink>
+            <Link to={`/${user.login}`}>Назад</Link>
           </div>
           <div className="profile">
             <div className="user_info">
@@ -52,22 +51,22 @@ function UserSettingsPage() {
                 {!user.photo && <img src={avatar} alt="фото" className='user_change_photo' />}
 
                 <div className="input-file-row">
-                <label class="input-file">
+                <label className="input-file">
                   <input
                     name="photo"
                     className="photoInput"
                     type="file"
                     accept="image/*,.png,.jpg,.jpeg"
-                    onChange={(e) => setUpload(e.target.files[0])}
+                    onChange={photoUpload}
                   />
                   <span>+</span>
                   </label>
-                  {/* <div class="input-file-list"></div> */}
+                  {/* <div className="input-file-list"></div> */}
                 </div>
               </div>
-              <button onClick={photoUpload} className="user_settings_btn" type="button">
-                    Изменить фото
-                  </button>
+              {/* <button onClick={photoUpload} className="user_settings_btn" type="button">
+                Изменить фото
+              </button> */}
             </div>
             <div className="user_data">
               <form onSubmit={settingsSubmit} className="user_settings_form">
