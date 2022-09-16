@@ -2,11 +2,10 @@
   width: 400px;
   background-color: #F4ECE0;
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
   /* flex-grow: 1;  // TODO под вопросом */
   transition: 0.3s;
   position: relative;
-  cursor: pointer;
 }
 
 .card_place:hover {
@@ -46,7 +45,8 @@
   color: #FF733B;
   min-height: 28px;
   padding: 0 10px;
-  background-color: #F4D3A1;
+  /* background-color: #F4D3A1; */
+  border: 1px solid #FF733B;
   border-radius: 4px;
   text-transform: lowercase;
   text-align: center;
@@ -71,13 +71,20 @@
   left: 0;
   min-width: 100%;
   height: 40px;
-  /* background-color: #f4d3a1; */
+  background-color: #f4d3a1;
   color: #ff733b;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
   border: none;
+  border-radius: 0px 0px 8px 8px;
+  transition: 0.4s;
   /* margin-bottom: 20px; */
+}
+
+.more_button:hover {
+  color: #2c2828;
+  background-color: #ff8858;
 }
 
 .card_place_title {
