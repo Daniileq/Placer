@@ -1,5 +1,6 @@
 .login_container {
-  background-color: #f4ece0;
+  height:10vh;
+  /* background-color: #f4ece0; */
 }
 
 .login_form_div {
@@ -8,6 +9,7 @@
   border-radius: 8px;
   position: relative;
   margin: auto;
+  margin-top: 40px;
 }
 
 .login_form {
@@ -16,7 +18,7 @@
   align-items: center;
   min-width: 500px;
   min-height: 500px;
-  background: #ffffff;
+  background: #f4ece0;
   border-radius: 8px;
   margin: auto;
   width: 100px;
@@ -53,6 +55,12 @@
   font-size: 18px;
   color: #ffffff;
   margin-top: 40px;
+transition: 0.4s;
+}
+
+.login_btn:hover {
+  color: #2c2828;
+  background-color: #ff8858;
 }
 
 .login_form label {
