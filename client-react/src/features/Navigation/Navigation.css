@@ -170,10 +170,10 @@
 
   .menu__btn {
     position: absolute;
-    top: 45px;
+    top: 32px;
     right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     z-index: 20;
   }
@@ -182,6 +182,7 @@
   .menu__btn > span::after {
     display: block;
     position: absolute;
+    top: 0;
     width: 100%;
     height: 2px;
     background-color: black;
@@ -189,11 +190,11 @@
   }
   .menu__btn > span::before {
     content: '';
-    top: -12px;
+    top: 16px;
   }
   .menu__btn > span::after {
     content: '';
-    top: 12px;
+    top: 32px;
   }
   .menu__box {
     z-index: 10;

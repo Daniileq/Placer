@@ -1,9 +1,9 @@
-// eslint-disable-next-line quotes
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate, Link } from 'react-router-dom';
-// eslint-disable-next-line quotes
+import {
+  NavLink, useNavigate, Link, useLocation,
+} from 'react-router-dom';
 import logo from './img/logo.svg';
-// eslint-disable-next-line quotes
 import './Navigation.css';
 import { logoutUser } from '../../store/userSlice/userSlice';
 
@@ -18,11 +18,23 @@ function Navigation() {
     navigate('/');
   };
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!document.querySelector('#menu__toggle').checked) {
+      return;
+    }
+    document.querySelector('.menu__btn').click();
+  }, [location]);
+
   return (
     <div className="nav_container">
       <div className="header_navigation">
-        <input id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle">
+        <input
+          id="menu__toggle"
+          type="checkbox"
+        />
+        <label className="menu__btn" htmlFor="menu__toggle">
           <span></span>
         </label>
         <Link className="header_nav_log_placer" to="/">
