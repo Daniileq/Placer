@@ -52,8 +52,8 @@ function UserPage() {
             { personLoaded
               && isUser
               && personInfo.login === user.login
-              ? <div className='user_name'>{user.displayName}</div>
-              : <div className='user_name'>{personInfo.displayName}</div>
+              ? <div className='user_name'><h5>{user.displayName}</h5></div>
+              : <div className='user_name'><h5>{personInfo.displayName}</h5></div>
             }
             { personLoaded
               && isUser
@@ -72,9 +72,9 @@ function UserPage() {
                   <h4 className='my_data'>Мои данные</h4>
                   <NavLink className='edit_btn font_button' to="/settings">Редактировать ✐</NavLink>
                 </div>
-                <div className='details'>Логин: {personLoaded && personInfo.login}</div>
-                <div className='details'>Почта: {personLoaded && user.email}</div>
-                <div className='details'>Город: {personLoaded && personInfo.city}</div>
+                <div className='details font_body'>Логин: {personLoaded && personInfo.login}</div>
+                <div className='details font_body'>Почта: {personLoaded && user.email}</div>
+                <div className='details font_body'>Город: {personLoaded && personInfo.city}</div>
                 </>
               )
               : (
@@ -82,25 +82,25 @@ function UserPage() {
                 <div className='data_profile_container'>
                   <h4 className='my_data'>Данные пользователя</h4>
                 </div>
-                <div className='details'>Логин: {personLoaded && personInfo.login}</div>
-                <div className='details'>Город: {personLoaded && personInfo.city}</div>
+                <div className='details font_body'>Логин: {personLoaded && personInfo.login}</div>
+                <div className='details font_body'>Город: {personLoaded && personInfo.city}</div>
                 </>
               )
               }
             {
               personLoaded && personInfo.sex
-                ? <div className='details'>Пол: {personInfo.sex}</div>
+                ? <div className='details font_body'>Пол: {personInfo.sex}</div>
                 : <div className='details'>Пол: не указан</div>
             }
             {
               personLoaded && personInfo.age
-                ? <div className='details'>Возраст: {personInfo.age}</div>
-                : <div className='details'>Возраст: не указан</div>
+                ? <div className='details font_body'>Возраст: {personInfo.age}</div>
+                : <div className='details font_body'>Возраст: не указан</div>
             }
             {
               personLoaded && personInfo.about
-                ? <div className='details'>Обо мне: {personInfo.about}</div>
-                : <div className='details'>Обо мне: не указано</div>
+                ? <div className='details font_body'>Обо мне: {personInfo.about}</div>
+                : <div className='details font_body'>Обо мне: не указано</div>
             }
           </div>
         </div>
