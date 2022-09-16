@@ -141,6 +141,7 @@ function UserSettingsPage() {
                 <div className="field">
                   <label htmlFor="sexInput">Пол:</label>
                   <select name="sex" id="sexInput" defaultValue={user.sex}>
+                    <option>Не выбрано</option>
                     <option>Мужской</option>
                     <option>Женский</option>
                     <option>Небинарный</option>

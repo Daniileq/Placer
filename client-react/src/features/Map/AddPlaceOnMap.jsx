@@ -65,7 +65,7 @@ export default function AddPlaceOnMap({
     <div
         // onClick={(e) => mapClick(e)}
         id="map"
-        style={{ width: `${450}px`, height: `${350}px` }}
+        style={{ width: '100%', height: '100%' }}
       >
       </div>
   );

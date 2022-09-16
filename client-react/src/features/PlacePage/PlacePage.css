@@ -81,8 +81,18 @@
 }
 
 .edit_place_btn {
-  margin-left: 20px;
-  margin-bottom: 30px;
+  margin: 20px;
+}
+
+.delete_place_btn,
+.edit_place_btn {
+transition: 0.4s;
+}
+
+.delete_place_btn:hover,
+.edit_place_btn:hover{
+  color: #2c2828;
+  background-color: #ff8858;
 }
 
 .info_tags {
