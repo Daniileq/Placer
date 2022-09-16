@@ -6,6 +6,7 @@
   /* flex-grow: 1;  // TODO под вопросом */
   transition: 0.3s;
   position: relative;
+  cursor: pointer;
 }
 
 .card_place:hover {
