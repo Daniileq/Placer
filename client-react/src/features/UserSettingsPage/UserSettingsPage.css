@@ -8,12 +8,14 @@
   margin: 0;
 } */
 
-.user_settings_form h4 {
+.user_settings_form h4,
+.user_pass_form h4 {
   margin-bottom: 30px;
   margin-left: 0;
 }
 
-.user_settings_form {
+.user_settings_form,
+.user_pass_form {
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -22,6 +24,7 @@
 }
 
 .user_settings_form input,
+.user_pass_form input,
 .user_settings_form select,
 .user_settings_form textarea {
   border: 1px solid #f4d3a1;
@@ -48,17 +51,17 @@
 .user_settings_btn {
   background: #ff733b;
   border-radius: 4px;
-  width: 200px;
-  height: 56px;
+  width: 150px;
+  height: 45px;
   border: none;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   color: #ffffff;
-  margin-top: 40px;
-  /* margin-bottom: 40px; */
+  margin: 30px;
 }
 
-.user_settings_form label {
+.user_settings_form label,
+.user_pass_form label {
   font-size: 16px;
   font-family: "Nunito", sans-serif;
   margin: 3px;
@@ -80,9 +83,12 @@
 }
 
 .user_data {
+  display: flex;
+  flex-direction: column;
   width: 791px;
   margin-left: 20px;
   padding-top: 30px;
+  padding-right: 80px;
   background-color: white;
   border-radius: 8px;
   position: relative;
@@ -96,7 +102,6 @@
   width: 251px;
   height: 251px;
   position: relative;
-  
 }
 
 .photo_container > img {
@@ -181,4 +186,15 @@
 .user_settings_form select {
   cursor: pointer;
   background-color: white;
+}
+
+.change_pass_btn {
+  outline: none;
+  margin-left: -40px;
+  height: 38px;
+  width: 40px;
+}
+
+.user_info {
+  height: 430px;
 }

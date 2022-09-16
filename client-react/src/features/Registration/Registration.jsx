@@ -75,6 +75,7 @@ function Registration() {
             <option>Казань</option>
             <option>Саратов</option>
             <option>Челябинск</option>
+            <option>Грозный</option>
             <option>Калининград</option>
             <option>Великий Новгород</option>
           </select>

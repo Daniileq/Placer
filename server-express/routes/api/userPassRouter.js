@@ -46,8 +46,6 @@ userPassRouter.put('/:id', upload.single('photo'), async (req, res) => {
       );
       updatedUser = updatedUser[1][0];
 
-      console.log(updatedUser);
-
       req.session.user = {
         id: updatedUser.id,
         email: updatedUser.email,

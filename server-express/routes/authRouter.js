@@ -113,7 +113,6 @@ authRouter.post('/login', async (req, res) => {
       res.json({ error: error.message });
       return;
     }
-
     try {
       const compPass = await bcrypt.compare(req.body.password, user.password);
       if (!compPass) {
@@ -175,7 +174,6 @@ authRouter.delete('/logout', (req, res) => {
 
 authRouter.get('/', (req, res) => {
   const { user } = req.session;
-  console.log(user);
   if (user) {
     res.json({ isUser: true, user });
   } else {
