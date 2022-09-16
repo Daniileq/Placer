@@ -131,3 +131,7 @@
     width: 100%;
   }
 }
+
+.place_input {
+  margin-bottom: 16px;
+}

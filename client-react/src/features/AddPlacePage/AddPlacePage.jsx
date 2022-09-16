@@ -31,9 +31,9 @@ function AddPlacePage() {
     <div className='content_container'>
       <form className="add_place_form" onSubmit={addPlaceFormSubmit}>
         <h4>Добавление места</h4>
-        <label htmlFor="title">Название места:</label>
-        <input id="title" name="title" required />
-        <label htmlFor="address">Адрес:</label>
+        <p className='font_subheading'>Название места:</p>
+        <input type="text" id="title" name="title" required />
+        <p className='font_subheading'>Адрес:</p>
         <input
           id="address"
           name="address"
@@ -42,13 +42,13 @@ function AddPlacePage() {
           required
         />
         {/* <div className="coordinates"> */}
-        <p>Положение на карте:</p>
+        <p className='font_subheading'>Положение на карте:</p>
         <div className='add_place_map_div'>
-        <AddPlaceOnMap
-          setAddress={setAddress}
-          setLatitude={setLatitude}
-          setLongitude={setLongitude}
-        />
+          <AddPlaceOnMap
+            setAddress={setAddress}
+            setLatitude={setLatitude}
+            setLongitude={setLongitude}
+          />
         </div>
         {/* <label htmlFor="longitude">Долгота:</label> */}
         <input
@@ -61,7 +61,7 @@ function AddPlacePage() {
         />
         {/* <label htmlFor="latitude">Широта:</label> */}
         <input
-          style={{ visibility: 'hidden' }}
+          style={{ display: 'none' }}
           id="latitude"
           name="latitude"
           value={latitude}
@@ -70,21 +70,21 @@ function AddPlacePage() {
         />
 
         <div className="input_place_image_div">
-          <label className="input_place_image" htmlFor="placeImages">Фотографии места:
-          <input
-            type="file"
-            id="placeImages"
-            name="placeImages"
-            className="photoInput"
-            accept="image/*,.png,.jpg,.jpeg"
-            multiple
-          />
-          <span>Выбрать фото</span>
+          <label className="input_place_image" style={{ fontSize: '24px', width: '100%' }} htmlFor="placeImages">Фотографии места:
+            <input
+              type="file"
+              id="placeImages"
+              name="placeImages"
+              className="photoInput"
+              accept="image/*,.png,.jpg,.jpeg"
+              multiple
+            />
+            <span>Выбрать фото</span>
           </label>
         </div>
 
         <div className="category_input">
-          <p>Категория:</p>
+          <p className='font_subheading'>Категория:</p>
           <select name="categoryId" className='categoryId' required>
             <option>Не выбрано</option>
             {filters.categories.map((category) => (
@@ -95,7 +95,7 @@ function AddPlacePage() {
           </select>
         </div>
 
-          <p>Тэги:</p>
+        <p className='font_subheading'>Тэги:</p>
         <div className="tags_input">
           {filters.tags.map((tag, tagIndex) => (
             <div key={tag.id} className="tags_input_option">
@@ -105,6 +105,7 @@ function AddPlacePage() {
                 type="checkbox"
                 tagid={tag.id}
                 name={`tags_${tagIndex}`}
+                style={{ width: '10%' }}
               />
               <label className="tag_label" htmlFor={`tags_${tag.id}`}>
                 {tag.title}
@@ -112,7 +113,7 @@ function AddPlacePage() {
             </div>
           ))}
         </div>
-
+        <p className='font_subheading' htmlFor="description">Описание:</p>
         <textarea className="description" id="description" name="description" />
         <button className="add_place_btn" type="submit">
           Добавить место

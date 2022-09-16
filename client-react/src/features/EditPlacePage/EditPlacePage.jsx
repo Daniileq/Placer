@@ -5,7 +5,7 @@ import {
   deletePlace, disablePlace, editPlace, loadPlace,
 } from '../../store/placeSlice/placeSlice';
 import { loadTags, loadCategories } from '../../store/searchSlice/searchSlice';
-import './EditPlacePage.css';
+import '../AddPlacePage/AddPlacePage.css';
 import AddPlaceOnMap from '../Map/AddPlaceOnMap.jsx';
 import Loader from '../Loader/Loader.jsx';
 
@@ -67,12 +67,13 @@ function EditPlacePage() {
   }
 
   return (
-    <form className="edit_form" onSubmit={handleSubmit}>
+    <div className='content_container'>
+    <form className="add_place_form" onSubmit={handleSubmit}>
     <h4>Отредактировать место</h4>
 
-    <label htmlFor="title">Название места:</label>
+    <p className='font_subheading'>Название места:</p>
     <input type="text" name="title" id='title'defaultValue={place.title} required />
-    <label htmlFor="address">Адрес:</label>
+    <p className='font_subheading'>Адрес:</p>
       <input
         id="address"
         name="address"
@@ -80,7 +81,8 @@ function EditPlacePage() {
         onChange={(event) => setAddress((event.target.value))}
         required
       />
-    <p>Положение на карте:</p>
+    <p className='font_subheading'>Положение на карте:</p>
+    <div className='add_place_map_div'>
       {!loading
       && initCoords[0]
       && initCoords[1]
@@ -91,6 +93,7 @@ function EditPlacePage() {
           initCoords={initCoords}
         />
       }
+      </div>
       <input
         style={{ visibility: 'hidden' }}
         id="longitude"
@@ -100,25 +103,33 @@ function EditPlacePage() {
       />
       {/* <label htmlFor="latitude">Широта:</label> */}
       <input
-        style={{ visibility: 'hidden' }}
+        style={{ display: 'none' }}
         id="latitude"
         name="latitude"
         value={latitude}
         onChange={(event) => setLatitude(Number(event.target.value))}
       />
-      <label htmlFor="placeImages">Фотографии места:</label>
-      <input
-        type="file"
-        id="placeImages"
-        name="placeImages"
-        accept="image/*,.png,.jpg,.jpeg"
-        multiple
-      />
-    <label htmlFor="category">Категория:</label>
+
+      <div className="input_place_image_div">
+          <label className="input_place_image" style={{ fontSize: '24px', width: '100%' }} htmlFor="placeImages">Фотографии места:
+            <input
+              type="file"
+              id="placeImages"
+              name="placeImages"
+              className="photoInput"
+              accept="image/*,.png,.jpg,.jpeg"
+              multiple
+            />
+            <span>Выбрать фото</span>
+          </label>
+        </div>
+
+    <div className="category_input">
+      <p className='font_subheading'>Категория:</p>
     {place.Category
       && (
       <select
-        className='select-css'
+        className='categoryId'
         id='categoryId'
         name='categoryId'
         value={categoryId === null ? '' : categoryId}
@@ -133,8 +144,9 @@ function EditPlacePage() {
       </select>
       )
     }
+    </div>
+    <p className='font_subheading'>Тэги:</p>
     <div className='tags_input'>
-      <p>Тэги: </p>
       {filters.tags.map((tag, tagIndex) => (
         <div key={tag.id} className='tags_input_option'>
           <input
@@ -144,6 +156,7 @@ function EditPlacePage() {
             tagid={tag.id}
             name={`tags_${tagIndex}`}
             defaultChecked={place.PlaceTags.some((placeTag) => tag.id === placeTag.Tag.id)}
+            style={{ width: '10%' }}
           />
           <label className='tag_label' htmlFor={`tags_${tag.id}`}>
             {tag.title}
@@ -151,11 +164,12 @@ function EditPlacePage() {
         </div>
       ))}
     </div>
-    <label htmlFor="description">Описание:</label>
+    <p className='font_subheading' htmlFor="description">Описание:</p>
     <textarea type="text" name="description" id='description' defaultValue={place ? place.description : null} required />
     <button className='edit_place_btn' type="submit">Отправить изменения</button>
     <button className='delete_place_btn' type="submit" onClick={handleClick}>Удалить место</button>
   </form>
+  </div>
   );
 }
 
