@@ -109,9 +109,9 @@ function PlacePage() {
           </div>
         </div>
       </div>
-      <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
           <div className='place_location_text font_body_small'>
-            <p>Адрес: {place.adress}</p>
+            <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
+            {/* <p>Адрес: {place.adress}</p> */}
           </div>
       <div className='place_map'>
         {

@@ -1,8 +1,18 @@
 .place_to_go_container form{
     display: flex;
+    width: 50px;
+    gap:10px;
 }
 
 .place_to_go_btn {
     line-height: 16px;
     padding-top: 5px;
+}
+
+.place_to_go_form button {
+    transition: 0.25s;
+}
+
+.place_to_go_form button:hover {
+    transform: scale(1.17);
 }

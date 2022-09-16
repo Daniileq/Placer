@@ -111,7 +111,7 @@ function Registration() {
           </div>
 
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className='registration_btn' type="submit">Зарегистрироваться</button>
+          <button className='registration_btn font_button' type="submit">Зарегистрироваться</button>
         </form>
       </div>
     </div>
