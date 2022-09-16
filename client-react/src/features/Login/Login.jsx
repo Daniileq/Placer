@@ -74,7 +74,7 @@ function Login() {
           </div>
 
           {helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className="login_btn" type="submit">
+          <button className="login_btn font_button" type="submit">
             Войти
           </button>
         </form>

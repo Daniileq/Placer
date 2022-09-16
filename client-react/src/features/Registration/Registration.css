@@ -1,10 +1,10 @@
 .registration_container {
-  background-color: #f4ece0;
+
 }
 
 .registration_form_div {
   width: 580px;
-  background-color: white;
+  
   border-radius: 8px;
   position: relative;
   margin: auto;
@@ -16,9 +16,10 @@
   align-items: center;
   min-width: 500px;
   min-height: 650px;
-  background: #ffffff;
+  background-color: #f4ece0;
   border-radius: 8px;
   margin: auto;
+  margin-top: 40px;
   width: 100px;
 }
 
@@ -57,6 +58,7 @@
   font-size: 18px;
   color: #ffffff;
   margin: 40px;
+  transition: 0.4s;
 }
 
 .registration_form label {
@@ -74,12 +76,13 @@
 
 /* Hover/Active */
 .registration_btn:hover {
-	background-color: #ff8b5e;
+	color: #2c2828;
+  background-color: #ff8858;
 }
 .registration_btn:active {
 	background-color: #c56a47;
 }
 
 .helpText {
-  color: red;
+  color: green;
 }
