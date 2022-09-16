@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap');
@@ -17,6 +18,7 @@ body,
 
 header {
   height: 90px;
+  background-color: #ffe5bf;
 }
 
 main {
@@ -102,6 +104,8 @@ footer a {
 
 .content_container {
   padding: 0 135px;
+  max-width: 1650px;
+  margin: 0 auto;
 }
 
 .flex_container {
@@ -125,4 +129,10 @@ footer a {
 .font_caption_small,
 .font_body_small {
   font-weight: 400;
+}
+
+@media only screen and (max-width: 1200px) {
+  .content_container {
+    padding: 0 35px;
+  }
 }

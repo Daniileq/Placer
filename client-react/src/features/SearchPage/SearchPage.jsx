@@ -79,8 +79,8 @@ function SearchPage() {
               />
             </form>
             <div className='show_type'>
-              <div className={isList ? 'list active_show' : 'list'} onClick={() => setIsList(true)}>Списком</div>
-              <div className={!isList ? 'map active_show' : 'map'} onClick={() => setIsList(false)}>На карте</div>
+              <div className={isList ? 'show_option list active_show' : 'show_option list'} onClick={() => setIsList(true)}>Списком</div>
+              <div className={!isList ? 'show_option map active_show' : 'show_option map'} onClick={() => setIsList(false)}>На карте</div>
             </div>
             {loading && <Loader />}
             {!loading && isList

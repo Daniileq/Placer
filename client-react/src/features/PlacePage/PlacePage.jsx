@@ -44,7 +44,7 @@ function PlacePage() {
   return (
     <div className='content_container'>
       <div className='place_container'>
-        <div className='place_container_right'>
+        <div className='place_container_left'>
           <h4>
             {place.title}
           </h4>
@@ -54,22 +54,26 @@ function PlacePage() {
               {place.description}
             </p>
           </div>
-          <div>
-            <span className='font_subheading_small'>Теги:
-            </span>
-            {
-              place.PlaceTags
-              && place.PlaceTags.length
-              && place.PlaceTags.map((placeTag) => (
-                <p key={placeTag.Tag.id}>{placeTag.Tag.title}</p>
-              ))
-            }
-            <span className='font_subheading_small'> Категория:
-            </span>
-            {place
-              && place.Category
-              && <p>{place.Category.title}</p>
-            }
+          <div className='short_info_conteiner'>
+            <div className='info_tags'>
+              <span className='font_subheading_small'>Теги:
+              </span>
+              {
+                place.PlaceTags
+                && place.PlaceTags.length
+                && place.PlaceTags.map((placeTag) => (
+                  <p key={placeTag.Tag.id}>{placeTag.Tag.title}</p>
+                ))
+              }
+            </div>
+            <div className='info_category'>
+              <span className='font_subheading_small'> Категория:
+              </span>
+              {place
+                && place.Category
+                && <p>{place.Category.title}</p>
+              }
+            </div>
           </div>
           <div>
             <span className='font_subheading_small'> Кто собирается пойти:
@@ -77,7 +81,7 @@ function PlacePage() {
             </span>
           </div>
         </div>
-        <div className='place_container_left'>
+        <div className='place_container_right'>
           <div className='place_container_image'>
             {img
               ? (
