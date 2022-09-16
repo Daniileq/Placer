@@ -57,9 +57,11 @@ function UserPage() {
             }
             { personLoaded
               && isUser
-              && personInfo.login === user.login
-              ? <></>
-              : <button className='tg_btn' onClick={() => { window.location.href = personInfo.tgUsername; } }>Написать</button>
+              && personInfo.login !== user.login
+              && personInfo.tgUsername
+              && <button className='tg_btn'>
+                <a href={`${personInfo.tgUsername}`} target="_blank" rel="noreferrer">Написать</a>
+              </button>
             }
           </div>
           <div className='user_data_profile'>
