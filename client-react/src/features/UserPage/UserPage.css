@@ -29,6 +29,8 @@
 
 .user_data_profile div {
   background-color: white;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
 }
 
 .user_photo {
@@ -94,6 +96,7 @@
 .details {
   background-color: white;
   margin-top: 10px;
+  font-size: 20px;
 }
 
 .edit_btn{

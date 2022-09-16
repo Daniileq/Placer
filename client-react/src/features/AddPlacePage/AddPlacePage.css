@@ -19,8 +19,10 @@
   margin-bottom: 30px;
 }
 
-.add_place_form input, select, textarea {
-  width: 100%;
+.add_place_form input, 
+/* .add_place_form select,  */
+.add_place_form textarea {
+  /* width: 450px; */
   border: 1px solid #f4d3a1;
   border-radius: 4px;
   font-size: 14px;
@@ -69,4 +71,97 @@
   margin: 20px;
 }
 
+.categoryId {
+  border: 1px solid #f4d3a1;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 430px;
+  height: 36px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: white;
+}
 
+.tags_input {
+  /* width: 10px; */
+  display: flex;
+  /* height: 200px; */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+
+.checkbox_input {
+  width: 20px;
+  margin-bottom: -12px;
+}
+
+.description {
+  width: 430px;
+  height: 200px;
+}
+
+
+
+
+.input_place_image span {
+	/* position: relative; */
+  /* position: absolute; */
+	/* display: inline-block; */
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 20px;
+	/* vertical-align: middle; */
+	color: rgb(255, 255, 255);
+	text-align: center;
+	border-radius: 10px;
+	background-color: #ff733b;
+	/* line-height: 22px; */
+	height: 30px;
+	/* padding: 20px 21px; */
+	box-sizing: border-box;
+	border: none;
+	/* margin-bottom: 20px; */
+	transition: background-color 0.2s;
+}
+.input_place_image input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Focus */
+.input_place_image input[type=file]:focus + span {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+ 
+/* Hover/Active */
+.input_place_image:hover span {
+	background-color: #ff8b5e;
+}
+.input_place_image:active span {
+	background-color: #c56a47;
+}
+ 
+/* Список файлов */
+.input-file-list {
+	padding: 10px 0;
+}
+.input-file-list-item {
+	margin-bottom: 10px;
+}
+.input-file-list-remove {
+	color: red;
+	text-decoration: none;
+	display: inline-block;
+	margin-left: 5px;
+}
