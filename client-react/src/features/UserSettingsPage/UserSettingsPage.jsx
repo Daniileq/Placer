@@ -58,7 +58,7 @@ function UserSettingsPage() {
       <div className="profile_container">
         <div className="profile_content">
           <div className="backbtn">
-            <Link to={`/${user.login}`}>Назад</Link>
+            <div className='backbtn font_button_small'><Link to={`/${user.login}`}> ← Назад</Link></div>
           </div>
           <div className="profile">
             <div className="user_info">
