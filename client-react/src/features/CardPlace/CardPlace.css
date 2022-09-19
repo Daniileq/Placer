@@ -1,9 +1,8 @@
 .card_place {
-  width: 400px;
+  width: 420px;
   background-color: #F4ECE0;
   border-radius: 8px;
   text-align: left;
-  /* flex-grow: 1;  // TODO под вопросом */
   transition: 0.3s;
   position: relative;
 }
@@ -12,12 +11,19 @@
   transform: scale(1.02);
 }
 
+.popularity_info {
+  padding: 5px;
+  background-color: #ff8858;
+  border-radius: 4px;
+  border: solid 1px #da3e00;
+  font-weight: 500;
+}
+
 .card_place_image {
   border-radius: 8px 8px 0px 0px;
   overflow: hidden;
   min-height: 213px;
-  /* display: flex; */
-  /* justify-content: center; */
+  width: 100%;
 }
 
 .card_place_image img {
@@ -45,19 +51,18 @@
   color: #FF733B;
   min-height: 28px;
   padding: 0 10px;
-  /* background-color: #F4D3A1; */
   border: 1px solid #FF733B;
   border-radius: 4px;
   text-transform: lowercase;
   text-align: center;
   line-height: 28px;
+  font-weight: 700;
 }
 
 .card_place_buttons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 0 30px;
+  justify-content: space-around;
 }
 
 /* .card_place_more {
@@ -89,4 +94,15 @@
 
 .card_place_title {
   text-align: center;
+}
+
+@media only screen and (max-width: 1515px) {
+  .card_place {
+    width: 100%;
+    max-width: 690px;
+  }
+
+  .card_place_image img {
+    object-fit: cover;
+  }
 }
