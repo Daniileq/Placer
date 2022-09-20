@@ -1,18 +1,39 @@
-.place_to_go_container form{
-    display: flex;
-    width: 50px;
-    gap:10px;
+.place_to_go_container {
+  display: flex;
+  width: 45px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .place_to_go_btn {
-    line-height: 16px;
-    padding-top: 5px;
+  line-height: 16px;
+  padding-top: 5px;
 }
 
 .place_to_go_form button {
-    transition: 0.25s;
+  transition: 0.25s;
 }
 
 .place_to_go_form button:hover {
-    transform: scale(1.17);
+  transform: scale(1.17);
+}
+
+.man_walk {
+  color:#ff883d;
+  transition: 0.35s;
+}
+
+.man_walk:hover {
+  color: #ff5100;
+}
+
+.man_walk_fill {
+  color: #ff5100;
+}
+
+.current_to_go {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 5px;
+  line-height: 36px;
 }
