@@ -5,7 +5,7 @@ import Layout from './Layout/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Registration from './Registration/Registration.jsx';
 import Login from './Login/Login.jsx';
-import UserPage from './UserPage/UserPage.jsx';
+import ProfilePage from './ProfilePage/ProfilePage.jsx';
 import UserSettingsPage from './UserSettingsPage/UserSettingsPage.jsx';
 import FavoritesPage from './FavoritesPage/FavoritesPage.jsx';
 import About from './About/About.jsx';
@@ -19,7 +19,7 @@ import './App.css';
 import { loadUser } from '../store/userSlice/userSlice';
 import PlacePage from './PlacePage/PlacePage.jsx';
 import AddPlacePage from './AddPlacePage/AddPlacePage.jsx';
-import { loadFavorites, loadPlacesToGo } from '../store/placesSlice/placesSliceDeprecated';
+import { loadFavorites, loadPlacesToGo } from '../store/placesSlice/placesSlice';
 import Loader from './Loader/Loader.jsx';
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/togo" element={<PlacesToGo />} />
           <Route path='/notfound' element={<Error404 />} />
-          <Route path='/:login' element={<UserPage />} />
+          <Route path='/:login' element={<ProfilePage />} />
           <Route path='*' element={<Error404 />} />
         </Route>
       </Routes>) : (<Routes>
@@ -78,7 +78,7 @@ function App() {
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/togo" element={<PlacesToGo />} />
           <Route path='/notfound' element={<Error404 />} />
-          <Route path='/:login' element={<UserPage />} />
+          <Route path='/:login' element={<ProfilePage />} />
           <Route path='*' element={<Error404 />} />
         </Route>
       </Routes>)

@@ -34,7 +34,7 @@
   height: 36px;
   margin-bottom: 10px;
   padding-left: 10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   outline: none;
   transition: 0.2s;
 }
@@ -54,7 +54,7 @@
   width: 150px;
   height: 45px;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   color: #ffffff;
   margin: 30px;
@@ -63,7 +63,7 @@
 .user_settings_form label,
 .user_pass_form label {
   font-size: 16px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   margin: 3px;
   float: left;
 }
@@ -94,93 +94,107 @@
   position: relative;
 }
 
-.photo_container {
-  margin-top: 54px;
-  margin-left: 54px;
-  margin-right: 55px;
-  margin-bottom: 16px;
-  width: 251px;
-  height: 251px;
+.change_photo_container {
+  margin: 40px auto 16px;
+  width: 275px;
+  height: 275px;
   position: relative;
 }
 
-.photo_container > img {
+.user_photo_wrapper_change {
   border-radius: 50%;
+  width: 275px;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
-.user_change_photo {
-  margin-right: 55px;
-  margin-bottom: 16px;
-  width: 251px;
-  height: 251px;
-  border-radius: 50%;
+.user_photo {
+  height: 100%;
 }
 
 .input-file-row {
-	display: inline-block;
+  display: inline-block;
   position: absolute;
-  top: 170px;
-  left: 10px;
+  top: 190px;
 }
+
 .input-file {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 }
+
 .input-file span {
-	/* position: relative; */
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff733b;
+  transition: 0.4s;
+}
+
+.input-file span::before {
+  content: '';
   position: absolute;
-	display: inline-block;
-	cursor: pointer;
-	outline: none;
-	text-decoration: none;
-	font-size: 40px;
-	vertical-align: middle;
-	color: rgb(255, 255, 255);
-	text-align: center;
-	border-radius: 50%;
-	background-color: #ff733b;
-	line-height: 22px;
-	/* height: 60px; */
-	padding: 20px 21px;
-	box-sizing: border-box;
-	border: none;
-	margin: 0;
-	transition: background-color 0.2s;
+  height: 4px;
+  width: 35px;
+  border-radius: 5px;
+  top: 37px;
+  z-index: 2;
+  background-color: #fff;
+  /* transform: rotate(90); */
 }
-.input-file input[type=file] {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-	display: block;
-	width: 0;
-	height: 0;
+
+.input-file span::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 35px;
+  border-radius: 5px;
+  top: 37px;
+  z-index: 2;
+  background-color: #fff;
+  transform: rotate(90deg);
 }
- 
+
+.input-file input[type='file'] {
+  display: none;
+}
+
 /* Focus */
-.input-file input[type=file]:focus + span {
-	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+.input-file input[type='file']:focus + span {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
- 
+
 /* Hover/Active */
-.input-file:hover span {
-	background-color: #ff8b5e;
+.input-file span:hover {
+  background-color: #ff4800;
 }
-.input-file:active span {
-	background-color: #c56a47;
+
+.input-file span:active {
+  background-color: #ff3300;
 }
- 
+
 /* Список файлов */
 .input-file-list {
-	padding: 10px 0;
+  padding: 10px 0;
 }
 .input-file-list-item {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .input-file-list-remove {
-	color: red;
-	text-decoration: none;
-	display: inline-block;
-	margin-left: 5px;
+  color: red;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 5px;
 }
 
 .user_settings_form select {

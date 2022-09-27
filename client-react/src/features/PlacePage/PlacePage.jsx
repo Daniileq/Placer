@@ -13,7 +13,6 @@ import { loadUserLoginsToGo } from '../../store/usersSlice/usersSlice';
 import Loader from '../Loader/Loader.jsx';
 
 function PlacePage() {
-  // const [isShow, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -77,7 +76,11 @@ function PlacePage() {
           </div>
           <div>
             <span className='font_subheading_small'> Кто собирается пойти:
-              {userLoginsToGo.map((login) => <Link key={login} to={`/${login}`} className='user_go' target="_blank">{' '}{login}</Link>)}
+              <div className='place_users_to_go'>
+                {userLoginsToGo.map(
+                  (login) => <Link key={login} to={`/${login}`} className='user_go'>{login}</Link>,
+                )}
+              </div>
             </span>
           </div>
         </div>
@@ -109,10 +112,10 @@ function PlacePage() {
           </div>
         </div>
       </div>
-          <div className='place_location_text font_body_small'>
-            <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
-            {/* <p>Адрес: {place.adress}</p> */}
-          </div>
+      <div className='place_location_text font_body_small'>
+        <span className='place_left_location font_subheading_small'>МЕСТОПОЛОЖЕНИЕ :</span>
+        <p>{place.address}</p>
+      </div>
       <div className='place_map'>
         {
           place.longitude
@@ -122,30 +125,29 @@ function PlacePage() {
       <div className='place_comments'>
         <h3>Комментарии</h3>
         <div>
-          {comments.length === 0 ? <p className='font_caption'>Нет комментариев</p> : <p className='font_caption'>{comments.length} комментария</p>}
+          {comments.length === 0
+            ? <p className='font_caption'>Нет комментариев</p>
+            : <p className='font_caption'>{comments.length} комментария</p>}
         </div>
         {
           <div>
-            {comments.map((comment) => <Comment key={comment.id} comment={comment} place={place}/>)}
+            {comments.map(
+              (comment) => <Comment key={comment.id} comment={comment} place={place} />,
+            )}
           </div>
         }
         {isUser
           && (<div>
-              <AddComment />
-            </div>)
-        }
-        {/* {!isShow
-            && <button type='click' onClick={() => setShow(true)} className='add_comment_btn'>
-            </button>
-        } */}
-        {/* {isShow && <AddComment />} */}
-      </div>
-      {isUser && userId === place.userId
-        ? (<div>
-             <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+            <AddComment />
           </div>)
-        : <></>
         }
+      </div>
+      {isUser
+        && userId === place.userId
+        && (<div>
+          <button className='edit_place_btn' type="submit" onClick={() => navigate('edit')}>Редактировать</button>
+        </div>)
+      }
       <ImageSwiper />
     </div>
   );

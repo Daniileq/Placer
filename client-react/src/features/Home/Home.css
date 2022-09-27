@@ -55,7 +55,6 @@
 }
 
 .greeting {
-  width: 800px;
   color: #000000;
 }
 
@@ -100,6 +99,8 @@
 }
 
 @media only screen and (max-width: 444px) {
+  
+
   .welcome_pic_wrapper {
     overflow: hidden;
     width: 100%;
@@ -108,5 +109,19 @@
 
   .welcome_pic {
     height: 100%;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .welcome_pic_wrapper {
+    height: 280px;
+  }
+
+  .welcome_pic {
+    object-fit: cover;
+  }
+
+  .welcome_container {
+    min-height: 680px;
   }
 }

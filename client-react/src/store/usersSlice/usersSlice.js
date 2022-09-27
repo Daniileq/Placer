@@ -6,6 +6,7 @@ const initialState = {
   personPlaces: [],
   userLoginsToGo: [],
   personLoaded: null,
+  personPlacesLoaded: null,
   error: null,
 };
 
@@ -55,6 +56,7 @@ const usersSlice = createSlice({
     disablePerson: (state) => {
       state.personInfo = {};
       state.personLoaded = null;
+      state.personPlacesLoaded = null;
     },
   },
   extraReducers: (builder) => {
@@ -75,9 +77,11 @@ const usersSlice = createSlice({
       })
       .addCase(loadPersonPlaces.rejected, (state, action) => {
         state.error = action.error.message;
+        state.personPlacesLoaded = true;
       })
       .addCase(loadPersonPlaces.fulfilled, (state, action) => {
         state.personPlaces = action.payload;
+        state.personPlacesLoaded = true;
       });
   },
 });

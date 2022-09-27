@@ -27,8 +27,8 @@ function CardPlace({ place }) {
               <PlaceToGoButton place={place} />
             </>
           : <>
-              <p>Нравится: {place.Likes.length}</p>
-              <p>Хочет пойти: {place.PlaceToGos.length}</p>
+              <p className='popularity_info'>Любимое место: {place.Likes.length}</p>
+              <p className='popularity_info'>Хочет пойти: {place.PlaceToGos.length}</p>
             </>
           }
         </div>
