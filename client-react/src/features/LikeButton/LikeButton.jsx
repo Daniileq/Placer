@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleLike } from '../../store/placesSlice/placesSliceDeprecated';
+import { toggleLike } from '../../store/placesSlice/placesSlice';
 import './LikeButton.css';
 
 const fillHeart = (<svg className="fill_heart" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">

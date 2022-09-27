@@ -5,7 +5,6 @@ export default function AddPlaceOnMap({
 }) {
   useEffect(() => {
     let myMap;
-    console.log(initCoords);
     // eslint-disable-next-line no-undef
     ymaps.ready(() => {
       // eslint-disable-next-line no-undef
