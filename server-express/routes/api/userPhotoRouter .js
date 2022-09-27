@@ -11,7 +11,7 @@ userPhotoRouter.put('/:id', upload.single('photo'), async (req, res) => {
 
     let updatedUser = await User.update(
       {
-        photo: req.file ? `/static/media${req.file.filename}` : uniqUser.photo,
+        photo: req.file ? `/static/media/${req.file.filename}` : uniqUser.photo,
       },
       {
         where: { id },
