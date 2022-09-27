@@ -30,44 +30,56 @@
 .user_data_profile div {
   background-color: white;
   font-size: 20px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
+}
+
+.user_photo_wrapper {
+  border-radius: 50%;
+  margin: 40px auto 12px;
+  width: 275px;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .user_photo {
-  margin-top: 54px;
-  margin-left: 54px;
-  margin-right: 55px;
-  margin-bottom: 16px;
-  width: 251px;
-  height: 251px;
-  border-radius: 50%;
+  height: 100%;
 }
 
 .user_name {
-  background-color: white;
-  top: 319px;
-  left: 91px;
-  right: 91px;
-  bottom: 113px;
-  width: 250px;
-  height: 34px;
+  width: 95%;
+  height: 35px;
+  font-size: 32px;
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 
 .backbtn {
   font-size: 18px;
   height: 56px;
   min-width: 104px;
-  /* text-align: center; */
+  text-align: center;
   line-height: 56px;
-  /* color: #FF733B; */
+  display: flex;
+  align-items: center;
 }
 
-.backbtn a {
-  color: #ff733b;
+.backbtn > div {
+  color: #FF733B;
+  cursor: pointer;
+  display: block;
+  width: 128px;
+  height: 32px;
+  line-height: 32px;
+  transition: 0.2s;
+}
+
+.backbtn > div:hover {
+  color: #ff4800;
 }
 
 .my_data {
@@ -75,6 +87,13 @@
   text-align: left;
   line-height: 34px;
   font-size: 26px;
+}
+
+.place_users_to_go {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 12px;
+  flex-wrap: wrap;
 }
 
 .places {
@@ -99,24 +118,33 @@
   font-size: 20px;
 }
 
-.edit_btn{
+.edit_btn {
   left: 600px;
-  top: 55px; 
+  top: 55px;
   color: #ff733b;
+  transition: 0.2s;
+}
+
+.edit_btn:hover {
+  color: #ff4800;
 }
 
 .my_places_headers {
- display: flex;
- align-items: baseline;
- justify-content: space-between;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 .tg_btn {
+  margin-top: 14px;
   background-color: #f4d3a1;
-  color: #ff733b;
   font-size: 16px;
   padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
   border: none;
+}
+
+.tg_btn > a {
+  color: #ff733b;
 }
