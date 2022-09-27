@@ -3,10 +3,11 @@ import React, { useEffect } from 'react';
 
 function Map({ place }) {
   useEffect(() => {
+    let myMap;
     ymaps.ready(() => {
-      const myMap = new ymaps.Map('YMapsID', {
-        center: [59.94, 30.32],
-        zoom: 10,
+      myMap = new ymaps.Map('YMapsID', {
+        center: [place.longitude, place.latitude],
+        zoom: 12,
         controls: ['routeButtonControl'],
       });
 
@@ -16,12 +17,15 @@ function Map({ place }) {
 
       myMap.geoObjects.add(myPlacemark);
     });
+    return () => {
+      myMap.destroy();
+    };
   }, [place.longitude, place.latitude]);
 
   return (
     <>
-    <div id="YMapsID" style={{ width: `${450}px`, height: `${350}px` }}>
-    </div>
+      <div id="YMapsID" style={{ width: `${83}%`, height: `${450}px` }}>
+      </div>
     </>
   );
 }

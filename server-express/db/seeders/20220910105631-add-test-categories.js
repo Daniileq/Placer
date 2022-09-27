@@ -19,22 +19,61 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          title: 'Новые пространства',
+          title: 'Общественные пространства',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Активный отдых',
+          title: 'Благотоврительные организации',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          title: 'Открой новое',
+          title: 'Рестораны',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-      ],
-      {}
+        {
+          title: 'Образование',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Бары',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Музеи',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Торговые центры',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Спортивные объекты',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Концертные площадки',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Парки развлечений',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: 'Религиозные объекты',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        }],
+      {},
     );
   },
 

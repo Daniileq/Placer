@@ -1,7 +1,8 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Filters from '../Filters/Filters.jsx';
 import CardPlace from '../CardPlace/CardPlace.jsx';
+import BigMap from '../Map/BigMap.jsx';
 import './SearchPage.css';
 
 import {
@@ -13,6 +14,7 @@ import Loader from '../Loader/Loader.jsx';
 
 function SearchPage() {
   const dispatch = useDispatch();
+  const [isList, setIsList] = useState(true);
 
   const {
     filters, activeFilters, loading, keywordPlaces, keyword,
@@ -50,7 +52,7 @@ function SearchPage() {
     return () => {
       clearTimeout(debounceId);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyword]);
 
   return (
@@ -64,8 +66,8 @@ function SearchPage() {
           </div>
 
           <div className='search_right_column'>
-            <form className='place_search_form' method="get">
-              <label htmlFor="place_input">поиск:</label>
+            <form className='place_search_form font_subheading_small' method="get">
+              <label htmlFor="place_input">ПОИСК:</label>
               <input
                 id='place_input'
                 name='place_input'
@@ -76,10 +78,22 @@ function SearchPage() {
                 placeholder='Введите ключевые слова...'
               />
             </form>
-            <div className='search_results_container'>
-              {loading && <Loader />}
-              {!loading && keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
+            <div className='show_type'>
+              <div className={isList ? 'show_option list active_show' : 'show_option list'} onClick={() => setIsList(true)}>Списком</div>
+              <div className={!isList ? 'show_option map active_show' : 'show_option map'} onClick={() => setIsList(false)}>На карте</div>
             </div>
+            {loading && <Loader />}
+            {!loading && isList
+              && (
+                <div className='search_results_container'>
+                  {keywordPlaces.map((place) => <CardPlace place={place} key={place.id} />)}
+                </div>
+              )}
+            {!loading && !isList
+              && (
+                <BigMap />
+              )
+            }
           </div>
         </div>
       </div>

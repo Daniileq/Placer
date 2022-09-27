@@ -1,13 +1,15 @@
 /* eslint-disable consistent-return */
 const authRouter = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Place, PlaceTag } = require('../db/models');
+const { User } = require('../db/models');
 
 authRouter.post('/registration', async (req, res) => {
   try {
     const {
-      displayName, email, login, city, password, repeatPass,
+      displayName, email, login, city, password, repeatPass, tgUsername,
     } = req.body;
+
+    const routesArr = ['profile', 'newplace', 'settings', 'favorites', 'about', 'contacts', 'togo', 'registration', 'login', 'places'];
 
     if (
       displayName.length < 1
@@ -44,6 +46,10 @@ authRouter.post('/registration', async (req, res) => {
       res.json({ message: 'Логин недействителен' });
       return;
     }
+    if (routesArr.includes(login)) {
+      res.json({ message: 'Такой логин нельзя использовать' });
+      return;
+    }
     if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
       res.json({
         message:
@@ -63,6 +69,7 @@ authRouter.post('/registration', async (req, res) => {
       sex: '',
       city,
       about: '',
+      tgUsername,
       isAdmin: false,
     });
 
@@ -76,7 +83,7 @@ authRouter.post('/registration', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
-      places: [],
+      tgUsername: user.tgUsername,
       isAdmin: user.isAdmin,
     };
 
@@ -105,7 +112,6 @@ authRouter.post('/login', async (req, res) => {
       res.json({ error: error.message });
       return;
     }
-
     try {
       const compPass = await bcrypt.compare(req.body.password, user.password);
       if (!compPass) {
@@ -117,22 +123,6 @@ authRouter.post('/login', async (req, res) => {
       return;
     }
 
-    const userPlaces = await Place.findAll({
-      where: {
-        userId: user.id,
-      },
-      include: [
-        Place.PlaceImages,
-        Place.Category,
-        Place.Likes,
-        Place.PlaceToGos,
-        {
-          model: PlaceTag,
-          include: PlaceTag.Tag,
-        },
-      ],
-    });
-
     req.session.user = {
       id: user.id,
       email: user.email,
@@ -143,7 +133,7 @@ authRouter.post('/login', async (req, res) => {
       sex: user.sex,
       city: user.city,
       about: user.about,
-      places: userPlaces,
+      tgUsername: user.tgUsername,
       isAdmin: user.isAdmin,
     };
 

@@ -1,53 +1,122 @@
 .place_container {
-    display: flex;
-}
-
-.place_container_left {
-    width: 70vw;
-    margin-right: 30px;
-}
-
-.place_location_text {
-    display: flex;
-    gap: 30px;
-}
-
-.place_container_image {
-    height: 563px;
-    background-color: #D9D9D9;
-    border-radius: 8px;
-}
-
-.above_place_image {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.place_image_small {
-    background-color: #D9D9D9;
-    height: 142px;
-    border-radius: 8px;
+  padding-top: 4vh;
+  display: flex;
+  height: 730px;
 }
 
 .place_container_right {
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    gap: 38px;
+  width: 70vw;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 780px;
+}
+
+.place_location_text {
+  display: flex;
+  gap: 30px;
+}
+
+.place_container_image {
+  height: 463px;
+  width: 700px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.above_place_image {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  height: 240px;
+}
+
+.place_image_small {
+  background-color: #d9d9d9;
+  height: 142px;
+  border-radius: 8px;
+}
+
+.place_container_left {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
 }
 
 .big_place_image {
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
+  border-radius: 8px;
+  height: 100%;
 }
 
 .place_comments {
-    margin-top: 5%;
-    display: flex;
-    flex-direction: column;
-    width: 40vw;
-    background-color: #F4ECE0;
+  border-radius: 8px;
+  margin-top: 40px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  width: 83%;
+  background-color: #f4ece0;
+}
+
+.user_go {
+  color: rgb(255, 122, 74);
+  font-size: 20px;
+  transition: 0.2s;
+}
+
+.user_go:hover {
+  color: orangered;
+}
+
+.place_map {
+  display: flex;
+  margin-top: 30px;
+}
+
+.edit_place_btn {
+  margin: 20px;
+}
+
+.delete_place_btn,
+.edit_place_btn {
+transition: 0.4s;
+}
+
+.delete_place_btn:hover,
+.edit_place_btn:hover{
+  color: #2c2828;
+  background-color: #ff8858;
+}
+
+.info_tags {
+  margin-bottom: 16px;
+}
+
+.info_tags span {
+  font-size: 18px;
+}
+
+.info_tags p {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.info_category {
+  margin-bottom: 16px;
+}
+
+.info_category span {
+  font-size: 18px;
+}
+
+.info_category p {
+  font-size: 16px;
+  margin-top: 4px;
 }

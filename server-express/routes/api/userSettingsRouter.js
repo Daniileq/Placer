@@ -1,11 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable consistent-return */
 const userSettingsRouter = require('express').Router();
-const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const upload = require('../../src/upload');
 
-userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
+userSettingsRouter.put('/:id', upload.any(), async (req, res) => {
   try {
     const { id } = req.params;
     const {
@@ -16,11 +16,10 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
       sex,
       age,
       about,
-      password,
-      repeatPass,
+      tgUsername,
     } = req.body;
 
-    console.log(req.body);
+    const routesArr = ['profile', 'newplace', 'settings', 'favorites', 'about', 'contacts', 'togo', 'registration', 'login', 'places'];
 
     const uniqUser = await User.findOne({ where: { id } });
 
@@ -31,10 +30,9 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         });
       }
       if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-        res.json({
+        return res.json({
           message: 'Почта должна быть указана в формате email@mail.com',
         });
-        return;
       }
     }
     if (uniqUser.dataValues.login !== login) {
@@ -44,31 +42,15 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         });
       }
     }
-    if (password.length > 1) {
-      if (password.length < 7) {
-        return res.json({ message: 'Минимальная длина пароля 8 символов' });
-      }
-      if (password !== repeatPass) {
-        return res.json({ message: 'Пароли не совпадают' });
-      }
-      if (!password || !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(password)) {
-        res.json({
-          message:
-              'Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы',
-        });
-        return;
-      }
-    }
     if (!login || login.length < 3) {
-      res.json({ message: 'Логин должен содержать не менее 3 символов' });
-      return;
+      return res.json({ message: 'Логин должен содержать не менее 3 символов' });
     }
     if (login.includes('/')) {
-      res.json({ message: 'Логин недействителен' });
-      return;
+      return res.json({ message: 'Логин недействителен' });
     }
-
-    const hash = await bcrypt.hash(password, 10);
+    if (routesArr.includes(login)) {
+      return res.json({ message: 'Такой логин нельзя использовать' });
+    }
 
     let updatedUser = await User.update(
       {
@@ -80,8 +62,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         sex,
         age,
         about,
-        password: hash,
-        repeatPass,
+        tgUsername,
       },
       {
         where: { id },
@@ -89,7 +70,6 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
         returning: true,
       },
     );
-
     updatedUser = updatedUser[1][0];
 
     req.session.user = {
@@ -102,6 +82,7 @@ userSettingsRouter.put('/:id', upload.single('photo'), async (req, res) => {
       sex: updatedUser.sex,
       city: updatedUser.city,
       about: updatedUser.about,
+      tgUsername: updatedUser.tgUsername,
       isAdmin: updatedUser.isAdmin,
     };
 

@@ -1,0 +1,64 @@
+.edit_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 500px;
+  min-height: 700px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 100px;
+  width: 100px;
+}
+
+.edit_form h4 {
+  margin-bottom: 30px;
+}
+
+.edit_form select, input {
+  border: 1px solid #f4d3a1;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 430px;
+  height: 36px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+  transition: 0.2s;
+}
+
+.edit_form input:hover,
+.edit_form input:focus,
+.edit_form input:hover,
+.edit_form input:focus {
+  border: solid 1px #ffb84e;
+}
+
+.edit_place_btn,
+.delete_place_btn {
+  background: #ff733b;
+  border-radius: 4px;
+  width: 200px;
+  height: 56px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.edit_form label {
+  font-size: 14px;
+  font-family: "Nunito", sans-serif;
+  width: 410px;
+  text-align: left;
+  margin: 3px;
+}
+
+.edit_form textarea{
+  min-width: 430px;
+  min-height: 200px;
+}
+
+

@@ -12,6 +12,7 @@ const initialState = {
     sex: null,
     city: null,
     about: null,
+    tgUsername: null,
     places: [],
     isAdmin: null,
   },
@@ -27,10 +28,8 @@ const loadUser = createAsyncThunk(
     .then((response) => response.json())
     .then((body) => {
       if (!body.isUser) {
-        // console.log(body.isUser);
         throw new Error(body.isUser);
       }
-      // console.log(body.data);
       return body.user;
     }),
 );
@@ -91,10 +90,45 @@ const regUser = createAsyncThunk(
     }),
 );
 
-// изменение данных юзера
 const changeUser = createAsyncThunk(
   'user/changeUser',
   ({ data, userId }) => fetch(`/api/changeuser/${userId}`, {
+    method: 'put',
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      if (body.message) {
+        throw new Error(body.message);
+      }
+      return body.user;
+    }),
+);
+
+const changeUserPass = createAsyncThunk(
+  'user/changeUserPass',
+  ({ data, userId }) => fetch(`/api/changeuserpass/${userId}`, {
+    method: 'put',
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      if (body.message) {
+        throw new Error(body.message);
+      }
+      return body.user;
+    }),
+);
+
+const changeUserPhoto = createAsyncThunk(
+  'user/changeUserPhoto',
+  ({ data, userId }) => fetch(`/api/changeuserphoto/${userId}`, {
     method: 'put',
     body: data,
   })
@@ -120,18 +154,12 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // eslint-disable-next-line no-unused-vars
-      .addCase(loadUser.rejected, (state, action) => {
-        // console.log(action);
-        // console.log(action.error);
-        // console.log(action.error.message);
+      .addCase(loadUser.rejected, (state) => {
         state.isUser = false;
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.isUser = true;
         state.data = action.payload;
-        // console.log(state);
-        // console.log(action.payload);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.helpMessage = action.error.message;
@@ -155,6 +183,7 @@ const userSlice = createSlice({
           sex: null,
           city: null,
           about: null,
+          tgUsername: null,
           isAdmin: null,
         };
       })
@@ -169,7 +198,20 @@ const userSlice = createSlice({
         state.helpMessage = action.error.message;
       })
       .addCase(changeUser.fulfilled, (state, action) => {
-        state.isUser = true;
+        state.helpMessage = 'Данные пользователя успешно обновлены';
+        state.data = action.payload;
+      })
+      .addCase(changeUserPass.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUserPass.fulfilled, (state, action) => {
+        state.helpMessage = 'Данные пользователя успешно обновлены';
+        state.data = action.payload;
+      })
+      .addCase(changeUserPhoto.rejected, (state, action) => {
+        state.helpMessage = action.error.message;
+      })
+      .addCase(changeUserPhoto.fulfilled, (state, action) => {
         state.data = action.payload;
       });
   },
@@ -183,7 +225,7 @@ export const { disableHelpMessage } = userSlice.actions;
 
 // Экспорт action creator-функций (thunk)
 export {
-  loadUser, loginUser, logoutUser, regUser, changeUser,
+  loadUser, loginUser, logoutUser, regUser, changeUser, changeUserPass, changeUserPhoto,
 };
 
 /* eslint-enable no-param-reassign */

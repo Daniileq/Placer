@@ -6,6 +6,12 @@
   cursor: pointer;
 }
 
+.filters_container p {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
 .checked_option,
 .not_checked_option {
   text-overflow: clip;
@@ -32,6 +38,11 @@
 .not_checked_option {
   background-color: white;
 }
+
+.options_container {
+  margin-top: 10px;
+}
+
 
 /* .not_checked_option:hover {
   background-color: #f4d3a1;

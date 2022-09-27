@@ -8,32 +8,33 @@
   margin: 0;
 } */
 
-.user_settings_form h4 {
+.user_settings_form h4,
+.user_pass_form h4 {
   margin-bottom: 30px;
+  margin-left: 0;
 }
 
-.user_settings_form {
+.user_settings_form,
+.user_pass_form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 500px;
-  min-height: 1300px;
   background: #ffffff;
-  border-radius: 8px;
-  margin: auto;
-  margin-top: 100px;
-  width: 100px;
+  float: left;
+  margin-left: 54px;
 }
 
-.user_settings_form input, .user_settings_form select, .user_settings_form textarea {
+.user_settings_form input,
+.user_pass_form input,
+.user_settings_form select,
+.user_settings_form textarea {
   border: 1px solid #f4d3a1;
   border-radius: 4px;
   font-size: 14px;
   width: 430px;
   height: 36px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   padding-left: 10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   outline: none;
   transition: 0.2s;
 }
@@ -41,7 +42,7 @@
 .user_settings_form input:hover,
 .user_settings_form input:focus,
 .user_settings_form input:hover,
-.user_settings_form input:focus, 
+.user_settings_form input:focus,
 .user_settings_form textarea:hover,
 .user_settings_form textarea:focus {
   border: solid 1px #ffb84e;
@@ -50,21 +51,21 @@
 .user_settings_btn {
   background: #ff733b;
   border-radius: 4px;
-  width: 200px;
-  height: 56px;
+  width: 150px;
+  height: 45px;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   color: #ffffff;
-  margin-top: 40px;
+  margin: 30px;
 }
 
-.user_settings_form label {
-  font-size: 14px;
-  font-family: "Nunito", sans-serif;
-  width: 410px;
-  text-align: left;
+.user_settings_form label,
+.user_pass_form label {
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
   margin: 3px;
+  float: left;
 }
 
 .about_input {
@@ -72,6 +73,142 @@
 }
 
 .user_settings_form textarea {
-  height: 150px;
+  height: 100px;
   padding: 10px;
+}
+
+.field {
+  clear: both;
+  text-align: right;
+}
+
+.user_data {
+  display: flex;
+  flex-direction: column;
+  width: 791px;
+  margin-left: 20px;
+  padding-top: 30px;
+  padding-right: 80px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.change_photo_container {
+  margin: 40px auto 16px;
+  width: 275px;
+  height: 275px;
+  position: relative;
+}
+
+.user_photo_wrapper_change {
+  border-radius: 50%;
+  width: 275px;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.user_photo {
+  height: 100%;
+}
+
+.input-file-row {
+  display: inline-block;
+  position: absolute;
+  top: 190px;
+}
+
+.input-file {
+  position: relative;
+  display: inline-block;
+}
+
+.input-file span {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff733b;
+  transition: 0.4s;
+}
+
+.input-file span::before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 35px;
+  border-radius: 5px;
+  top: 37px;
+  z-index: 2;
+  background-color: #fff;
+  /* transform: rotate(90); */
+}
+
+.input-file span::after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 35px;
+  border-radius: 5px;
+  top: 37px;
+  z-index: 2;
+  background-color: #fff;
+  transform: rotate(90deg);
+}
+
+.input-file input[type='file'] {
+  display: none;
+}
+
+/* Focus */
+.input-file input[type='file']:focus + span {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Hover/Active */
+.input-file span:hover {
+  background-color: #ff4800;
+}
+
+.input-file span:active {
+  background-color: #ff3300;
+}
+
+/* Список файлов */
+.input-file-list {
+  padding: 10px 0;
+}
+.input-file-list-item {
+  margin-bottom: 10px;
+}
+.input-file-list-remove {
+  color: red;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.user_settings_form select {
+  cursor: pointer;
+  background-color: white;
+}
+
+.change_pass_btn {
+  outline: none;
+  margin-left: -40px;
+  height: 38px;
+  width: 40px;
+}
+
+.user_info {
+  height: 430px;
 }

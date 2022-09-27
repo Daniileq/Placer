@@ -1,0 +1,150 @@
+.profile {
+  display: flex;
+}
+
+.user_info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  width: 360px;
+}
+
+.user_data_profile {
+  padding: 0 54px;
+  padding-top: 35px;
+  width: 791px;
+  margin-left: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.data_profile_container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.user_data_profile div {
+  background-color: white;
+  font-size: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.user_photo_wrapper {
+  border-radius: 50%;
+  margin: 40px auto 12px;
+  width: 275px;
+  height: 275px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.user_photo {
+  height: 100%;
+}
+
+.user_name {
+  width: 95%;
+  height: 35px;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backbtn {
+  font-size: 18px;
+  height: 56px;
+  min-width: 104px;
+  text-align: center;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.backbtn > div {
+  color: #FF733B;
+  cursor: pointer;
+  display: block;
+  width: 128px;
+  height: 32px;
+  line-height: 32px;
+  transition: 0.2s;
+}
+
+.backbtn > div:hover {
+  color: #ff4800;
+}
+
+.my_data {
+  height: 34px;
+  text-align: left;
+  line-height: 34px;
+  font-size: 26px;
+}
+
+.place_users_to_go {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 12px;
+  flex-wrap: wrap;
+}
+
+.places {
+  background-color: white;
+  width: 1171px;
+  margin-top: 20px;
+  border-radius: 8px;
+  min-height: 300px;
+
+  /* display: flex;
+  justify-content: center; */
+}
+
+.my_places {
+  padding-top: 35px;
+  margin: 0 54px;
+}
+
+.details {
+  background-color: white;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.edit_btn {
+  left: 600px;
+  top: 55px;
+  color: #ff733b;
+  transition: 0.2s;
+}
+
+.edit_btn:hover {
+  color: #ff4800;
+}
+
+.my_places_headers {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.tg_btn {
+  margin-top: 14px;
+  background-color: #f4d3a1;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.tg_btn > a {
+  color: #ff733b;
+}

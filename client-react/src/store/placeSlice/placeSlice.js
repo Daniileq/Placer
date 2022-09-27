@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   data: {},
   tags: [],
-  loading: false,
+  loading: true,
   error: null,
 };
 
@@ -32,9 +32,44 @@ const loadPlaceTags = createAsyncThunk(
     }),
 );
 
+const editPlace = createAsyncThunk(
+  'place/editPlace',
+  ({ data, id }) => fetch(`/api/place/${id}`, {
+    method: 'PUT',
+    body: data,
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
+const deletePlace = createAsyncThunk(
+  'place/deletePlace',
+  (id) => fetch(`/api/place/${Number(id)}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response.json())
+    .then((body) => {
+      if (body.error) {
+        throw new Error(body.error);
+      }
+      return body.data;
+    }),
+);
+
 const placeSlice = createSlice({
   name: 'place',
   initialState,
+  reducers: {
+    disablePlace: (state) => {
+      state.loading = true;
+      state.data = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadPlace.pending, (state) => {
@@ -46,26 +81,41 @@ const placeSlice = createSlice({
       })
       .addCase(loadPlace.fulfilled, (state, action) => {
         state.loading = false;
+        state.success = true;
         state.data = action.payload;
       })
-      .addCase(loadPlaceTags.pending, (state) => {
+      .addCase(editPlace.pending, (state) => {
         state.loading = true;
       })
-      .addCase(loadPlaceTags.rejected, (state, action) => {
+      .addCase(editPlace.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(loadPlaceTags.fulfilled, (state, action) => {
+      .addCase(editPlace.fulfilled, (state, action) => {
         state.loading = false;
-        state.tags = action.payload;
+        state.success = true;
+        state.data = action.payload;
+      })
+      .addCase(deletePlace.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deletePlace.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(deletePlace.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
       });
   },
 });
 
 export default placeSlice.reducer;
 
+export const { disablePlace } = placeSlice.actions;
+
 export {
-  loadPlace, loadPlaceTags,
+  loadPlace, loadPlaceTags, editPlace, deletePlace,
 };
 
 /* eslint-enable no-param-reassign */

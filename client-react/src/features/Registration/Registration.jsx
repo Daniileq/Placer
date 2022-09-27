@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { regUser, disableHelpMessage } from '../../store/userSlice/userSlice';
@@ -9,6 +10,8 @@ function Registration() {
   const isUser = useSelector((state) => state.user.isUser);
   const helpMessage = useSelector((state) => state.user.helpMessage);
   const navigate = useNavigate();
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
 
   // Удаление helpMessage при размонтировании компонента
   useEffect(() => () => {
@@ -34,9 +37,17 @@ function Registration() {
     }
   }, [isUser, navigate]);
 
+  const toggleBtn = () => {
+    setState((prev) => !prev);
+  };
+
+  const toggleBtn2 = () => {
+    setState2((prev) => !prev);
+  };
+
   return (
-    <>
-      <div>
+    <div className='registration_container'>
+      <div className='registration_form_div'>
         <form className="registration_form" onSubmit={regSubmit}>
           <h4>Регистрация</h4>
 
@@ -64,13 +75,15 @@ function Registration() {
             <option>Казань</option>
             <option>Саратов</option>
             <option>Челябинск</option>
+            <option>Грозный</option>
             <option>Калининград</option>
             <option>Великий Новгород</option>
           </select>
 
           <label htmlFor="passwordInput">Пароль</label>
+          <div className='password_input'>
           <input
-            type="password"
+            type={state ? 'text' : 'password'}
             name="password"
             id='passwordInput'
             placeholder="Пароль"
@@ -78,20 +91,30 @@ function Registration() {
             title="Пароль должен быть не менее 8 символов, а также содержать не менее одной цифры, одной прописной и строчной буквы"
             required
           />
+            <button type='button' onClick={toggleBtn} className="password_btn">
+              { state ? <AiOutlineEye/> : <AiOutlineEyeInvisible/> }
+            </button>
+          </div>
 
-          <label htmlFor="repeatPassInput">Повторите пароль</label>
-          <input
-            type="password"
-            name="repeatPass"
-            id='repeatPassInput'
-            placeholder="Повторите пароль"
-            required
-          />
+            <label htmlFor="repeatPassInput">Повторите пароль</label>
+            <div className='password_input'>
+            <input
+              type={state2 ? 'text' : 'password'}
+              name="repeatPass"
+              id='repeatPassInput'
+              placeholder="Повторите пароль"
+              required
+            />
+            <button type='button' onClick={toggleBtn2} className="password_btn">
+                { state2 ? <AiOutlineEye/> : <AiOutlineEyeInvisible/> }
+            </button>
+          </div>
+
           { helpMessage && <div className="helpText">{helpMessage}</div>}
-          <button className='registration_btn' type="submit">Зарегистрироваться</button>
+          <button className='registration_btn font_button' type="submit">Зарегистрироваться</button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
