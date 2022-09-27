@@ -51,7 +51,7 @@ placeRouter.post('/', upload.array('placeImages'), async (req, res) => {
     })));
 
     await PlaceImage.bulkCreate(req.files.map((file) => ({
-      src: `/images/${file.filename}`,
+      src: `/static/media/${file.filename}`,
       placeId: id,
       title: file.originalname,
     })));
