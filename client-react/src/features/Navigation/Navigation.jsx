@@ -15,7 +15,6 @@ function Navigation() {
 
   const logout = () => {
     dispatch(logoutUser());
-    navigate('/');
   };
 
   const location = useLocation();

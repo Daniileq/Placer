@@ -69,7 +69,6 @@
 
 .active {
   position: relative;
-  /* border-bottom: solid 2px #ff733b; */
 }
 
 .active::after {

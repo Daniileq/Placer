@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleGo } from '../../store/placesSlice/placesSliceDeprecated';
+import { toggleGo } from '../../store/placesSlice/placesSlice';
 import './PlaceToGoButton.css';
 
 const manWalk = (<svg className="man_walk" width="24" height="32" viewBox="0 0 23 31" fill="none" xmlns="http://www.w3.org/2000/svg">
